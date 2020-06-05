@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013637C5248A4BEF0059225F /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637C4248A4BEF0059225F /* TestService.swift */; };
+		013637C8248A4C0E0059225F /* TestServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637C7248A4C0E0059225F /* TestServiceImpl.swift */; };
+		013637CA248A4C4E0059225F /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637C9248A4C4E0059225F /* ServiceFactory.swift */; };
+		013637CC248A69980059225F /* TestSectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637CB248A69980059225F /* TestSectionItemsFactory.swift */; };
 		0169D5AB246BF1060020F4F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169D5AA246BF1060020F4F7 /* AppDelegate.swift */; };
 		0169D5B4246BF10B0020F4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0169D5B3246BF10B0020F4F7 /* Assets.xcassets */; };
 		0169D5B7246BF10B0020F4F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0169D5B5246BF10B0020F4F7 /* LaunchScreen.storyboard */; };
@@ -37,6 +41,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		013637C4248A4BEF0059225F /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
+		013637C7248A4C0E0059225F /* TestServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServiceImpl.swift; sourceTree = "<group>"; };
+		013637C9248A4C4E0059225F /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		013637CB248A69980059225F /* TestSectionItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionItemsFactory.swift; sourceTree = "<group>"; };
 		0169D5A7246BF1060020F4F7 /* Coordinators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coordinators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0169D5AA246BF1060020F4F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0169D5B3246BF10B0020F4F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +87,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013637C1248A4BB70059225F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		013637C2248A4BCC0059225F /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				013637C3248A4BDC0059225F /* Services */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		013637C3248A4BDC0059225F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				013637C6248A4BF50059225F /* TestService */,
+				013637C9248A4C4E0059225F /* ServiceFactory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		013637C6248A4BF50059225F /* TestService */ = {
+			isa = PBXGroup;
+			children = (
+				013637C4248A4BEF0059225F /* TestService.swift */,
+				013637C7248A4C0E0059225F /* TestServiceImpl.swift */,
+			);
+			path = TestService;
+			sourceTree = "<group>";
+		};
 		0169D59E246BF1060020F4F7 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +151,7 @@
 		0169D5BE246BF1110020F4F7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				013637C2248A4BCC0059225F /* BusinessLogic */,
 				0169D5C2246BF16C0020F4F7 /* Presentation */,
 				0169D5BF246BF1180020F4F7 /* Core */,
 			);
@@ -130,6 +172,7 @@
 		0169D5C2246BF16C0020F4F7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				013637C1248A4BB70059225F /* New Group */,
 				0169D5C6246BF6A00020F4F7 /* Modules */,
 				0169D5C3246BF17A0020F4F7 /* Coordinators */,
 			);
@@ -188,6 +231,7 @@
 				0169D5E1246C09940020F4F7 /* SecondViewController.swift */,
 				0169D5F6246D3DBD0020F4F7 /* SecondState.swift */,
 				0169D5F8246D3DCE0020F4F7 /* SecondViewModel.swift */,
+				013637CB248A69980059225F /* TestSectionItemsFactory.swift */,
 			);
 			path = SecondModule;
 			sourceTree = "<group>";
@@ -276,6 +320,7 @@
 				0169D603246E5B440020F4F7 /* AnyEquatable.swift in Sources */,
 				0169D5F1246D31660020F4F7 /* MainState.swift in Sources */,
 				0169D5D3246BFD3E0020F4F7 /* FirstCoordinator.swift in Sources */,
+				013637CA248A4C4E0059225F /* ServiceFactory.swift in Sources */,
 				0169D5EA246CF8040020F4F7 /* Module.swift in Sources */,
 				0169D5C9246BF6BB0020F4F7 /* MainPresenter.swift in Sources */,
 				0169D5F7246D3DBD0020F4F7 /* SecondState.swift in Sources */,
@@ -285,6 +330,8 @@
 				0169D5E2246C09940020F4F7 /* SecondViewController.swift in Sources */,
 				0169D5C1246BF1270020F4F7 /* Coordinator.swift in Sources */,
 				0169D5E6246C0A9B0020F4F7 /* ThirdPresenter.swift in Sources */,
+				013637C5248A4BEF0059225F /* TestService.swift in Sources */,
+				013637CC248A69980059225F /* TestSectionItemsFactory.swift in Sources */,
 				0169D5F5246D3B000020F4F7 /* FirstState.swift in Sources */,
 				0169D5F3246D3AF40020F4F7 /* FirstViewModel.swift in Sources */,
 				0169D5DE246C09790020F4F7 /* SecondModule.swift in Sources */,
@@ -295,6 +342,7 @@
 				0169D5F9246D3DCE0020F4F7 /* SecondViewModel.swift in Sources */,
 				0169D5CB246BF6F30020F4F7 /* MainModule.swift in Sources */,
 				0169D601246E5B100020F4F7 /* ViewUpdate.swift in Sources */,
+				013637C8248A4C0E0059225F /* TestServiceImpl.swift in Sources */,
 				0169D5AB246BF1060020F4F7 /* AppDelegate.swift in Sources */,
 				0169D5EF246D2C870020F4F7 /* MainViewModel.swift in Sources */,
 			);

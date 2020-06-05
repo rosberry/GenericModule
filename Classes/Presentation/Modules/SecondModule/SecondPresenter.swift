@@ -6,6 +6,5 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-final class SecondPresenter<V: ViewInput>: GenericPresenter<SecondState, SecondViewModel, V>, SecondModuleInput, SecondViewOutput, HasOutput {
-    var output: SecondModuleOutput?
+final class SecondPresenter: SecondModule.Presenter {
 }

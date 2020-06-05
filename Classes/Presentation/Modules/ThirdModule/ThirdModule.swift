@@ -14,11 +14,11 @@ protocol ThirdModuleOutput {
     func thirdModuleWantsToClose(_ moduleInput: ThirdModuleInput)
 }
 
-final class ThirdModule: GenericModule <
-    SecondState,
-    SecondViewModel,
-    ThirdPresenter<ThirdViewController>,
-    ThirdViewController> {
-
+final class ThirdModule: Module<SecondState, SecondViewModel, ThirdViewController> {
+    typealias Dependencies = HasTestService
+    typealias Presenter = ThirdModule.DependentPresenter<ThirdModuleOutput, Dependencies> & ThirdModuleInput & ThirdViewOutput
+    override func createInput() -> BasePresenter {
+        ThirdPresenter(state: state, dependencies: Services)
+    }
 }
 

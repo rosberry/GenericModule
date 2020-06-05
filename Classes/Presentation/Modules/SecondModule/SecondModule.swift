@@ -13,10 +13,12 @@ protocol SecondModuleInput {
 protocol SecondModuleOutput {
 }
 
-final class SecondModule: GenericModule <
-    SecondState,
-    SecondViewModel,
-    SecondPresenter<SecondViewController>,
-    SecondViewController> {
-    
+final class SecondModule: Module<SecondState, SecondViewModel, SecondViewController> {
+    typealias Dependnecies = HasTestService
+    typealias Presenter = FactoryPresenter<SecondModuleOutput, Dependnecies, TestSectionItemsFactory> & SecondModuleInput & SecondViewOutput
+    override func createInput() -> BasePresenter {
+        SecondPresenter(state: state,
+                        factory: TestSectionItemsFactory(),
+                        dependencies: Services)
+    }
 }

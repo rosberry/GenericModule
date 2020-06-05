@@ -6,9 +6,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-final class FirstPresenter<V: ViewInput>: GenericPresenter<FirstState, FirstViewModel, V>, FirstModuleInput, FirstViewOutput, HasOutput {
-
-    var output: FirstModuleOutput?
+final class FirstPresenter: FirstModule.Presenter {
 
     func secondButtonEventTriggered() {
         output?.firstModuleOpenSecond(self)

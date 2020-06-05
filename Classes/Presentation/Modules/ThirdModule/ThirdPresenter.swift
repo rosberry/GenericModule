@@ -6,9 +6,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-final class ThirdPresenter<V: ViewInput>: GenericPresenter<SecondState, SecondViewModel, V>, ThirdModuleInput, ThirdViewOutput, HasOutput {
-
-    var output: ThirdModuleOutput?
+final class ThirdPresenter: ThirdModule.Presenter {
 
     func closeEventTriggered() {
         output?.thirdModuleWantsToClose(self)

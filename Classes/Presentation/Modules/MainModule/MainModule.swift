@@ -7,7 +7,6 @@
 //
 
 protocol MainModuleInput {
-    var state: MainState { get set}
 }
 
 protocol MainModuleOutput {
@@ -16,10 +15,10 @@ protocol MainModuleOutput {
     func mainModuleOpenThird(_ mainModule: MainModuleInput)
 }
 
-final class MainModule: GenericModule <
-    MainState,
-    MainViewModel,
-    MainPresenter<MainViewController>,
-    MainViewController > {
-
+final class MainModule: Module<MainState, MainViewModel, MainViewController> {
+    typealias Dependencies = HasTestService
+    typealias Presenter = DependentPresenter<MainModuleOutput, Dependencies> & MainModuleInput & MainViewOutput
+    override func createInput() -> BasePresenter {
+        MainPresenter(state: state, dependencies: Services)
+    }
 }
