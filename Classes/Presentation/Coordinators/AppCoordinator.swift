@@ -28,18 +28,18 @@ final class AppCoordinator: Coordinator<UINavigationController> {
 }
 
 extension AppCoordinator: MainModuleOutput {
-    
-    func mainModuleOpenFirst(_ mainModule: MainModuleInput) {
+
+    func mainModuleOpenFirst(_ moduleInput: MainModuleInput) {
         let module = FirstCoordinator(rootViewController: rootViewController).start()
         rootViewController.pushViewController(module.viewController, animated: true)
     }
 
-    func mainModuleOpenSecond(_ mainModule: MainModuleInput) {
+    func mainModuleOpenSecond(_ moduleInput: MainModuleInput) {
         let viewController = SecondModule(state: SecondState(), output: self).viewController
         rootViewController.pushViewController(viewController, animated: true)
     }
 
-    func mainModuleOpenThird(_ mainModule: MainModuleInput) {
+    func mainModuleOpenThird(_ moduleInput: MainModuleInput) {
         let viewController = ThirdModule(state: SecondState(), output: self).viewController
         viewController.modalPresentationStyle = .overFullScreen
         rootViewController.present(viewController, animated: true, completion: nil)

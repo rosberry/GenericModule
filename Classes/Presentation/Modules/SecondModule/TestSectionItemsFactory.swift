@@ -7,6 +7,15 @@
 //
 
 
-final class TestSectionItemsFactory {
+final class TestSectionItemsFactory: SectionItemsFactory {
 
+    var dependencies: SecondModule.Dependnecies
+
+    init(dependencies: SecondModule.Dependnecies) {
+        self.dependencies = dependencies
+    }
+
+    func createSectionItems(state: SecondState) -> [Int] {
+        Array(0..<dependencies.testService.testNumber())
+    }
 }

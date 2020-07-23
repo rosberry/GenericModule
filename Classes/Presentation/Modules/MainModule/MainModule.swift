@@ -6,18 +6,19 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-protocol MainModuleInput {
+protocol MainModuleInput: ModuleInput<MainState> {
 }
 
 protocol MainModuleOutput {
-    func mainModuleOpenFirst(_ mainModule: MainModuleInput)
-    func mainModuleOpenSecond(_ mainModule: MainModuleInput)
-    func mainModuleOpenThird(_ mainModule: MainModuleInput)
+    func mainModuleOpenFirst(_ moduleInput: MainModuleInput)
+    func mainModuleOpenSecond(_ moduleInput: MainModuleInput)
+    func mainModuleOpenThird(_ moduleInput: MainModuleInput)
 }
 
 final class MainModule: Module<MainState, MainViewModel, MainViewController> {
     typealias Dependencies = HasTestService
-    typealias Presenter = DependentPresenter<MainModuleOutput, Dependencies> & MainModuleInput & MainViewOutput
+    typealias Presenter = ModulePresenter<MainModuleOutput, Dependencies> & MainModuleInput & MainViewOutput
+
     override func createInput() -> BasePresenter {
         MainPresenter(state: state, dependencies: Services)
     }

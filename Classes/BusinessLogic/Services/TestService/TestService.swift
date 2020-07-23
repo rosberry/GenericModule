@@ -13,5 +13,5 @@ protocol HasTestService {
 }
 
 protocol TestService {
-
+    func testNumber() -> Int
 }

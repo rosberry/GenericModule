@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-final class SecondViewModel: GenericViewModel<SecondState> {
+final class SecondViewModel: FactoryViewModel<TestSectionItemsFactory> {
 
     let title: String
     let text: String

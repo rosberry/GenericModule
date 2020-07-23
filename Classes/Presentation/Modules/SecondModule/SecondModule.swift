@@ -6,19 +6,17 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-protocol SecondModuleInput {
+protocol SecondModuleInput: ModuleInput<SecondState> {
 
 }
 
 protocol SecondModuleOutput {
 }
 
-final class SecondModule: Module<SecondState, SecondViewModel, SecondViewController> {
+final class SecondModule: FactoryModule<TestSectionItemsFactory, SecondViewModel, SecondViewController> {
     typealias Dependnecies = HasTestService
-    typealias Presenter = FactoryPresenter<SecondModuleOutput, Dependnecies, TestSectionItemsFactory> & SecondModuleInput & SecondViewOutput
+    typealias Presenter = FactoryPresenter<SecondModuleOutput> & SecondModuleInput & SecondViewOutput
     override func createInput() -> BasePresenter {
-        SecondPresenter(state: state,
-                        factory: TestSectionItemsFactory(),
-                        dependencies: Services)
+        SecondPresenter(state: state, dependencies: Services)
     }
 }

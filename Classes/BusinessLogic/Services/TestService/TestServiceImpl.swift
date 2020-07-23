@@ -7,5 +7,7 @@
 //
 
 final class TestServiceImpl: TestService {
-
+    func testNumber() -> Int {
+        return 20
+    }
 }

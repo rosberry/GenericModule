@@ -9,9 +9,28 @@
 import UIKit
 
 class GenericViewModel<State> {
-
     required init(state: State) {
+    }
+}
 
+protocol SectionItemsFactory {
+    associatedtype SectionItem
+    associatedtype State
+    associatedtype Dependencies
+    init(dependencies: Dependencies)
+    func createSectionItems(state: State) -> [SectionItem]
+}
+
+class FactoryViewModel<Factory: SectionItemsFactory>: GenericViewModel<Factory.State> {
+    var listSectionItems: [Factory.SectionItem]
+    required convenience init(state: Factory.State, factory: Factory) {
+        self.init(state: state)
+        listSectionItems = factory.createSectionItems(state: state)
+    }
+
+    required init(state: Factory.State) {
+        listSectionItems = []
+        super.init(state: state)
     }
 }
 
@@ -40,16 +59,20 @@ protocol ViewInput: HasOutput {
     func update(with viewModel: VM, force: Bool, animated: Bool)
 }
 
-class GenericPresenter<S> {
+class ModuleInput<S> {
     var state: S
     init(state: S) {
         self.state = state
     }
 }
 
+protocol ViewOutput {
+    func viewDidLoad()
+}
+
 class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
 
-    class BasePresenter: GenericPresenter<S>  {
+    class BasePresenter: ModuleInput<S>, ViewOutput {
         weak var view: V?
 
         func viewDidLoad() {
@@ -66,7 +89,7 @@ class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
         fileprivate var _factory: Any?
     }
 
-    class DependentPresenter<O, D>: BasePresenter & HasOutput & HasDependencies {
+    class ModulePresenter<O, D>: BasePresenter & HasOutput & HasDependencies {
         var output: O? {
             get {
                 _output as? O
@@ -88,20 +111,8 @@ class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
         }
     }
 
-    class FactoryPresenter<O, D, F>: DependentPresenter<O, D> & HasFactory {
-
-        var factory: F {
-            _factory as! F
-        }
-
-        init(state: S, factory: F, dependencies: D) {
-            super.init(state: state, dependencies: dependencies)
-            _factory = factory
-        }
-    }
-
     var viewController: V
-    private var presenter: BasePresenter?
+    fileprivate var presenter: BasePresenter?
     var state: S
 
     func input<T: BasePresenter>() -> T? {
@@ -109,7 +120,7 @@ class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
     }
 
     func createInput() -> BasePresenter {
-        fatalError("`inputClass<T>()` required to be implemented")
+        preconditionFailure("This method must be overridden") 
     }
 
     init<O>(state: S, output: O) {
@@ -121,5 +132,34 @@ class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
         viewController.output = viewOutput
         presenter?.view = viewController
         presenter?._output = output
+    }
+}
+
+class FactoryModule<F: SectionItemsFactory, VM: FactoryViewModel<F>, V: ViewInput>: Module<F.State, VM, V> {
+
+    class FactoryPresenter<O>: ModulePresenter<O, F.Dependencies> {
+        var factory: F? {
+            get {
+                _factory as? F
+            }
+            set {
+                _factory = newValue
+            }
+        }
+
+        override init(state: F.State, dependencies: F.Dependencies) {
+            super.init(state: state, dependencies: dependencies)
+            factory = F.init(dependencies: dependencies)
+            _dependencies = dependencies
+        }
+
+        override func update(force: Bool = false, animated: Bool) {
+            let viewModel = VM.init(state: state, factory: factory!)
+            view?.update(with: viewModel as! V.VM, force: force, animated: animated)
+        }
+    }
+
+    override init<O>(state: F.State, output: O) {
+        super.init(state: state, output: output)
     }
 }

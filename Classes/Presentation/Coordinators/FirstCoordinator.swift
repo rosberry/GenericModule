@@ -16,12 +16,12 @@ final class FirstCoordinator: Coordinator<UINavigationController> {
 }
 
 extension FirstCoordinator: FirstModuleOutput {
-    func firstModuleOpenSecond(_ firstModule: FirstModuleInput) {
+    func firstModuleOpenSecond(_ moduleInput: FirstModuleInput) {
         let viewController = SecondModule(state: SecondState(), output: self).viewController
         rootViewController.pushViewController(viewController, animated: true)
     }
 
-    func firstModuleOpenThird(_ firstModule: FirstModuleInput) {
+    func firstModuleOpenThird(_ moduleInput: FirstModuleInput) {
         let viewController = ThirdModule(state: SecondState(), output: self).viewController
         viewController.modalPresentationStyle = .overFullScreen
         rootViewController.present(viewController, animated: true, completion: nil)
