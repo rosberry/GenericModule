@@ -8,10 +8,9 @@
 
 import UIKit
 
-protocol FirstViewOutput {
+protocol FirstViewOutput: ViewOutput {
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
-    func viewDidLoad()
 }
 
 class FirstViewController: UIViewController {

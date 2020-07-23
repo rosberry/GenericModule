@@ -68,6 +68,10 @@ class ModuleInput<S> {
 
 protocol ViewOutput {
     func viewDidLoad()
+    func viewWillAppear()
+    func viewDidAppear()
+    func viewWillDisappear()
+    func viewDidDisappear()
 }
 
 class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
@@ -77,6 +81,22 @@ class Module<S, VM: GenericViewModel<S>, V: ViewInput> {
 
         func viewDidLoad() {
             update(force: true, animated: false)
+        }
+
+        func viewWillAppear() {
+
+        }
+
+        func viewDidAppear() {
+
+        }
+        
+        func viewWillDisappear() {
+
+        }
+
+        func viewDidDisappear() {
+            
         }
 
         func update(force: Bool = false, animated: Bool) {

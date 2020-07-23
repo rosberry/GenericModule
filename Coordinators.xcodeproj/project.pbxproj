@@ -202,8 +202,8 @@
 		0169D5C7246BF6A60020F4F7 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				0169D5C8246BF6BB0020F4F7 /* MainPresenter.swift */,
 				0169D5CA246BF6F30020F4F7 /* MainModule.swift */,
+				0169D5C8246BF6BB0020F4F7 /* MainPresenter.swift */,
 				0169D5CC246BF7000020F4F7 /* MainViewController.swift */,
 				0169D5EE246D2C870020F4F7 /* MainViewModel.swift */,
 				0169D5F0246D31660020F4F7 /* MainState.swift */,

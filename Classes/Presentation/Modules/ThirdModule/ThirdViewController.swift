@@ -8,8 +8,7 @@
 
 import UIKit
 
-protocol ThirdViewOutput {
-    func viewDidLoad()
+protocol ThirdViewOutput: ViewOutput {
     func closeEventTriggered()
 }
 

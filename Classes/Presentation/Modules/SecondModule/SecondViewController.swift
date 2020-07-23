@@ -8,8 +8,7 @@
 
 import UIKit
 
-protocol SecondViewOutput {
-    func viewDidLoad()
+protocol SecondViewOutput: ViewOutput {
 }
 
 

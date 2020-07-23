@@ -8,8 +8,7 @@
 
 import UIKit
 
-protocol MainViewOutput {
-    func viewDidLoad()
+protocol MainViewOutput: ViewOutput {
     func firstButtonEventTriggered()
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
