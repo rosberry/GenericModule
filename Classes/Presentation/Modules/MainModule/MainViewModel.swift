@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-final class MainViewModel: GenericViewModel<MainState> {
+final class MainViewModel: ViewModel<MainState> {
 
     let title1: String
     let title2: String
