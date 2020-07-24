@@ -7,6 +7,7 @@
 //
 
 protocol FirstModuleInput: ModuleInput<FirstState> {
+    func doSomeSpecificStuff()
 }
 
 protocol FirstModuleOutput {

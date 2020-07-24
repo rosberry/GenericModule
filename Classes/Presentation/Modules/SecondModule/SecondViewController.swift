@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SecondViewOutput: ViewOutput {
-}
-
-
 final class SecondViewController: UIViewController {
 
     class Cell: UICollectionViewCell {
@@ -36,7 +32,7 @@ final class SecondViewController: UIViewController {
         }
     }
 
-    var output: SecondViewOutput?
+    var output: ViewOutput?
     var viewModel: SecondViewModel
 
     private let reuseId = "cell"

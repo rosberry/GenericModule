@@ -9,9 +9,11 @@
 
 final class TestSectionItemsFactory: SectionItemsFactory {
 
-    var dependencies: SecondModule.Dependnecies
+    typealias Dependnecies = HasTestService
 
-    init(dependencies: SecondModule.Dependnecies) {
+    var dependencies: Dependnecies
+
+    init(dependencies: Dependnecies) {
         self.dependencies = dependencies
     }
 

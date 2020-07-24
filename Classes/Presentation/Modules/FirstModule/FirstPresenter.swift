@@ -15,4 +15,8 @@ final class FirstPresenter: FirstModule.Presenter {
     func thirdButtonEventTriggered() {
         output?.firstModuleOpenThird(self)
     }
+
+    func doSomeSpecificStuff() {
+        print("\(self): Yes, I do")
+    }
 }

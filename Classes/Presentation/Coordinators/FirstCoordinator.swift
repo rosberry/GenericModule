@@ -19,21 +19,19 @@ extension FirstCoordinator: FirstModuleOutput {
     func firstModuleOpenSecond(_ moduleInput: FirstModuleInput) {
         let viewController = SecondModule(state: SecondState(), output: self).viewController
         rootViewController.pushViewController(viewController, animated: true)
+        moduleInput.doSomeSpecificStuff()
     }
 
     func firstModuleOpenThird(_ moduleInput: FirstModuleInput) {
         let viewController = ThirdModule(state: SecondState(), output: self).viewController
         viewController.modalPresentationStyle = .overFullScreen
         rootViewController.present(viewController, animated: true, completion: nil)
+        moduleInput.doSomeSpecificStuff()
     }
 }
 
-extension FirstCoordinator: SecondModuleOutput {
-
-}
-
 extension FirstCoordinator: ThirdModuleOutput {
-    func thirdModuleWantsToClose(_ moduleInput: ThirdModuleInput) {
+    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<SecondState>) {
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }
