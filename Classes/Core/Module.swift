@@ -74,7 +74,7 @@ protocol ViewOutput {
     func viewDidDisappear()
 }
 
-class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> {
+class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
     class BasePresenter: ModuleInput<State>, ViewOutput {
         weak var view: ModuleViewInput?
@@ -101,7 +101,7 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
 
         func update(force: Bool = false, animated: Bool) {
             let viewModel = ModuleViewModel.init(state: state)
-            view?.update(with: viewModel as! ModuleViewInput.ViewModel, force: force, animated: animated)
+            view?.update(with: viewModel, force: force, animated: animated)
         }
 
         fileprivate var _output: Any?
@@ -120,9 +120,10 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
         }
 
         var dependencies: Dependencies {
-            get {
-                _dependencies as! Dependencies
+            guard let dependencies = _dependencies as? Dependencies else {
+                fatalError("`\(type(of: _dependencies))` does not conform to ptotocol \(Dependencies.self)")
             }
+            return dependencies
         }
 
         init(state: State, dependencies: Dependencies) {
@@ -146,16 +147,20 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
     init<Output>(state: State, output: Output) {
         self.state = state
         let viewModel = ModuleViewModel.init(state: state)
-        viewController = ModuleViewInput.init(viewModel: viewModel as! ModuleViewInput.ViewModel)
+        viewController = ModuleViewInput.init(viewModel: viewModel)
         presenter = createInput()
-        let viewOutput = presenter as! ModuleViewInput.Output
-        viewController.output = viewOutput
+        if let viewOutput = presenter as? ModuleViewInput.Output {
+            viewController.output = viewOutput
+        }
+        else {
+            fatalError("`\(type(of: presenter))` does not confonforms to ptotocol `\(ModuleViewInput.Output.self)`")
+        }
         presenter?.view = viewController
         presenter?._output = output
     }
 }
 
-class FactoryModule<Factory: SectionItemsFactory, ModuleViewModel: FactoryViewModel<Factory>, ModuleViewInput: ViewInput>: Module<Factory.State, ModuleViewModel, ModuleViewInput> {
+class FactoryModule<Factory: SectionItemsFactory, ModuleViewModel: FactoryViewModel<Factory>, ModuleViewInput: ViewInput>: Module<Factory.State, ModuleViewModel, ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
     class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
         var factory: Factory? {
@@ -174,8 +179,11 @@ class FactoryModule<Factory: SectionItemsFactory, ModuleViewModel: FactoryViewMo
         }
 
         override func update(force: Bool = false, animated: Bool) {
-            let viewModel = ModuleViewModel.init(state: state, factory: factory!)
-            view?.update(with: viewModel as! ModuleViewInput.ViewModel, force: force, animated: animated)
+            guard let factory = self.factory else {
+                return
+            }
+            let viewModel = ModuleViewModel.init(state: state, factory: factory)
+            view?.update(with: viewModel, force: force, animated: animated)
         }
     }
 

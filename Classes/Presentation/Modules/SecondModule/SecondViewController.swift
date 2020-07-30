@@ -49,6 +49,7 @@ final class SecondViewController: UIViewController {
                                             bottom: view.safeAreaInsets.bottom,
                                             right: 15)
         collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
+        collectionView.backgroundColor = .white
         return collectionView
     }()
 
