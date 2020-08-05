@@ -1,8 +1,4 @@
 //
-//  AppCoordinator.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 13.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -18,7 +14,7 @@ final class AppCoordinator: Coordinator<UINavigationController> {
     }
 
     func start(launchOptions: LaunchOptions?) {
-        let module = MainModule(state: MainState(), output: self)
+        let module = MainModule(state: .init(), output: self)
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
@@ -40,14 +36,23 @@ extension AppCoordinator: MainModuleOutput {
     }
 
     func mainModuleOpenThird(_ moduleInput: ModuleInput<MainState>) {
-        let viewController = ThirdModule(state: SecondState(), output: self).viewController
+        let viewController = ThirdModule(state: .init(title: "Third",
+                                                      text: "This is 3-rd view controller"),
+                                         output: self).viewController
         viewController.modalPresentationStyle = .overFullScreen
         rootViewController.present(viewController, animated: true, completion: nil)
+    }
+
+    func mainModuleOpenFourth(_ moduleInput: ModuleInput<MainState>) {
+        let viewController = FourthModule(state: .init(title: "Fourth",
+                                                       text: "This is 4-th view controller"),
+                                          output: self).viewController
+        rootViewController.pushViewController(viewController, animated: true)
     }
 }
 
 extension AppCoordinator: ThirdModuleOutput {
-    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<SecondState>) {
+    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<TitleTextState>) {
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }

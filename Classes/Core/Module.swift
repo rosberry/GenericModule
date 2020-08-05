@@ -1,8 +1,4 @@
 //
-//  Module.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 14.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -17,8 +13,25 @@ protocol SectionItemsFactory {
     associatedtype SectionItem
     associatedtype State
     associatedtype Dependencies
+    associatedtype Output
+
+    var output: Output? { get set }
+    var dependencies: Dependencies { get set }
     init(dependencies: Dependencies)
     func createSectionItems(state: State) -> [SectionItem]
+}
+
+class GenericSectionItemsFactory<State, SectionItem, Dependencies, Output>: SectionItemsFactory {
+    var dependencies: Dependencies
+    var output: Output?
+
+    required init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+
+    func createSectionItems(state: State) -> [SectionItem] {
+        []
+    }
 }
 
 class FactoryViewModel<Factory: SectionItemsFactory>: ViewModel<Factory.State> {
@@ -57,6 +70,12 @@ protocol ViewInput: HasOutput {
 
     init(viewModel: ViewModel)
     func update(with viewModel: ViewModel, force: Bool, animated: Bool)
+}
+
+extension ViewInput {
+    func output<ConcreteOutput>() -> ConcreteOutput? {
+        return self.output as? ConcreteOutput
+    }
 }
 
 class ModuleInput<State> {
@@ -141,7 +160,7 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
     }
 
     func createInput() -> BasePresenter {
-        preconditionFailure("This method must be overridden") 
+        .init(state: state)
     }
 
     init<Output>(state: State, output: Output) {
@@ -160,7 +179,13 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
     }
 }
 
-class FactoryModule<Factory: SectionItemsFactory, ModuleViewModel: FactoryViewModel<Factory>, ModuleViewInput: ViewInput>: Module<Factory.State, ModuleViewModel, ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
+class FactoryModule<Factory: SectionItemsFactory,
+                    ModuleViewModel: FactoryViewModel<Factory>,
+                    ModuleViewInput: ViewInput>:
+                        Module<Factory.State,
+                              ModuleViewModel,
+                              ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
+                                                     Factory.Output == ModuleViewInput.Output {
 
     class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
         var factory: Factory? {
@@ -175,6 +200,7 @@ class FactoryModule<Factory: SectionItemsFactory, ModuleViewModel: FactoryViewMo
         override init(state: Factory.State, dependencies: Factory.Dependencies) {
             super.init(state: state, dependencies: dependencies)
             factory = Factory.init(dependencies: dependencies)
+            factory?.output = view?.output
             _dependencies = dependencies
         }
 

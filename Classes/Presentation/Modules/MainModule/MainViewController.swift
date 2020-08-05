@@ -1,8 +1,4 @@
 //
-//  MainVIewController.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 13.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -12,6 +8,7 @@ protocol MainViewOutput: ViewOutput {
     func firstButtonEventTriggered()
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
+    func fourthButtonEventTriggered()
 }
 
 final class MainViewController: UIViewController {
@@ -39,6 +36,12 @@ final class MainViewController: UIViewController {
         return button
     }()
 
+    private(set) lazy var fourthButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(fourthButtonPressed), for: .touchUpInside)
+        return button
+    }()
+
     // MARK: - Lifecycle
 
     init(viewModel: MainViewModel) {
@@ -56,6 +59,7 @@ final class MainViewController: UIViewController {
         view.addSubview(firstButton)
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
+        view.addSubview(fourthButton)
         output?.viewDidLoad()
     }
 
@@ -65,6 +69,7 @@ final class MainViewController: UIViewController {
         firstButton.frame = CGRect(x: 16, y: 200, width: view.bounds.width - 32, height: 40)
         secondButton.frame = CGRect(x: 16, y: 300, width: view.bounds.width - 32, height: 40)
         thirdButton.frame = CGRect(x: 16, y: 400, width: view.bounds.width - 32, height: 40)
+        fourthButton.frame = CGRect(x: 16, y: 500, width: view.bounds.width - 32, height: 40)
     }
 
     // MARK: - Actions
@@ -79,6 +84,10 @@ final class MainViewController: UIViewController {
 
     @objc private func thirdButtonPressed() {
         output?.thirdButtonEventTriggered()
+    }
+
+    @objc private func fourthButtonPressed() {
+        output?.fourthButtonEventTriggered()
     }
 }
 
@@ -99,6 +108,9 @@ extension MainViewController: ViewInput, ForceViewUpdate {
         }
         update(new: viewModel, old: oldViewModel, keyPath: \.title3, force: force) { title in
             thirdButton.setTitle(title, for: .normal)
+        }
+        update(new: viewModel, old: oldViewModel, keyPath: \.title4, force: force) { title in
+            fourthButton.setTitle(title, for: .normal)
         }
     }
 }

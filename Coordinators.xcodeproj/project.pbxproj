@@ -11,6 +11,7 @@
 		013637C8248A4C0E0059225F /* TestServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637C7248A4C0E0059225F /* TestServiceImpl.swift */; };
 		013637CA248A4C4E0059225F /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637C9248A4C4E0059225F /* ServiceFactory.swift */; };
 		013637CC248A69980059225F /* TestSectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013637CB248A69980059225F /* TestSectionItemsFactory.swift */; };
+		0141D89524D2E811003259A4 /* FourthModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0141D89424D2E811003259A4 /* FourthModule.swift */; };
 		0169D5AB246BF1060020F4F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169D5AA246BF1060020F4F7 /* AppDelegate.swift */; };
 		0169D5B4246BF10B0020F4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0169D5B3246BF10B0020F4F7 /* Assets.xcassets */; };
 		0169D5B7246BF10B0020F4F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0169D5B5246BF10B0020F4F7 /* LaunchScreen.storyboard */; };
@@ -37,6 +38,9 @@
 		0169D5F9246D3DCE0020F4F7 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169D5F8246D3DCE0020F4F7 /* SecondViewModel.swift */; };
 		0169D601246E5B100020F4F7 /* ViewUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169D600246E5B100020F4F7 /* ViewUpdate.swift */; };
 		0169D603246E5B440020F4F7 /* AnyEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169D602246E5B440020F4F7 /* AnyEquatable.swift */; };
+		01B2937724DAC3C4000CF6C7 /* TitleTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2937624DAC3C4000CF6C7 /* TitleTextViewController.swift */; };
+		01B2937924DAC3D3000CF6C7 /* TitleTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2937824DAC3D3000CF6C7 /* TitleTextViewModel.swift */; };
+		01B2937B24DAC40D000CF6C7 /* TitleTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2937A24DAC40D000CF6C7 /* TitleTextState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,7 @@
 		013637C7248A4C0E0059225F /* TestServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServiceImpl.swift; sourceTree = "<group>"; };
 		013637C9248A4C4E0059225F /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		013637CB248A69980059225F /* TestSectionItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionItemsFactory.swift; sourceTree = "<group>"; };
+		0141D89424D2E811003259A4 /* FourthModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthModule.swift; sourceTree = "<group>"; };
 		0169D5A7246BF1060020F4F7 /* Coordinators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coordinators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0169D5AA246BF1060020F4F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0169D5B3246BF10B0020F4F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +77,9 @@
 		0169D5F8246D3DCE0020F4F7 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		0169D600246E5B100020F4F7 /* ViewUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUpdate.swift; sourceTree = "<group>"; };
 		0169D602246E5B440020F4F7 /* AnyEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEquatable.swift; sourceTree = "<group>"; };
+		01B2937624DAC3C4000CF6C7 /* TitleTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextViewController.swift; sourceTree = "<group>"; };
+		01B2937824DAC3D3000CF6C7 /* TitleTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextViewModel.swift; sourceTree = "<group>"; };
+		01B2937A24DAC40D000CF6C7 /* TitleTextState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,14 @@
 				013637C7248A4C0E0059225F /* TestServiceImpl.swift */,
 			);
 			path = TestService;
+			sourceTree = "<group>";
+		};
+		0141D89124D2E751003259A4 /* FourthModule */ = {
+			isa = PBXGroup;
+			children = (
+				0141D89424D2E811003259A4 /* FourthModule.swift */,
+			);
+			path = FourthModule;
 			sourceTree = "<group>";
 		};
 		0169D59E246BF1060020F4F7 = {
@@ -189,10 +205,12 @@
 		0169D5C6246BF6A00020F4F7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				01B2937424DAC39B000CF6C7 /* Common */,
 				0169D5C7246BF6A60020F4F7 /* MainModule */,
 				0169D5CE246BFCF20020F4F7 /* FirstModule */,
 				0169D5D4246BFD740020F4F7 /* SecondModule */,
 				0169D5D5246BFD8A0020F4F7 /* ThirdModule */,
+				0141D89124D2E751003259A4 /* FourthModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -241,6 +259,24 @@
 				0169D5E7246C0AC00020F4F7 /* ThirdModule.swift */,
 			);
 			path = ThirdModule;
+			sourceTree = "<group>";
+		};
+		01B2937424DAC39B000CF6C7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				01B2937524DAC3A6000CF6C7 /* TitleTextModule */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		01B2937524DAC3A6000CF6C7 /* TitleTextModule */ = {
+			isa = PBXGroup;
+			children = (
+				01B2937624DAC3C4000CF6C7 /* TitleTextViewController.swift */,
+				01B2937824DAC3D3000CF6C7 /* TitleTextViewModel.swift */,
+				01B2937A24DAC40D000CF6C7 /* TitleTextState.swift */,
+			);
+			path = TitleTextModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,10 +350,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0169D5DA246BFE6E0020F4F7 /* FirstPresenter.swift in Sources */,
+				0141D89524D2E811003259A4 /* FourthModule.swift in Sources */,
 				0169D603246E5B440020F4F7 /* AnyEquatable.swift in Sources */,
 				0169D5F1246D31660020F4F7 /* MainState.swift in Sources */,
 				0169D5D3246BFD3E0020F4F7 /* FirstCoordinator.swift in Sources */,
 				013637CA248A4C4E0059225F /* ServiceFactory.swift in Sources */,
+				01B2937924DAC3D3000CF6C7 /* TitleTextViewModel.swift in Sources */,
 				0169D5EA246CF8040020F4F7 /* Module.swift in Sources */,
 				0169D5C9246BF6BB0020F4F7 /* MainPresenter.swift in Sources */,
 				0169D5F7246D3DBD0020F4F7 /* SecondState.swift in Sources */,
@@ -325,6 +363,7 @@
 				0169D5CD246BF7000020F4F7 /* MainViewController.swift in Sources */,
 				0169D5DC246BFE830020F4F7 /* FirstViewController.swift in Sources */,
 				0169D5E2246C09940020F4F7 /* SecondViewController.swift in Sources */,
+				01B2937724DAC3C4000CF6C7 /* TitleTextViewController.swift in Sources */,
 				0169D5C1246BF1270020F4F7 /* Coordinator.swift in Sources */,
 				0169D5E6246C0A9B0020F4F7 /* ThirdPresenter.swift in Sources */,
 				013637C5248A4BEF0059225F /* TestService.swift in Sources */,
@@ -337,6 +376,7 @@
 				0169D5E8246C0AC00020F4F7 /* ThirdModule.swift in Sources */,
 				0169D5F9246D3DCE0020F4F7 /* SecondViewModel.swift in Sources */,
 				0169D5CB246BF6F30020F4F7 /* MainModule.swift in Sources */,
+				01B2937B24DAC40D000CF6C7 /* TitleTextState.swift in Sources */,
 				0169D601246E5B100020F4F7 /* ViewUpdate.swift in Sources */,
 				013637C8248A4C0E0059225F /* TestServiceImpl.swift in Sources */,
 				0169D5AB246BF1060020F4F7 /* AppDelegate.swift in Sources */,

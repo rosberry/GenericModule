@@ -1,8 +1,4 @@
 //
-//  FirstCoordinator.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 13.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -23,7 +19,9 @@ extension FirstCoordinator: FirstModuleOutput {
     }
 
     func firstModuleOpenThird(_ moduleInput: FirstModuleInput) {
-        let viewController = ThirdModule(state: SecondState(), output: self).viewController
+        let viewController = ThirdModule(state: .init(title: "Third",
+                                                      text: "This is 3-rd view controller"),
+                                         output: self).viewController
         viewController.modalPresentationStyle = .overFullScreen
         rootViewController.present(viewController, animated: true, completion: nil)
         moduleInput.doSomeSpecificStuff()
@@ -31,7 +29,7 @@ extension FirstCoordinator: FirstModuleOutput {
 }
 
 extension FirstCoordinator: ThirdModuleOutput {
-    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<SecondState>) {
+    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<TitleTextState>) {
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }

@@ -1,8 +1,4 @@
 //
-//  MainModule.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 13.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -10,6 +6,7 @@ protocol MainModuleOutput {
     func mainModuleOpenFirst(_ moduleInput: ModuleInput<MainState>)
     func mainModuleOpenSecond(_ moduleInput: ModuleInput<MainState>)
     func mainModuleOpenThird(_ moduleInput: ModuleInput<MainState>)
+    func mainModuleOpenFourth(_ moduleInput: ModuleInput<MainState>)
 }
 
 final class MainModule: Module<MainState, MainViewModel, MainViewController> {

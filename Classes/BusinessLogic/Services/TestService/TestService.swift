@@ -1,8 +1,4 @@
 //
-//  TestService.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 05.06.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -13,5 +9,5 @@ protocol HasTestService {
 }
 
 protocol TestService {
-    func testNumber() -> Int
+    func array(with count: Int) -> [Int]
 }
