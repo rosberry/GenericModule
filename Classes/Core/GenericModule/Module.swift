@@ -2,6 +2,8 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
+// swiftlint:disable explicit_init
+
 class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
     class BasePresenter: ModuleInput<State>, ViewOutput {
@@ -20,13 +22,13 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
         func viewDidAppear() {
 
         }
-        
+
         func viewWillDisappear() {
 
         }
 
         func viewDidDisappear() {
-            
+
         }
 
         func update(force: Bool = false, animated: Bool) {

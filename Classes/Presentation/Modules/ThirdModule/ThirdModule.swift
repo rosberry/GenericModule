@@ -13,4 +13,3 @@ final class ThirdModule: Module<TitleTextState, TitleTextViewModel, ThirdViewCon
         ThirdPresenter(state: state, dependencies: Services)
     }
 }
-

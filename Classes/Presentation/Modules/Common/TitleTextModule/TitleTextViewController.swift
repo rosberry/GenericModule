@@ -1,5 +1,4 @@
 //
-//  Created by Nick Tyunin on 05.08.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
