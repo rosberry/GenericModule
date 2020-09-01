@@ -13,7 +13,7 @@ final class MainModule: Module<MainState, MainViewModel, MainViewController> {
     typealias Dependencies = HasTestService
     typealias Presenter = ModulePresenter<MainModuleOutput, Dependencies> & MainViewOutput
 
-    override func createInput() -> BasePresenter {
+    override func makeInput() -> BasePresenter {
         MainPresenter(state: state, dependencies: Services)
     }
 }

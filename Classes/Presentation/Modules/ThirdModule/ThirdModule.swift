@@ -7,9 +7,12 @@ protocol ThirdModuleOutput {
 }
 
 final class ThirdModule: Module<TitleTextState, TitleTextViewModel, ThirdViewController> {
+
     typealias Dependencies = HasTestService
-    typealias Presenter = ThirdModule.ModulePresenter<ThirdModuleOutput, Dependencies> & ThirdViewOutput
-    override func createInput() -> BasePresenter {
+    typealias Presenter = ThirdModule.ModulePresenter<ThirdModuleOutput, Dependencies> &
+                          ThirdViewOutput
+
+    override func makeInput() -> BasePresenter {
         ThirdPresenter(state: state, dependencies: Services)
     }
 }

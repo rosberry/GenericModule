@@ -4,7 +4,7 @@
 
 final class SecondModule: FactoryModule<TestSectionItemsFactory, SecondViewModel, SecondViewController> {
 
-    override func createInput() -> BasePresenter {
+    override func makeInput() -> BasePresenter {
         FactoryPresenter<Any>(state: state, dependencies: Services)
     }
 }
