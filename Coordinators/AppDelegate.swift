@@ -1,8 +1,4 @@
 //
-//  AppDelegate.swift
-//  Coordinators
-//
-//  Created by Nick Tyunin on 13.05.2020.
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
@@ -20,4 +16,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

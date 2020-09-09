@@ -2,6 +2,8 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
+// swiftlint:disable explicit_init
+
 class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
     class BasePresenter: ModuleInput<State>, ViewOutput {
@@ -20,13 +22,13 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
         func viewDidAppear() {
 
         }
-        
+
         func viewWillDisappear() {
 
         }
 
         func viewDidDisappear() {
-            
+
         }
 
         func update(force: Bool = false, animated: Bool) {
@@ -35,7 +37,7 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
         }
     }
 
-    class ModulePresenter<Output, Dependencies>: BasePresenter & HasOutput {
+    class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
         var output: Output? {
             get {
                 _output as? Output
@@ -57,19 +59,19 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
     fileprivate var presenter: BasePresenter?
     var state: State
 
-    func input<T: BasePresenter>(ofType: T.Type = T.self) -> T? {
+    func input<T>(ofType: T.Type = T.self) -> T? {
         presenter as? T
     }
 
-    func createInput() -> BasePresenter {
+    func makeInput() -> BasePresenter {
         .init(state: state)
     }
 
-    init<Output>(state: State, output: Output) {
+    init<Output>(state: State, output: Output? = nil) {
         self.state = state
         let viewModel = ModuleViewModel.init(state: state)
         viewController = ModuleViewInput.init(viewModel: viewModel)
-        presenter = createInput()
+        presenter = makeInput()
         if let viewOutput = presenter as? ModuleViewInput.Output {
             viewController.output = viewOutput
         }
@@ -108,7 +110,7 @@ class FactoryModule<Factory: SectionItemsFactory,
         }
     }
 
-    override init<Output>(state: Factory.State, output: Output) {
+    override init<Output>(state: Factory.State, output: Output? = nil) {
         super.init(state: state, output: output)
     }
 }

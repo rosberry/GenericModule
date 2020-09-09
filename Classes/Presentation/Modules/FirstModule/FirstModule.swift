@@ -12,9 +12,13 @@ protocol FirstModuleOutput {
 }
 
 final class FirstModule: Module<FirstState, FirstViewModel, FirstViewController> {
+
     typealias Dependencies = HasTestService
-    typealias Presenter = FirstModule.ModulePresenter<FirstModuleOutput, HasTestService> & FirstModuleInput & FirstViewOutput
-    override func createInput() -> BasePresenter {
+    typealias Presenter = FirstModule.ModulePresenter<FirstModuleOutput, HasTestService> &
+                          FirstModuleInput &
+                          FirstViewOutput
+
+    override func makeInput() -> BasePresenter {
         FirstPresenter(state: state, dependencies: Services)
     }
 }

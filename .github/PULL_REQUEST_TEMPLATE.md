@@ -4,6 +4,13 @@
 ## Related tasks
 <!--- Add links to related tasks in JIRA -->
 
+## Screenshots
+<!--- Add screenshots of updated UI if needed
+<p align="center">
+<img src="https://github.com/rosberry/Foundation/blob/master/Assets/full_logo.png?raw=true" width="250" />
+</p>
+-->
+
 ## TODOs
 <!--- Add list of unfinished tasks if needed -->
 

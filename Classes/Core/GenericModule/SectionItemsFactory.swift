@@ -10,6 +10,7 @@ protocol SectionItemsFactory {
 
     var output: Output? { get set }
     var dependencies: Dependencies { get set }
+
     init(dependencies: Dependencies)
     func makeSectionItems(state: State) -> [SectionItem]
 }
