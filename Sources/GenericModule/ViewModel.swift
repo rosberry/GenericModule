@@ -2,13 +2,13 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-public class ViewModel<State> {
+open class ViewModel<State> {
     required public init(state: State) {
     }
 }
 
-public class FactoryViewModel<Factory: SectionItemsFactory>: ViewModel<Factory.State> {
-    public var listSectionItems: [Factory.SectionItem]
+open class FactoryViewModel<Factory: SectionItemsFactory>: ViewModel<Factory.State> {
+    open var listSectionItems: [Factory.SectionItem]
     required convenience public init(state: Factory.State, factory: Factory) {
         self.init(state: state)
         listSectionItems = factory.makeSectionItems(state: state)

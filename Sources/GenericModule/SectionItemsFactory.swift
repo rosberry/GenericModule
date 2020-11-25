@@ -15,15 +15,15 @@ public protocol SectionItemsFactory {
     func makeSectionItems(state: State) -> [SectionItem]
 }
 
-public class GenericSectionItemsFactory<State, SectionItem, Dependencies, Output>: SectionItemsFactory {
-    public var dependencies: Dependencies
-    public var output: Output?
+open class GenericSectionItemsFactory<State, SectionItem, Dependencies, Output>: SectionItemsFactory {
+    open var dependencies: Dependencies
+    open var output: Output?
 
     required public init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
 
-    public func makeSectionItems(state: State) -> [SectionItem] {
+    open func makeSectionItems(state: State) -> [SectionItem] {
         []
     }
 }

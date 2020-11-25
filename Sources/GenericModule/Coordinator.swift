@@ -4,9 +4,9 @@
 
 import UIKit
 
-public class Coordinator<V: UIViewController> {
+open class Coordinator<V: UIViewController> {
 
-    public var rootViewController: V
+    open var rootViewController: V
 
     public init(rootViewController: V) {
         self.rootViewController = rootViewController

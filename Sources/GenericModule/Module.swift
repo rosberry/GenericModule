@@ -4,41 +4,41 @@
 
 // swiftlint:disable explicit_init
 
-public class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
+open class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
-    public class BasePresenter: ModuleInput<State>, ViewOutput {
-        public weak var view: ModuleViewInput?
+    open class BasePresenter: ModuleInput<State>, ViewOutput {
+        open weak var view: ModuleViewInput?
 
         fileprivate var _output: Any?
 
-        public func viewDidLoad() {
+        open func viewDidLoad() {
             update(force: true, animated: false)
         }
 
-        public func viewWillAppear() {
+        open func viewWillAppear() {
 
         }
 
-        public func viewDidAppear() {
+        open func viewDidAppear() {
 
         }
 
-        public func viewWillDisappear() {
+        open func viewWillDisappear() {
 
         }
 
-        public func viewDidDisappear() {
+        open func viewDidDisappear() {
 
         }
 
-        public func update(force: Bool = false, animated: Bool) {
+        open func update(force: Bool = false, animated: Bool) {
             let viewModel = ModuleViewModel.init(state: state)
             view?.update(with: viewModel, force: force, animated: animated)
         }
     }
 
-    public class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
-        public var output: Output? {
+    open class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
+        open var output: Output? {
             get {
                 _output as? Output
             }
@@ -47,7 +47,7 @@ public class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: V
             }
         }
 
-        public var dependencies: Dependencies
+        open var dependencies: Dependencies
 
         public init(state: State, dependencies: Dependencies) {
             self.dependencies = dependencies
@@ -55,15 +55,15 @@ public class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: V
         }
     }
 
-    public var viewController: ModuleViewInput
+    open var viewController: ModuleViewInput
     fileprivate var presenter: BasePresenter?
-    public var state: State
+    open var state: State
 
-    public func input<T>(ofType: T.Type = T.self) -> T? {
+    open func input<T>(ofType: T.Type = T.self) -> T? {
         presenter as? T
     }
 
-    public func makeInput() -> BasePresenter {
+    open func makeInput() -> BasePresenter {
         .init(state: state)
     }
 
@@ -83,7 +83,7 @@ public class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: V
     }
 }
 
-public class FactoryModule<Factory: SectionItemsFactory,
+open class FactoryModule<Factory: SectionItemsFactory,
                           ModuleViewModel: FactoryViewModel<Factory>,
                           ModuleViewInput: ViewInput>:
         Module<Factory.State,
@@ -91,8 +91,8 @@ public class FactoryModule<Factory: SectionItemsFactory,
         ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
 Factory.Output == ModuleViewInput.Output {
 
-    public class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
-        public var factory: Factory?
+    open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
+        open var factory: Factory?
 
         override public init(state: Factory.State, dependencies: Factory.Dependencies) {
             super.init(state: state, dependencies: dependencies)
@@ -101,7 +101,7 @@ Factory.Output == ModuleViewInput.Output {
             self.dependencies = dependencies
         }
 
-        override public func update(force: Bool = false, animated: Bool) {
+        override open func update(force: Bool = false, animated: Bool) {
             guard let factory = self.factory else {
                 return
             }
