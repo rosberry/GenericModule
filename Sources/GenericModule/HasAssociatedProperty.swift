@@ -2,17 +2,17 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-protocol HasOutput: class {
+public protocol HasOutput: class {
     associatedtype Output
     var output: Output? { get set }
 }
 
-protocol HasDependencies {
+public protocol HasDependencies {
     associatedtype Dependencies
     var dependencies: Dependencies { get }
 }
 
-protocol HasFactory {
+public protocol HasFactory {
     associatedtype Factory
     var factory: Factory { get }
 }

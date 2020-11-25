@@ -4,41 +4,41 @@
 
 // swiftlint:disable explicit_init
 
-class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
+public class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
 
-    class BasePresenter: ModuleInput<State>, ViewOutput {
-        weak var view: ModuleViewInput?
+    public class BasePresenter: ModuleInput<State>, ViewOutput {
+        public weak var view: ModuleViewInput?
 
         fileprivate var _output: Any?
 
-        func viewDidLoad() {
+        public func viewDidLoad() {
             update(force: true, animated: false)
         }
 
-        func viewWillAppear() {
+        public func viewWillAppear() {
 
         }
 
-        func viewDidAppear() {
+        public func viewDidAppear() {
 
         }
 
-        func viewWillDisappear() {
+        public func viewWillDisappear() {
 
         }
 
-        func viewDidDisappear() {
+        public func viewDidDisappear() {
 
         }
 
-        func update(force: Bool = false, animated: Bool) {
+        public func update(force: Bool = false, animated: Bool) {
             let viewModel = ModuleViewModel.init(state: state)
             view?.update(with: viewModel, force: force, animated: animated)
         }
     }
 
-    class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
-        var output: Output? {
+    public class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
+        public var output: Output? {
             get {
                 _output as? Output
             }
@@ -47,27 +47,27 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
             }
         }
 
-        var dependencies: Dependencies
+        public var dependencies: Dependencies
 
-        init(state: State, dependencies: Dependencies) {
+        public init(state: State, dependencies: Dependencies) {
             self.dependencies = dependencies
             super.init(state: state)
         }
     }
 
-    var viewController: ModuleViewInput
+    public var viewController: ModuleViewInput
     fileprivate var presenter: BasePresenter?
-    var state: State
+    public var state: State
 
-    func input<T>(ofType: T.Type = T.self) -> T? {
+    public func input<T>(ofType: T.Type = T.self) -> T? {
         presenter as? T
     }
 
-    func makeInput() -> BasePresenter {
+    public func makeInput() -> BasePresenter {
         .init(state: state)
     }
 
-    init<Output>(state: State, output: Output? = nil) {
+    public init<Output>(state: State, output: Output? = nil) {
         self.state = state
         let viewModel = ModuleViewModel.init(state: state)
         viewController = ModuleViewInput.init(viewModel: viewModel)
@@ -83,25 +83,25 @@ class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInpu
     }
 }
 
-class FactoryModule<Factory: SectionItemsFactory,
-                    ModuleViewModel: FactoryViewModel<Factory>,
-                    ModuleViewInput: ViewInput>:
-                        Module<Factory.State,
-                              ModuleViewModel,
-                              ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
-                                                     Factory.Output == ModuleViewInput.Output {
+public class FactoryModule<Factory: SectionItemsFactory,
+                          ModuleViewModel: FactoryViewModel<Factory>,
+                          ModuleViewInput: ViewInput>:
+        Module<Factory.State,
+        ModuleViewModel,
+        ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
+Factory.Output == ModuleViewInput.Output {
 
-    class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
-        var factory: Factory?
+    public class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
+        public var factory: Factory?
 
-        override init(state: Factory.State, dependencies: Factory.Dependencies) {
+        override public init(state: Factory.State, dependencies: Factory.Dependencies) {
             super.init(state: state, dependencies: dependencies)
             factory = Factory.init(dependencies: dependencies)
             factory?.output = view?.output
             self.dependencies = dependencies
         }
 
-        override func update(force: Bool = false, animated: Bool) {
+        override public func update(force: Bool = false, animated: Bool) {
             guard let factory = self.factory else {
                 return
             }
@@ -110,7 +110,7 @@ class FactoryModule<Factory: SectionItemsFactory,
         }
     }
 
-    override init<Output>(state: Factory.State, output: Output? = nil) {
+    override public init<Output>(state: Factory.State, output: Output? = nil) {
         super.init(state: state, output: output)
     }
 }

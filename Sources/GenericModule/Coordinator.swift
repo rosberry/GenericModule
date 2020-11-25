@@ -4,11 +4,11 @@
 
 import UIKit
 
-class Coordinator<V: UIViewController> {
+public class Coordinator<V: UIViewController> {
 
-    var rootViewController: V
+    public var rootViewController: V
 
-    init(rootViewController: V) {
+    public init(rootViewController: V) {
         self.rootViewController = rootViewController
     }
 }

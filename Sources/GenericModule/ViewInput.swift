@@ -2,7 +2,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-protocol ViewInput: HasOutput {
+public protocol ViewInput: HasOutput {
 
     associatedtype ViewModel
 
@@ -12,7 +12,7 @@ protocol ViewInput: HasOutput {
     func update(with viewModel: ViewModel, force: Bool, animated: Bool)
 }
 
-protocol ViewOutput {
+public protocol ViewOutput {
     func viewDidLoad()
     func viewWillAppear()
     func viewDidAppear()
