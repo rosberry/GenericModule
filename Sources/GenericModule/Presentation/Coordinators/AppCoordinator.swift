@@ -4,6 +4,8 @@
 
 import UIKit
 
+typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]
+
 final class AppCoordinator: Coordinator<UINavigationController> {
 
     var window: UIWindow
