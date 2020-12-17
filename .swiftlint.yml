@@ -3,6 +3,7 @@
 excluded:
   - Carthage
   - Pods
+  - Package.swift
 
 disabled_rules:
   - switch_case_alignment
