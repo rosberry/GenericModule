@@ -2,6 +2,10 @@
 
 ## Build your architecture like a song.
 
+Tired to write massive view controllers according apple MVC? There is an exit!
+Look at our non-reactive MVP solution. All you need is declare instances protocols and their implementations
+and compose them altogether!
+
 ## Requirements
 
 - swift 5.3
