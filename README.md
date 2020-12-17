@@ -1,5 +1,5 @@
 # Generic Module
-Tool for adding frameworks to xcodeproj
+
 
 ## Requirements
 
