@@ -9,7 +9,7 @@
 
 ## Usage
 - First, declare `State` and `ViewModel` implementations:
-```
+```swift
 // MyState.swift
 
 class MyState {
@@ -30,7 +30,7 @@ class MyViewModel: ViewModel<MyState> {
 Variables of state and view model cold be not casted one to other, so you can make some specific stuff in view model initializer.
 
 - Then, declare a protocols to send messages between architecture layers:
-```
+```swift
 // MyModule.swift
 
 protocol MyModuleInput: ModuleInput<FirstState> {
@@ -49,7 +49,7 @@ protocol MyViewOutput: ViewOutput {
 ```
 
 - Declare `ViewController` that implements `ViewInput` protocol:
-```
+```swift
 // MyViewController.swift
 class MyViewController: UIViewController {
 
@@ -69,8 +69,8 @@ extension MyViewController: ViewInput {
 ```
 You do not need assign `output` and `viewModel`  to some value - `GenericModule` will make it automatically.
 
-- Declare `Module` that compose alltogether:
-```
+- Declare `Module` that compose altogether:
+```swift
 // MyModule.swift
 class MyModule: Module<MyState, MyViewModel, MyViewController> {
     typealias Dependencies = MyModuleDepencencies
@@ -84,7 +84,7 @@ class MyModule: Module<MyState, MyViewModel, MyViewController> {
 Note that related types `Dependecies` and `Presenter` declared right inside module.
 
 - Declare `Presenter` and return it's instance from module `makeInput()` method:
-```
+```swift
 // MyPresenter.swift
 final class MyPresenter: MyModule.Presenter {
 
@@ -97,7 +97,7 @@ override func makeInput() -> BasePresenter {
 }
 ```
 - All you need to do now - instantiate module bundle:
-```
+```swift
 // MyCoordinator.swift
 
 func startMyModule {
@@ -111,7 +111,7 @@ func startMyModule {
 Also, `Presenter` can send message to some `ModuleOutput` protocol using `output` property. 
 
 ## Installation
-### Carthage (preffered)
+### Carthage (preferred)
 ```
 github rosberry/GenericModule
 ```
