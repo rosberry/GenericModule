@@ -89,7 +89,7 @@ open class FactoryModule<Factory: SectionItemsFactory,
         Module<Factory.State,
         ModuleViewModel,
         ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
-Factory.Output == ModuleViewInput.Output {
+                               Factory.Output == ModuleViewInput.Output {
 
     open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
         open var factory: Factory?
@@ -97,7 +97,6 @@ Factory.Output == ModuleViewInput.Output {
         override public init(state: Factory.State, dependencies: Factory.Dependencies) {
             super.init(state: state, dependencies: dependencies)
             factory = Factory.init(dependencies: dependencies)
-            factory?.output = view?.output
             self.dependencies = dependencies
         }
 
@@ -112,5 +111,7 @@ Factory.Output == ModuleViewInput.Output {
 
     override public init<Output>(state: Factory.State, output: Output? = nil) {
         super.init(state: state, output: output)
+        let presenter = self.presenter as? FactoryPresenter<Output>
+        presenter?.factory?.output = presenter?.view?.output
     }
 }
