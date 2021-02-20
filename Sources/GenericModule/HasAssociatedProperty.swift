@@ -14,5 +14,9 @@ public protocol HasDependencies {
 
 public protocol HasFactory {
     associatedtype Factory
-    var factory: Factory { get }
+    var factory: Factory { get set }
+}
+
+protocol HasAnyFactory {
+    var anyFactory: Any? { get set }
 }

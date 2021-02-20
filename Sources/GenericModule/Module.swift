@@ -91,8 +91,17 @@ open class FactoryModule<Factory: SectionItemsFactory,
         ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
                                Factory.Output == ModuleViewInput.Output {
 
-    open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies> {
+    open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies>, HasAnyFactory {
         open var factory: Factory?
+
+        var anyFactory: Any? {
+            get {
+                factory
+            }
+            set {
+                factory = newValue as? Factory
+            }
+        }
 
         override public init(state: Factory.State, dependencies: Factory.Dependencies) {
             super.init(state: state, dependencies: dependencies)
@@ -111,7 +120,8 @@ open class FactoryModule<Factory: SectionItemsFactory,
 
     override public init<Output>(state: Factory.State, output: Output? = nil) {
         super.init(state: state, output: output)
-        let presenter = self.presenter as? FactoryPresenter<Output>
-        presenter?.factory?.output = presenter?.view?.output
+        let presenter = self.presenter as? HasAnyFactory
+        var factory = presenter?.anyFactory as? Factory
+        factory?.output = self.presenter?.view?.output
     }
 }
