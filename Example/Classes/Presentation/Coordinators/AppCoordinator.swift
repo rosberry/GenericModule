@@ -15,7 +15,7 @@ final class AppCoordinator: Coordinator<UINavigationController> {
     }
 
     func start(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        let module = MainModule(state: .init(), dependencies: [])
+        let module = MainModule(state: .init(), dependencies: Services)
         module.output = self
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
