@@ -4,7 +4,15 @@
 
 import GenericModule
 
-final class MainPresenter: MainModule.Presenter {
+final class MainPresenter: GenericModule.BasePresenter<MainViewController, MainModuleInput, MainModuleOutput, Any> {
+
+}
+
+extension MainPresenter: MainModuleInput {
+
+}
+
+extension MainPresenter: MainViewOutput {
 
     func firstButtonEventTriggered() {
         output?.mainModuleOpenFirst(self)

@@ -16,29 +16,11 @@
 		0180E9DE258B22900061788E /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B6258B22900061788E /* ServiceFactory.swift */; };
 		0180E9DF258B22900061788E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B7258B22900061788E /* AppDelegate.swift */; };
 		0180E9E0258B22900061788E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BA258B22900061788E /* AppCoordinator.swift */; };
-		0180E9E1258B22900061788E /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BB258B22900061788E /* FirstCoordinator.swift */; };
-		0180E9E2258B22900061788E /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BE258B22900061788E /* SecondViewModel.swift */; };
-		0180E9E3258B22900061788E /* TestSectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BF258B22900061788E /* TestSectionItemsFactory.swift */; };
-		0180E9E4258B22900061788E /* SecondModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C0258B22900061788E /* SecondModule.swift */; };
-		0180E9E5258B22900061788E /* SecondState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C1258B22900061788E /* SecondState.swift */; };
-		0180E9E6258B22900061788E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C2258B22900061788E /* SecondViewController.swift */; };
-		0180E9E7258B22900061788E /* FirstState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C4258B22900061788E /* FirstState.swift */; };
-		0180E9E8258B22900061788E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C5258B22900061788E /* FirstViewController.swift */; };
-		0180E9E9258B22900061788E /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C6258B22900061788E /* FirstViewModel.swift */; };
-		0180E9EA258B22900061788E /* FirstModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C7258B22900061788E /* FirstModule.swift */; };
-		0180E9EB258B22900061788E /* FirstPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C8258B22900061788E /* FirstPresenter.swift */; };
-		0180E9EC258B22900061788E /* TitleTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CB258B22900061788E /* TitleTextState.swift */; };
-		0180E9ED258B22900061788E /* TitleTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CC258B22900061788E /* TitleTextViewModel.swift */; };
-		0180E9EE258B22900061788E /* TitleTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CD258B22900061788E /* TitleTextViewController.swift */; };
-		0180E9EF258B22900061788E /* ThirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CF258B22900061788E /* ThirdPresenter.swift */; };
-		0180E9F0258B22900061788E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D0258B22900061788E /* ThirdViewController.swift */; };
-		0180E9F1258B22900061788E /* ThirdModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D1258B22900061788E /* ThirdModule.swift */; };
 		0180E9F2258B22900061788E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D3258B22900061788E /* MainViewController.swift */; };
 		0180E9F3258B22900061788E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D4258B22900061788E /* MainPresenter.swift */; };
 		0180E9F4258B22900061788E /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D5258B22900061788E /* MainState.swift */; };
 		0180E9F5258B22900061788E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D6258B22900061788E /* MainViewModel.swift */; };
 		0180E9F6258B22900061788E /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D7258B22900061788E /* MainModule.swift */; };
-		0180E9F7258B22900061788E /* FourthModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D9258B22900061788E /* FourthModule.swift */; };
 		0180E9FA258B236A0061788E /* GenericModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0180E9F9258B236A0061788E /* GenericModule.framework */; };
 		0180E9FB258B236A0061788E /* GenericModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0180E9F9258B236A0061788E /* GenericModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -363,36 +345,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0180E9E8258B22900061788E /* FirstViewController.swift in Sources */,
-				0180E9F7258B22900061788E /* FourthModule.swift in Sources */,
 				0180E9DF258B22900061788E /* AppDelegate.swift in Sources */,
-				0180E9ED258B22900061788E /* TitleTextViewModel.swift in Sources */,
-				0180E9E2258B22900061788E /* SecondViewModel.swift in Sources */,
-				0180E9E9258B22900061788E /* FirstViewModel.swift in Sources */,
 				0180E9F6258B22900061788E /* MainModule.swift in Sources */,
 				0180E9DE258B22900061788E /* ServiceFactory.swift in Sources */,
-				0180E9EC258B22900061788E /* TitleTextState.swift in Sources */,
 				0180E9F5258B22900061788E /* MainViewModel.swift in Sources */,
 				0180E9DC258B22900061788E /* TestService.swift in Sources */,
-				0180E9E7258B22900061788E /* FirstState.swift in Sources */,
 				0180E9DA258B22900061788E /* ViewUpdate.swift in Sources */,
-				0180E9E5258B22900061788E /* SecondState.swift in Sources */,
-				0180E9EB258B22900061788E /* FirstPresenter.swift in Sources */,
-				0180E9EE258B22900061788E /* TitleTextViewController.swift in Sources */,
-				0180E9F1258B22900061788E /* ThirdModule.swift in Sources */,
 				0180E9F2258B22900061788E /* MainViewController.swift in Sources */,
-				0180E9E6258B22900061788E /* SecondViewController.swift in Sources */,
 				0180E9F4258B22900061788E /* MainState.swift in Sources */,
-				0180E9EA258B22900061788E /* FirstModule.swift in Sources */,
 				0180E9DB258B22900061788E /* AnyEquatable.swift in Sources */,
-				0180E9EF258B22900061788E /* ThirdPresenter.swift in Sources */,
 				0180E9F3258B22900061788E /* MainPresenter.swift in Sources */,
-				0180E9E1258B22900061788E /* FirstCoordinator.swift in Sources */,
-				0180E9E4258B22900061788E /* SecondModule.swift in Sources */,
-				0180E9E3258B22900061788E /* TestSectionItemsFactory.swift in Sources */,
 				0180E9DD258B22900061788E /* TestServiceImpl.swift in Sources */,
 				0180E9E0258B22900061788E /* AppCoordinator.swift in Sources */,
-				0180E9F0258B22900061788E /* ThirdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

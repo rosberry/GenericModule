@@ -5,17 +5,22 @@
 import GenericModule
 import UIKit
 
-protocol MainViewOutput: ViewOutput {
+protocol MainViewOutput {
     func firstButtonEventTriggered()
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
     func fourthButtonEventTriggered()
 }
 
+protocol MainViewInput {
+    
+}
+
 final class MainViewController: UIViewController {
 
-    var output: MainViewOutput?
+    var output: (MainViewOutput & ViewOutput)?
     var viewModel: MainViewModel
+    typealias ViewInput = MainViewInput
 
     // MARK: - Subviews
 
@@ -92,7 +97,7 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: ViewInput, ForceViewUpdate {
+extension MainViewController: GenericModule.View, ForceViewUpdate {
 
     func update(with viewModel: MainViewModel, force: Bool, animated: Bool) {
         let oldViewModel = self.viewModel
@@ -114,4 +119,8 @@ extension MainViewController: ViewInput, ForceViewUpdate {
             fourthButton.setTitle(title, for: .normal)
         }
     }
+}
+
+extension MainViewController: MainViewInput {
+
 }

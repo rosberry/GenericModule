@@ -5,17 +5,15 @@
 import GenericModule
 
 protocol MainModuleOutput {
-    func mainModuleOpenFirst(_ moduleInput: ModuleInput<MainState>)
-    func mainModuleOpenSecond(_ moduleInput: ModuleInput<MainState>)
-    func mainModuleOpenThird(_ moduleInput: ModuleInput<MainState>)
-    func mainModuleOpenFourth(_ moduleInput: ModuleInput<MainState>)
+    func mainModuleOpenFirst(_ moduleInput: MainModuleInput)
+    func mainModuleOpenSecond(_ moduleInput: MainModuleInput)
+    func mainModuleOpenThird(_ moduleInput: MainModuleInput)
+    func mainModuleOpenFourth(_ moduleInput: MainModuleInput)
 }
 
-final class MainModule: Module<MainState, MainViewModel, MainViewController> {
-    typealias Dependencies = HasTestService
-    typealias Presenter = ModulePresenter<MainModuleOutput, Dependencies> & MainViewOutput
+protocol MainModuleInput {
 
-    override func makeInput() -> BasePresenter {
-        MainPresenter(state: state, dependencies: Services)
-    }
+}
+
+final class MainModule: GenericModule.Module<MainPresenter> {
 }

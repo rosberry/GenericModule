@@ -4,124 +4,158 @@
 
 // swiftlint:disable explicit_init
 
-open class Module<State, ModuleViewModel: ViewModel<State>, ModuleViewInput: ViewInput> where ModuleViewModel == ModuleViewInput.ViewModel {
+public protocol View: class {
+    associatedtype Output
+    associatedtype ViewModel: GenericModule.ViewModel
+    associatedtype ViewInput
 
-    open class BasePresenter: ModuleInput<State>, ViewOutput {
-        open weak var view: ModuleViewInput?
+    var output: Output? { get set }
 
-        fileprivate var _output: Any?
+    init(viewModel: ViewModel)
+    func update(with viewModel: ViewModel, force: Bool, animated: Bool)
+}
 
-        open func viewDidLoad() {
-            update(force: true, animated: false)
-        }
 
-        open func viewWillAppear() {
+public protocol ModulePresenter {
+    associatedtype View: GenericModule.View
+    associatedtype ViewModel: GenericModule.ViewModel
+    associatedtype Dependencies
+    associatedtype Output
+    associatedtype Input
 
-        }
+    init(state: ViewModel.State, dependencies: Dependencies)
 
-        open func viewDidAppear() {
+    var output: Output? { get }
+}
 
-        }
+open class BasePresenter<View: GenericModule.View,
+                         Input,
+                         Output,
+                         Dependencies>: ModulePresenter, ViewOutput {
 
-        open func viewWillDisappear() {
+    public typealias ViewModel = View.ViewModel
+    public typealias State = ViewModel.State
 
-        }
+    public var state: State
+    public var output: Output?
 
-        open func viewDidDisappear() {
-
-        }
-
-        open func update(force: Bool = false, animated: Bool) {
-            let viewModel = ModuleViewModel.init(state: state)
-            view?.update(with: viewModel, force: force, animated: animated)
-        }
+    weak var view: View?
+    public var viewInput: View.ViewInput? {
+        view as? View.ViewInput
     }
 
-    open class ModulePresenter<Output, Dependencies>: BasePresenter, HasOutput {
-        open var output: Output? {
-            get {
-                _output as? Output
-            }
-            set {
-                _output = newValue
-            }
-        }
 
-        open var dependencies: Dependencies
-
-        public init(state: State, dependencies: Dependencies) {
-            self.dependencies = dependencies
-            super.init(state: state)
-        }
+    open func viewDidLoad() {
+        update(force: true, animated: false)
     }
 
-    open var viewController: ModuleViewInput
-    fileprivate var presenter: BasePresenter?
-    open var state: State
+    open func viewWillAppear() {
 
-    open func input<T>(ofType: T.Type = T.self) -> T? {
-        presenter as? T
     }
 
-    open func makeInput() -> BasePresenter {
-        .init(state: state)
+    open func viewDidAppear() {
+
     }
 
-    public init<Output>(state: State, output: Output? = nil) {
+    open func viewWillDisappear() {
+
+    }
+
+    open func viewDidDisappear() {
+
+    }
+
+    open var dependencies: Dependencies
+
+    public required init(state: ViewModel.State, dependencies: Dependencies) {
+        self.dependencies = dependencies
         self.state = state
-        let viewModel = ModuleViewModel.init(state: state)
-        viewController = ModuleViewInput.init(viewModel: viewModel)
-        presenter = makeInput()
-        if let viewOutput = presenter as? ModuleViewInput.Output {
-            viewController.output = viewOutput
-        }
-        else {
-            fatalError("`\(type(of: presenter))` does not confonforms to ptotocol `\(ModuleViewInput.Output.self)`")
-        }
-        presenter?.view = viewController
-        presenter?._output = output
+    }
+
+    open func update(force: Bool = false, animated: Bool) {
+        let viewModel = ViewModel.init(state: state)
+        view?.update(with: viewModel, force: force, animated: animated)
     }
 }
 
-open class FactoryModule<Factory: SectionItemsFactory,
-                          ModuleViewModel: FactoryViewModel<Factory>,
-                          ModuleViewInput: ViewInput>:
-        Module<Factory.State,
-        ModuleViewModel,
-        ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
-                               Factory.Output == ModuleViewInput.Output {
+open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel {
 
-    open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies>, HasAnyFactory {
-        open var factory: Factory?
+    public typealias State = Presenter.ViewModel.State
+    public typealias Dependencies = Presenter.Dependencies
+    public typealias Output = Presenter.Output
+    public typealias Input = Presenter.Input
+    public typealias ViewController = Presenter.View
 
-        var anyFactory: Any? {
-            get {
-                factory
-            }
-            set {
-                factory = newValue as? Factory
-            }
+    typealias ViewModel = Presenter.ViewModel
+    typealias BasePresenter = GenericModule.BasePresenter<ViewController, Input, Output, Dependencies>
+
+    var presenter: Presenter
+    var basePresenter: BasePresenter? {
+        presenter as? BasePresenter
+    }
+
+    public var viewController: ViewController
+    public var input: Input? {
+        presenter as? Input
+    }
+
+    public var output: Output? {
+        get {
+            presenter.output
         }
-
-        override public init(state: Factory.State, dependencies: Factory.Dependencies) {
-            super.init(state: state, dependencies: dependencies)
-            factory = Factory.init(dependencies: dependencies)
-            self.dependencies = dependencies
-        }
-
-        override open func update(force: Bool = false, animated: Bool) {
-            guard let factory = self.factory else {
-                return
-            }
-            let viewModel = ModuleViewModel.init(state: state, factory: factory)
-            view?.update(with: viewModel, force: force, animated: animated)
+        set {
+            basePresenter?.output = newValue
         }
     }
 
-    override public init<Output>(state: Factory.State, output: Output? = nil) {
-        super.init(state: state, output: output)
-        let presenter = self.presenter as? HasAnyFactory
-        var factory = presenter?.anyFactory as? Factory
-        factory?.output = self.presenter?.view?.output
+    public init(state: State, dependencies: Dependencies) {
+        let viewModel = ViewModel(state: state)
+        viewController = ViewController(viewModel: viewModel)
+        presenter = Presenter(state: state, dependencies: dependencies)
+        basePresenter?.view = viewController
+        viewController.output = presenter as? ViewController.Output
     }
 }
+
+//open class FactoryModule<Factory: SectionItemsFactory,
+//                          ModuleViewModel: FactoryViewModel<Factory>,
+//                          ModuleViewInput: ViewInput>:
+//        Module<Factory.State,
+//        ModuleViewModel,
+//        ModuleViewInput> where ModuleViewModel == ModuleViewInput.ViewModel,
+//                               Factory.Output == ModuleViewInput.Output {
+//
+//    open class FactoryPresenter<Output>: ModulePresenter<Output, Factory.Dependencies>, HasAnyFactory {
+//        open var factory: Factory?
+//
+//        var anyFactory: Any? {
+//            get {
+//                factory
+//            }
+//            set {
+//                factory = newValue as? Factory
+//            }
+//        }
+//
+//        override public init(state: Factory.State, dependencies: Factory.Dependencies) {
+//            super.init(state: state, dependencies: dependencies)
+//            factory = Factory.init(dependencies: dependencies)
+//            self.dependencies = dependencies
+//        }
+//
+//        override open func update(force: Bool = false, animated: Bool) {
+//            guard let factory = self.factory else {
+//                return
+//            }
+//            let viewModel = ModuleViewModel.init(state: state, factory: factory)
+//            view?.update(with: viewModel, force: force, animated: animated)
+//        }
+//    }
+//
+//    override public init<Output>(state: Factory.State, output: Output? = nil) {
+//        super.init(state: state, output: output)
+//        let presenter = self.presenter as? HasAnyFactory
+//        var factory = presenter?.anyFactory as? Factory
+//        factory?.output = self.presenter?.view?.output
+//    }
+//}
