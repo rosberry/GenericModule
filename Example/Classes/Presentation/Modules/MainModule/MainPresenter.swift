@@ -1,10 +1,10 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class MainPresenter: GenericModule.BasePresenter<MainViewController, MainModuleInput, MainModuleOutput, Any> {
+final class MainPresenter: Presenter<MainViewController, MainModuleInput, MainModuleOutput, Any> {
 
 }
 

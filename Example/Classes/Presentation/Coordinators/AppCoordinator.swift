@@ -27,33 +27,36 @@ final class AppCoordinator: Coordinator<UINavigationController> {
 extension AppCoordinator: MainModuleOutput {
 
     func mainModuleOpenFirst(_ moduleInput: MainModuleInput) {
-//        let module = FirstCoordinator(rootViewController: rootViewController).start()
-//        rootViewController.pushViewController(module.viewController, animated: true)
+        let module = FirstCoordinator(rootViewController: rootViewController).start()
+        rootViewController.pushViewController(module.viewController, animated: true)
     }
 
     func mainModuleOpenSecond(_ moduleInput: MainModuleInput) {
-//        let viewController = SecondModule(state: SecondState(), output: self).viewController
-//        rootViewController.pushViewController(viewController, animated: true)
+        let viewController = SecondModule(state: SecondState(), dependencies: Services).viewController
+        rootViewController.pushViewController(viewController, animated: true)
     }
 
     func mainModuleOpenThird(_ moduleInput: MainModuleInput) {
-//        let viewController = ThirdModule(state: .init(title: "Third",
-//                                                      text: "This is 3-rd view controller"),
-//                                         output: self).viewController
-//        viewController.modalPresentationStyle = .overFullScreen
-//        rootViewController.present(viewController, animated: true, completion: nil)
+        let state = TitleTextState(title: "Third",
+                                   text: "This is 3-rd view controller")
+        let module = ThirdModule(state: state, dependencies: Services)
+        module.output = self
+        let viewController = module.viewController
+        viewController.modalPresentationStyle = .overFullScreen
+        rootViewController.present(viewController, animated: true, completion: nil)
     }
 
     func mainModuleOpenFourth(_ moduleInput: MainModuleInput) {
-//        let viewController = FourthModule(state: .init(title: "Fourth",
-//                                                       text: "This is 4-th view controller"),
-//                                          output: self).viewController
-//        rootViewController.pushViewController(viewController, animated: true)
+        let state = TitleTextState(title: "Fourth",
+                                   text: "This is 4-th view controller")
+        let module = FourthModule(state: state, dependencies: Services)
+        let viewController = module.viewController
+        rootViewController.pushViewController(viewController, animated: true)
     }
 }
-//
-//extension AppCoordinator: ThirdModuleOutput {
-//    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<TitleTextState>) {
-//        rootViewController.dismiss(animated: true, completion: nil)
-//    }
-//}
+
+extension AppCoordinator: ThirdModuleOutput {
+    func thirdModuleWantsToClose(_ moduleInput: ThirdModuleInput) {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+}

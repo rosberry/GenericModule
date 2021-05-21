@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
@@ -9,11 +9,11 @@ protocol ThirdViewOutput: ViewOutput {
     func closeEventTriggered()
 }
 
-final class ThirdViewController: TitleTextViewController {
+protocol ThirdViewInput {
+    func printText()
+}
 
-    var thirdViewOutput: ThirdViewOutput? {
-        output as? ThirdViewOutput
-    }
+final class ThirdViewController: TitleTextViewController<ThirdViewInput, ThirdViewOutput> {
 
     private lazy var gestureRecognizer: UISwipeGestureRecognizer = .init(target: self, action: #selector(swipeActionRecognized))
 
@@ -30,6 +30,12 @@ final class ThirdViewController: TitleTextViewController {
     // MARK: - Actions
 
     @objc private func swipeActionRecognized() {
-        thirdViewOutput?.closeEventTriggered()
+        output?.closeEventTriggered()
+    }
+}
+
+extension ThirdViewController: ThirdViewInput {
+    func printText() {
+        print(viewModel.text)
     }
 }

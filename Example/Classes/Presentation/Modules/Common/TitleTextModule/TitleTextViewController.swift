@@ -5,21 +5,22 @@
 import GenericModule
 import UIKit
 
-protocol TitleTextViewOutput: ViewOutput {
+protocol TitleTextViewOutput {
     func closeEventTriggered()
 }
 
-class TitleTextViewController: UIViewController {
+class TitleTextViewController<Input, Output>: UIViewController {
 
     var viewModel: TitleTextViewModel
-
-    var output: ViewOutput?
+    var output: Output?
+    typealias ViewInput = Input
 
     // MARK: - Subviews
 
     private(set) lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .black
         return label
     }()
 
@@ -38,7 +39,9 @@ class TitleTextViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(label)
         view.backgroundColor = .white
-        output?.viewDidLoad()
+        if let output = output as? ViewOutput {
+            output.viewDidLoad()
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -48,7 +51,7 @@ class TitleTextViewController: UIViewController {
     }
 }
 
-extension TitleTextViewController: ViewInput, ForceViewUpdate {
+extension TitleTextViewController: View, ForceViewUpdate {
 
     func update(with viewModel: TitleTextViewModel, force: Bool, animated: Bool) {
         let oldViewModel = self.viewModel

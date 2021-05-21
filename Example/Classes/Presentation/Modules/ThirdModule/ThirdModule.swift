@@ -1,20 +1,15 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-protocol ThirdModuleOutput {
-    func thirdModuleWantsToClose(_ moduleInput: ModuleInput<TitleTextState>)
+protocol ThirdModuleInput {
 }
 
-final class ThirdModule: Module<TitleTextState, TitleTextViewModel, ThirdViewController> {
+protocol ThirdModuleOutput {
+    func thirdModuleWantsToClose(_ moduleInput: ThirdModuleInput)
+}
 
-    typealias Dependencies = HasTestService
-    typealias Presenter = ThirdModule.ModulePresenter<ThirdModuleOutput, Dependencies> &
-                          ThirdViewOutput
-
-    override func makeInput() -> BasePresenter {
-        ThirdPresenter(state: state, dependencies: Services)
-    }
+final class ThirdModule: Module<ThirdPresenter> {
 }

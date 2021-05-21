@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
@@ -11,6 +11,7 @@ final class SecondViewController: UIViewController {
         lazy var label: UILabel = {
             let label = UILabel()
             label.textAlignment = .center
+            label.textColor = .black
             return label
         }()
 
@@ -31,6 +32,8 @@ final class SecondViewController: UIViewController {
 
     var output: ViewOutput?
     var viewModel: SecondViewModel
+
+    typealias ViewInput = Any
 
     private let reuseId = "cell"
 
@@ -75,7 +78,7 @@ final class SecondViewController: UIViewController {
     }
 }
 
-extension SecondViewController: ViewInput, ForceViewUpdate {
+extension SecondViewController: View, ForceViewUpdate {
 
     func update(with viewModel: SecondViewModel, force: Bool, animated: Bool) {
         let oldViewModel = self.viewModel

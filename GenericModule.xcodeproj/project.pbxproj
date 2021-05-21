@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01145C822657A1F800E98FB2 /* FactoryModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */; };
+		011F911C26579B63004A5F91 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911B26579B63004A5F91 /* Presenter.swift */; };
+		011F912026579B80004A5F91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911F26579B80004A5F91 /* View.swift */; };
+		011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F912426579BD8004A5F91 /* ModulePresenter.swift */; };
+		011F912B26579C01004A5F91 /* FactoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F912A26579C01004A5F91 /* FactoryPresenter.swift */; };
 		OBJ_26 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Coordinator.swift */; };
-		OBJ_27 /* HasAssociatedProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* HasAssociatedProperty.swift */; };
 		OBJ_28 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Module.swift */; };
 		OBJ_29 /* ModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ModuleInput.swift */; };
 		OBJ_30 /* SectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* SectionItemsFactory.swift */; };
@@ -18,8 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryModulePresenter.swift; sourceTree = "<group>"; };
+		011F911B26579B63004A5F91 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		011F911F26579B80004A5F91 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		011F912426579BD8004A5F91 /* ModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePresenter.swift; sourceTree = "<group>"; };
+		011F912A26579C01004A5F91 /* FactoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryPresenter.swift; sourceTree = "<group>"; };
 		"GenericModule::GenericModule::Product" /* GenericModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GenericModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* HasAssociatedProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasAssociatedProperty.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		OBJ_12 /* ModuleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleInput.swift; sourceTree = "<group>"; };
 		OBJ_13 /* SectionItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItemsFactory.swift; sourceTree = "<group>"; };
@@ -42,6 +50,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011F912326579BC5004A5F91 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				011F911B26579B63004A5F91 /* Presenter.swift */,
+				011F912426579BD8004A5F91 /* ModulePresenter.swift */,
+				011F912A26579C01004A5F91 /* FactoryPresenter.swift */,
+				01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		011F912E26579CFB004A5F91 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* Module.swift */,
+				OBJ_12 /* ModuleInput.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		011F912F26579D01004A5F91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* ViewOutput.swift */,
+				OBJ_15 /* ViewModel.swift */,
+				011F911F26579B80004A5F91 /* View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		011F913026579D14004A5F91 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		011F913126579D44004A5F91 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* SectionItemsFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		OBJ_16 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -57,7 +111,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -67,7 +121,6 @@
 				OBJ_19 /* Scripts */,
 				OBJ_20 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -81,13 +134,11 @@
 		OBJ_8 /* GenericModule */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Coordinator.swift */,
-				OBJ_10 /* HasAssociatedProperty.swift */,
-				OBJ_11 /* Module.swift */,
-				OBJ_12 /* ModuleInput.swift */,
-				OBJ_13 /* SectionItemsFactory.swift */,
-				OBJ_14 /* ViewOutput.swift */,
-				OBJ_15 /* ViewModel.swift */,
+				011F913126579D44004A5F91 /* Factory */,
+				011F913026579D14004A5F91 /* Coordinator */,
+				011F912F26579D01004A5F91 /* View */,
+				011F912E26579CFB004A5F91 /* Module */,
+				011F912326579BC5004A5F91 /* Presenter */,
 			);
 			name = GenericModule;
 			path = Sources/GenericModule;
@@ -142,7 +193,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,11 +209,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */,
 				OBJ_26 /* Coordinator.swift in Sources */,
-				OBJ_27 /* HasAssociatedProperty.swift in Sources */,
+				011F911C26579B63004A5F91 /* Presenter.swift in Sources */,
 				OBJ_28 /* Module.swift in Sources */,
 				OBJ_29 /* ModuleInput.swift in Sources */,
+				01145C822657A1F800E98FB2 /* FactoryModulePresenter.swift in Sources */,
+				011F912026579B80004A5F91 /* View.swift in Sources */,
 				OBJ_30 /* SectionItemsFactory.swift in Sources */,
+				011F912B26579C01004A5F91 /* FactoryPresenter.swift in Sources */,
 				OBJ_31 /* ViewOutput.swift in Sources */,
 				OBJ_32 /* ViewModel.swift in Sources */,
 			);

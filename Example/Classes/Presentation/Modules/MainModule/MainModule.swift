@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
@@ -15,5 +15,5 @@ protocol MainModuleInput {
 
 }
 
-final class MainModule: GenericModule.Module<MainPresenter> {
+final class MainModule: Module<MainPresenter> {
 }

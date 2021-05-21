@@ -1,19 +1,24 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 import UIKit
 
-protocol FirstViewOutput: ViewOutput {
+protocol FirstViewOutput {
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
 }
 
+protocol FirstViewInput {
+
+}
+
 class FirstViewController: UIViewController {
 
-    var output: FirstViewOutput?
+    var output: (FirstViewOutput & ViewOutput)?
     var viewModel: FirstViewModel
+    typealias ViewInput = FirstViewInput
 
     // MARK: - Subviews
 
@@ -66,7 +71,7 @@ class FirstViewController: UIViewController {
     }
 }
 
-extension FirstViewController: ViewInput, ForceViewUpdate {
+extension FirstViewController: View, ForceViewUpdate {
 
     func update(with viewModel: FirstViewModel, force: Bool, animated: Bool) {
 
@@ -83,4 +88,8 @@ extension FirstViewController: ViewInput, ForceViewUpdate {
             thirdButton.setTitle(title, for: .normal)
         }
     }
+}
+
+extension FirstViewController: FirstViewInput {
+    
 }

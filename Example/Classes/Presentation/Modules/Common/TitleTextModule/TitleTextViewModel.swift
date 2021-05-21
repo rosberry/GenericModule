@@ -4,7 +4,7 @@
 
 import GenericModule
 
-final class TitleTextViewModel: ViewModel<TitleTextState> {
+final class TitleTextViewModel: ViewModel {
 
     let title: String
     let text: String
@@ -12,6 +12,5 @@ final class TitleTextViewModel: ViewModel<TitleTextState> {
     required init(state: TitleTextState) {
         title = state.title
         text = state.text
-        super.init(state: state)
     }
 }
