@@ -102,8 +102,10 @@ extension SecondViewController: UICollectionViewDataSource {
         viewModel.listSectionItems.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? Cell else {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                            for: indexPath) as? Cell else {
             return UICollectionViewCell()
         }
         cell.label.text = "\(viewModel.listSectionItems[indexPath.row])"

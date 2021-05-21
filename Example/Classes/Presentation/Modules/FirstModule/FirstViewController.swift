@@ -91,5 +91,5 @@ extension FirstViewController: View, ForceViewUpdate {
 }
 
 extension FirstViewController: FirstViewInput {
-    
+
 }

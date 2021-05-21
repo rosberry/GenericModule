@@ -18,7 +18,6 @@ open class Presenter<View: GenericModule.View,
         view as? View.ViewInput
     }
 
-
     open func viewDidLoad() {
         update(force: true, animated: false)
     }
@@ -47,6 +46,7 @@ open class Presenter<View: GenericModule.View,
     }
 
     open func update(force: Bool = false, animated: Bool) {
+        // swiftlint:disable:next explicit_init
         let viewModel = ViewModel.init(state: state)
         view?.update(with: viewModel, force: force, animated: animated)
     }

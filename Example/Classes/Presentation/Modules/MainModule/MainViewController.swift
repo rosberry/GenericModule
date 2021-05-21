@@ -13,7 +13,7 @@ protocol MainViewOutput {
 }
 
 protocol MainViewInput {
-    
+
 }
 
 final class MainViewController: UIViewController {

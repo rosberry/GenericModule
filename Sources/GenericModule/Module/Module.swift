@@ -2,8 +2,6 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-// swiftlint:disable explicit_init
-
 open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel {
 
     public typealias State = Presenter.ViewModel.State

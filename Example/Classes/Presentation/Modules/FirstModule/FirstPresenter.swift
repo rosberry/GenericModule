@@ -23,5 +23,5 @@ extension FirstPresenter: FirstViewOutput {
 }
 
 extension FirstPresenter: FirstModuleInput {
-    
+
 }
