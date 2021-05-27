@@ -34,13 +34,13 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
 
     public init(state: State, dependencies: Dependencies, output: Output? = nil) {
         let viewModel = ViewModel(state: state)
-        viewController = ViewController(viewModel: viewModel)
-        presenter = Presenter(state: state, dependencies: dependencies)
-        basePresenter?.view = viewController
+        let presenter = Presenter(state: state, dependencies: dependencies)
         guard let viewOutput = presenter as? ViewController.Output else {
             fatalError("`\(type(of: presenter))` does not conforms to `\(ViewController.self)` output protocol.")
         }
-        viewController.output = viewOutput
+        viewController = ViewController(viewModel: viewModel, output: viewOutput)
+        self.presenter = presenter
+        basePresenter?.view = viewController
         self.output = output
     }
 }

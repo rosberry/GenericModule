@@ -16,7 +16,8 @@ protocol FirstViewInput {
 
 class FirstViewController: UIViewController {
 
-    var output: (FirstViewOutput & ViewOutput)?
+    typealias Output = FirstViewOutput & ViewOutput
+    var output: Output
     var viewModel: FirstViewModel
     typealias ViewInput = FirstViewInput
 
@@ -36,8 +37,9 @@ class FirstViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    required init(viewModel: FirstViewModel) {
+    required init(viewModel: FirstViewModel, output: Output) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -50,7 +52,7 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
-        output?.viewDidLoad()
+        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -63,11 +65,11 @@ class FirstViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func secondButtonPressed() {
-        output?.secondButtonEventTriggered()
+        output.secondButtonEventTriggered()
     }
 
     @objc private func thirdButtonPressed() {
-        output?.thirdButtonEventTriggered()
+        output.thirdButtonEventTriggered()
     }
 }
 

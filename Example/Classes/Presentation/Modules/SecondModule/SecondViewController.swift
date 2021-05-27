@@ -30,7 +30,7 @@ final class SecondViewController: UIViewController {
         }
     }
 
-    var output: ViewOutput?
+    var output: ViewOutput
     var viewModel: SecondViewModel
 
     typealias ViewInput = Any
@@ -55,8 +55,9 @@ final class SecondViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: SecondViewModel) {
+    init(viewModel: SecondViewModel, output: ViewOutput) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -68,7 +69,7 @@ final class SecondViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.backgroundColor = .white
-        output?.viewDidLoad()
+        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {

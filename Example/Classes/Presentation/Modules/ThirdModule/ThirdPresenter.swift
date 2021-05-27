@@ -13,7 +13,7 @@ extension ThirdPresenter: ThirdModuleInput {
 
 extension ThirdPresenter: ThirdViewOutput {
     func closeEventTriggered() {
-        viewInput?.printText()
+        viewInput.printText()
         output?.thirdModuleWantsToClose(self)
     }
 }

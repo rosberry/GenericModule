@@ -15,7 +15,7 @@ open class Presenter<View: GenericModule.View,
     let dependencies: Dependencies
 
     weak var view: View?
-    public var viewInput: View.ViewInput? {
+    public var viewInput: View.ViewInput {
         guard let view = self.view else {
             fatalError("Presenter view input is nil. " +
                        "Please make sure sure that you don't have strong references " +

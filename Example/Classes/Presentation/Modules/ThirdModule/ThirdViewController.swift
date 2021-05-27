@@ -30,7 +30,7 @@ final class ThirdViewController: TitleTextViewController<ThirdViewInput, ThirdVi
     // MARK: - Actions
 
     @objc private func swipeActionRecognized() {
-        output?.closeEventTriggered()
+        output.closeEventTriggered()
     }
 }
 

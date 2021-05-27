@@ -12,7 +12,7 @@ protocol TitleTextViewOutput {
 class TitleTextViewController<Input, Output>: UIViewController {
 
     var viewModel: TitleTextViewModel
-    var output: Output?
+    var output: Output
     typealias ViewInput = Input
 
     // MARK: - Subviews
@@ -26,8 +26,9 @@ class TitleTextViewController<Input, Output>: UIViewController {
 
     // MARK: - Lifecycle
 
-    required init(viewModel: TitleTextViewModel) {
+    required init(viewModel: TitleTextViewModel, output: Output) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -7,8 +7,8 @@ public protocol View: class {
     associatedtype ViewModel: GenericModule.ViewModel
     associatedtype ViewInput
 
-    var output: Output? { get set }
+    var output: Output { get set }
 
-    init(viewModel: ViewModel)
+    init(viewModel: ViewModel, output: Output)
     func update(with viewModel: ViewModel, force: Bool, animated: Bool)
 }
