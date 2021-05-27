@@ -16,7 +16,15 @@ open class Presenter<View: GenericModule.View,
 
     weak var view: View?
     public var viewInput: View.ViewInput? {
-        view as? View.ViewInput
+        guard let view = self.view else {
+            fatalError("Presenter view input is nil. " +
+                       "Please make sure sure that you don't have strong references " +
+                       "to \(type(of: self)) or \(Input.self).")
+        }
+        guard let viewInput = view as? View.ViewInput else {
+            fatalError("`\(View.self)` does not conforms to \(View.self) input.")
+        }
+        return viewInput
     }
 
     open func viewDidLoad() {
