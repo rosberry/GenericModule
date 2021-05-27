@@ -12,6 +12,7 @@ open class Presenter<View: GenericModule.View,
 
     public var state: State
     public var output: Output?
+    let dependencies: Dependencies
 
     weak var view: View?
     public var viewInput: View.ViewInput? {
@@ -37,8 +38,6 @@ open class Presenter<View: GenericModule.View,
     open func viewDidDisappear() {
 
     }
-
-    open var dependencies: Dependencies
 
     public required init(state: ViewModel.State, dependencies: Dependencies) {
         self.dependencies = dependencies
