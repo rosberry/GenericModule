@@ -1,12 +1,10 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class SecondModule: FactoryModule<TestSectionItemsFactory, SecondViewModel, SecondViewController> {
+typealias SecondModuleDependencies = HasTestService
 
-    override func makeInput() -> BasePresenter {
-        FactoryPresenter<Any>(state: state, dependencies: Services)
-    }
+final class SecondModule: Module<SecondPresenter> {
 }

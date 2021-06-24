@@ -1,11 +1,14 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class FirstPresenter: FirstModule.Presenter {
+final class FirstPresenter: Presenter<FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
 
+}
+
+extension FirstPresenter: FirstViewOutput {
     func secondButtonEventTriggered() {
         output?.firstModuleOpenSecond(self)
     }
@@ -17,4 +20,8 @@ final class FirstPresenter: FirstModule.Presenter {
     func doSomeSpecificStuff() {
         print("\(self): Yes, I do")
     }
+}
+
+extension FirstPresenter: FirstModuleInput {
+
 }

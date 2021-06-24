@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
@@ -11,6 +11,7 @@ final class SecondViewController: UIViewController {
         lazy var label: UILabel = {
             let label = UILabel()
             label.textAlignment = .center
+            label.textColor = .black
             return label
         }()
 
@@ -29,8 +30,10 @@ final class SecondViewController: UIViewController {
         }
     }
 
-    var output: ViewOutput?
+    var output: ViewOutput
     var viewModel: SecondViewModel
+
+    typealias ViewInput = Any
 
     private let reuseId = "cell"
 
@@ -52,8 +55,9 @@ final class SecondViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: SecondViewModel) {
+    init(viewModel: SecondViewModel, output: ViewOutput) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -65,7 +69,7 @@ final class SecondViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.backgroundColor = .white
-        output?.viewDidLoad()
+        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -75,7 +79,7 @@ final class SecondViewController: UIViewController {
     }
 }
 
-extension SecondViewController: ViewInput, ForceViewUpdate {
+extension SecondViewController: View, ForceViewUpdate {
 
     func update(with viewModel: SecondViewModel, force: Bool, animated: Bool) {
         let oldViewModel = self.viewModel
@@ -99,8 +103,10 @@ extension SecondViewController: UICollectionViewDataSource {
         viewModel.listSectionItems.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? Cell else {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                            for: indexPath) as? Cell else {
             return UICollectionViewCell()
         }
         cell.label.text = "\(viewModel.listSectionItems[indexPath.row])"

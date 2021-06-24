@@ -1,8 +1,8 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class FourthModule: Module<TitleTextState, TitleTextViewModel, TitleTextViewController> {
+final class FourthModule: Module<FourthPresenter> {
 }

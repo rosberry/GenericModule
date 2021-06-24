@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01145C7526579FDA00E98FB2 /* SecondState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C1258B22900061788E /* SecondState.swift */; };
+		01145C7626579FDA00E98FB2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C2258B22900061788E /* SecondViewController.swift */; };
+		01145C7726579FDA00E98FB2 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BE258B22900061788E /* SecondViewModel.swift */; };
+		01145C7826579FDA00E98FB2 /* TestSectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BF258B22900061788E /* TestSectionItemsFactory.swift */; };
+		01145C7926579FDA00E98FB2 /* SecondModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C0258B22900061788E /* SecondModule.swift */; };
+		01145C7B2657A07900E98FB2 /* SecondPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01145C7A2657A07900E98FB2 /* SecondPresenter.swift */; };
+		011F9115265798F6004A5F91 /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BB258B22900061788E /* FirstCoordinator.swift */; };
+		011F911626579906004A5F91 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C5258B22900061788E /* FirstViewController.swift */; };
+		011F911726579906004A5F91 /* FirstPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C8258B22900061788E /* FirstPresenter.swift */; };
+		011F911826579906004A5F91 /* FirstState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C4258B22900061788E /* FirstState.swift */; };
+		011F911926579906004A5F91 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C6258B22900061788E /* FirstViewModel.swift */; };
+		011F911A26579906004A5F91 /* FirstModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C7258B22900061788E /* FirstModule.swift */; };
 		0180E995258B21A20061788E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0180E994258B21A20061788E /* Assets.xcassets */; };
 		0180E998258B21A20061788E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0180E996258B21A20061788E /* LaunchScreen.storyboard */; };
 		0180E9DA258B22900061788E /* ViewUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9AF258B22900061788E /* ViewUpdate.swift */; };
@@ -16,31 +28,21 @@
 		0180E9DE258B22900061788E /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B6258B22900061788E /* ServiceFactory.swift */; };
 		0180E9DF258B22900061788E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B7258B22900061788E /* AppDelegate.swift */; };
 		0180E9E0258B22900061788E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BA258B22900061788E /* AppCoordinator.swift */; };
-		0180E9E1258B22900061788E /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BB258B22900061788E /* FirstCoordinator.swift */; };
-		0180E9E2258B22900061788E /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BE258B22900061788E /* SecondViewModel.swift */; };
-		0180E9E3258B22900061788E /* TestSectionItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9BF258B22900061788E /* TestSectionItemsFactory.swift */; };
-		0180E9E4258B22900061788E /* SecondModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C0258B22900061788E /* SecondModule.swift */; };
-		0180E9E5258B22900061788E /* SecondState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C1258B22900061788E /* SecondState.swift */; };
-		0180E9E6258B22900061788E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C2258B22900061788E /* SecondViewController.swift */; };
-		0180E9E7258B22900061788E /* FirstState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C4258B22900061788E /* FirstState.swift */; };
-		0180E9E8258B22900061788E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C5258B22900061788E /* FirstViewController.swift */; };
-		0180E9E9258B22900061788E /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C6258B22900061788E /* FirstViewModel.swift */; };
-		0180E9EA258B22900061788E /* FirstModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C7258B22900061788E /* FirstModule.swift */; };
-		0180E9EB258B22900061788E /* FirstPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C8258B22900061788E /* FirstPresenter.swift */; };
-		0180E9EC258B22900061788E /* TitleTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CB258B22900061788E /* TitleTextState.swift */; };
-		0180E9ED258B22900061788E /* TitleTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CC258B22900061788E /* TitleTextViewModel.swift */; };
-		0180E9EE258B22900061788E /* TitleTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CD258B22900061788E /* TitleTextViewController.swift */; };
-		0180E9EF258B22900061788E /* ThirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CF258B22900061788E /* ThirdPresenter.swift */; };
-		0180E9F0258B22900061788E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D0258B22900061788E /* ThirdViewController.swift */; };
-		0180E9F1258B22900061788E /* ThirdModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D1258B22900061788E /* ThirdModule.swift */; };
 		0180E9F2258B22900061788E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D3258B22900061788E /* MainViewController.swift */; };
 		0180E9F3258B22900061788E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D4258B22900061788E /* MainPresenter.swift */; };
 		0180E9F4258B22900061788E /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D5258B22900061788E /* MainState.swift */; };
 		0180E9F5258B22900061788E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D6258B22900061788E /* MainViewModel.swift */; };
 		0180E9F6258B22900061788E /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D7258B22900061788E /* MainModule.swift */; };
-		0180E9F7258B22900061788E /* FourthModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D9258B22900061788E /* FourthModule.swift */; };
 		0180E9FA258B236A0061788E /* GenericModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0180E9F9258B236A0061788E /* GenericModule.framework */; };
 		0180E9FB258B236A0061788E /* GenericModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0180E9F9258B236A0061788E /* GenericModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0190E79A2657B12500D81602 /* FourthModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D9258B22900061788E /* FourthModule.swift */; };
+		0190E79B2657B12700D81602 /* FourthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0D3992657B03100C84896 /* FourthPresenter.swift */; };
+		01D0D3932657ABDE00C84896 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D0258B22900061788E /* ThirdViewController.swift */; };
+		01D0D3942657ABDE00C84896 /* ThirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CF258B22900061788E /* ThirdPresenter.swift */; };
+		01D0D3952657ABDE00C84896 /* ThirdModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9D1258B22900061788E /* ThirdModule.swift */; };
+		01D0D3962657AC4500C84896 /* TitleTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CB258B22900061788E /* TitleTextState.swift */; };
+		01D0D3972657AC4500C84896 /* TitleTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CC258B22900061788E /* TitleTextViewModel.swift */; };
+		01D0D3982657AC4500C84896 /* TitleTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9CD258B22900061788E /* TitleTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01145C7A2657A07900E98FB2 /* SecondPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPresenter.swift; sourceTree = "<group>"; };
 		0180E988258B21A00061788E /* GenericModuleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericModuleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0180E994258B21A20061788E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0180E997258B21A20061788E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		0180E9D7258B22900061788E /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		0180E9D9258B22900061788E /* FourthModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthModule.swift; sourceTree = "<group>"; };
 		0180E9F9258B236A0061788E /* GenericModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GenericModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01D0D3992657B03100C84896 /* FourthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01145C7C2657A10400E98FB2 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				0180E9BF258B22900061788E /* TestSectionItemsFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		0180E97F258B21A00061788E = {
 			isa = PBXGroup;
 			children = (
@@ -216,10 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				0180E9BE258B22900061788E /* SecondViewModel.swift */,
-				0180E9BF258B22900061788E /* TestSectionItemsFactory.swift */,
 				0180E9C0258B22900061788E /* SecondModule.swift */,
 				0180E9C1258B22900061788E /* SecondState.swift */,
 				0180E9C2258B22900061788E /* SecondViewController.swift */,
+				01145C7A2657A07900E98FB2 /* SecondPresenter.swift */,
 			);
 			path = SecondModule;
 			sourceTree = "<group>";
@@ -239,6 +251,7 @@
 		0180E9C9258B22900061788E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				01145C7C2657A10400E98FB2 /* Factories */,
 				0180E9CA258B22900061788E /* TitleTextModule */,
 			);
 			path = Common;
@@ -280,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				0180E9D9258B22900061788E /* FourthModule.swift */,
+				01D0D3992657B03100C84896 /* FourthPresenter.swift */,
 			);
 			path = FourthModule;
 			sourceTree = "<group>";
@@ -303,6 +317,7 @@
 				0180E985258B21A00061788E /* Frameworks */,
 				0180E986258B21A00061788E /* Resources */,
 				0180E9FC258B236A0061788E /* Embed Frameworks */,
+				0190E7A22657B51500D81602 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -358,41 +373,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0190E7A22657B51500D81602 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../Scripts/swiftlint_script.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0180E984258B21A00061788E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0180E9E8258B22900061788E /* FirstViewController.swift in Sources */,
-				0180E9F7258B22900061788E /* FourthModule.swift in Sources */,
+				0190E79B2657B12700D81602 /* FourthPresenter.swift in Sources */,
 				0180E9DF258B22900061788E /* AppDelegate.swift in Sources */,
-				0180E9ED258B22900061788E /* TitleTextViewModel.swift in Sources */,
-				0180E9E2258B22900061788E /* SecondViewModel.swift in Sources */,
-				0180E9E9258B22900061788E /* FirstViewModel.swift in Sources */,
 				0180E9F6258B22900061788E /* MainModule.swift in Sources */,
 				0180E9DE258B22900061788E /* ServiceFactory.swift in Sources */,
-				0180E9EC258B22900061788E /* TitleTextState.swift in Sources */,
+				01D0D3962657AC4500C84896 /* TitleTextState.swift in Sources */,
+				011F911726579906004A5F91 /* FirstPresenter.swift in Sources */,
+				01D0D3972657AC4500C84896 /* TitleTextViewModel.swift in Sources */,
+				01D0D3982657AC4500C84896 /* TitleTextViewController.swift in Sources */,
+				01145C7526579FDA00E98FB2 /* SecondState.swift in Sources */,
+				01145C7826579FDA00E98FB2 /* TestSectionItemsFactory.swift in Sources */,
+				011F911826579906004A5F91 /* FirstState.swift in Sources */,
+				01145C7926579FDA00E98FB2 /* SecondModule.swift in Sources */,
 				0180E9F5258B22900061788E /* MainViewModel.swift in Sources */,
+				01145C7726579FDA00E98FB2 /* SecondViewModel.swift in Sources */,
+				01D0D3942657ABDE00C84896 /* ThirdPresenter.swift in Sources */,
 				0180E9DC258B22900061788E /* TestService.swift in Sources */,
-				0180E9E7258B22900061788E /* FirstState.swift in Sources */,
+				01145C7626579FDA00E98FB2 /* SecondViewController.swift in Sources */,
 				0180E9DA258B22900061788E /* ViewUpdate.swift in Sources */,
-				0180E9E5258B22900061788E /* SecondState.swift in Sources */,
-				0180E9EB258B22900061788E /* FirstPresenter.swift in Sources */,
-				0180E9EE258B22900061788E /* TitleTextViewController.swift in Sources */,
-				0180E9F1258B22900061788E /* ThirdModule.swift in Sources */,
+				011F911A26579906004A5F91 /* FirstModule.swift in Sources */,
 				0180E9F2258B22900061788E /* MainViewController.swift in Sources */,
-				0180E9E6258B22900061788E /* SecondViewController.swift in Sources */,
 				0180E9F4258B22900061788E /* MainState.swift in Sources */,
-				0180E9EA258B22900061788E /* FirstModule.swift in Sources */,
+				011F911926579906004A5F91 /* FirstViewModel.swift in Sources */,
 				0180E9DB258B22900061788E /* AnyEquatable.swift in Sources */,
-				0180E9EF258B22900061788E /* ThirdPresenter.swift in Sources */,
 				0180E9F3258B22900061788E /* MainPresenter.swift in Sources */,
-				0180E9E1258B22900061788E /* FirstCoordinator.swift in Sources */,
-				0180E9E4258B22900061788E /* SecondModule.swift in Sources */,
-				0180E9E3258B22900061788E /* TestSectionItemsFactory.swift in Sources */,
 				0180E9DD258B22900061788E /* TestServiceImpl.swift in Sources */,
+				01145C7B2657A07900E98FB2 /* SecondPresenter.swift in Sources */,
+				01D0D3952657ABDE00C84896 /* ThirdModule.swift in Sources */,
+				011F9115265798F6004A5F91 /* FirstCoordinator.swift in Sources */,
+				01D0D3932657ABDE00C84896 /* ThirdViewController.swift in Sources */,
+				0190E79A2657B12500D81602 /* FourthModule.swift in Sources */,
 				0180E9E0258B22900061788E /* AppCoordinator.swift in Sources */,
-				0180E9F0258B22900061788E /* ThirdViewController.swift in Sources */,
+				011F911626579906004A5F91 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +600,85 @@
 			};
 			name = Release;
 		};
+		0190E7A32657B53200D81602 /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Analyze;
+		};
+		0190E7A42657B53200D81602 /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GPVA8JVMU3;
+				INFOPLIST_FILE = GenericModuleExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.GenericModuleExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Analyze;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,6 +686,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0180E9A5258B21A20061788E /* Debug */,
+				0190E7A32657B53200D81602 /* Analyze */,
 				0180E9A6258B21A20061788E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -578,6 +696,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0180E9A8258B21A20061788E /* Debug */,
+				0190E7A42657B53200D81602 /* Analyze */,
 				0180E9A9258B21A20061788E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

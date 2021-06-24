@@ -1,21 +1,27 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 import UIKit
 
-protocol MainViewOutput: ViewOutput {
+protocol MainViewOutput {
     func firstButtonEventTriggered()
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
     func fourthButtonEventTriggered()
 }
 
+protocol MainViewInput {
+
+}
+
 final class MainViewController: UIViewController {
 
-    var output: MainViewOutput?
+    typealias Output = MainViewOutput & ViewOutput
+    var output: Output
     var viewModel: MainViewModel
+    typealias ViewInput = MainViewInput
 
     // MARK: - Subviews
 
@@ -45,8 +51,9 @@ final class MainViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: MainViewModel) {
+    init(viewModel: MainViewModel, output: Output) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -61,7 +68,7 @@ final class MainViewController: UIViewController {
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
         view.addSubview(fourthButton)
-        output?.viewDidLoad()
+        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -76,23 +83,23 @@ final class MainViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func firstButtonPressed() {
-        output?.firstButtonEventTriggered()
+        output.firstButtonEventTriggered()
     }
 
     @objc private func secondButtonPressed() {
-        output?.secondButtonEventTriggered()
+        output.secondButtonEventTriggered()
     }
 
     @objc private func thirdButtonPressed() {
-        output?.thirdButtonEventTriggered()
+        output.thirdButtonEventTriggered()
     }
 
     @objc private func fourthButtonPressed() {
-        output?.fourthButtonEventTriggered()
+        output.fourthButtonEventTriggered()
     }
 }
 
-extension MainViewController: ViewInput, ForceViewUpdate {
+extension MainViewController: GenericModule.View, ForceViewUpdate {
 
     func update(with viewModel: MainViewModel, force: Bool, animated: Bool) {
         let oldViewModel = self.viewModel
@@ -114,4 +121,8 @@ extension MainViewController: ViewInput, ForceViewUpdate {
             fourthButton.setTitle(title, for: .normal)
         }
     }
+}
+
+extension MainViewController: MainViewInput {
+
 }

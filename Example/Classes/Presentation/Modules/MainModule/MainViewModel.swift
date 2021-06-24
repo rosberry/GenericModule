@@ -1,10 +1,10 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class MainViewModel: ViewModel<MainState> {
+final class MainViewModel: ViewModel {
 
     let title1: String
     let title2: String
@@ -18,6 +18,5 @@ final class MainViewModel: ViewModel<MainState> {
         title3 = state.title3
         title4 = state.title4
         title = state.title
-        super.init(state: state)
     }
 }

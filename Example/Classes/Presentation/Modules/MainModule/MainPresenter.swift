@@ -1,10 +1,18 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-final class MainPresenter: MainModule.Presenter {
+final class MainPresenter: Presenter<MainViewController, MainModuleInput, MainModuleOutput, Any> {
+
+}
+
+extension MainPresenter: MainModuleInput {
+
+}
+
+extension MainPresenter: MainViewOutput {
 
     func firstButtonEventTriggered() {
         output?.mainModuleOpenFirst(self)

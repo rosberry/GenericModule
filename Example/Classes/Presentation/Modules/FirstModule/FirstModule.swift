@@ -1,10 +1,10 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 
-protocol FirstModuleInput: ModuleInput<FirstState> {
+protocol FirstModuleInput {
     func doSomeSpecificStuff()
 }
 
@@ -13,14 +13,6 @@ protocol FirstModuleOutput {
     func firstModuleOpenThird(_ moduleInput: FirstModuleInput)
 }
 
-final class FirstModule: Module<FirstState, FirstViewModel, FirstViewController> {
+final class FirstModule: Module<FirstPresenter> {
 
-    typealias Dependencies = HasTestService
-    typealias Presenter = FirstModule.ModulePresenter<FirstModuleOutput, HasTestService> &
-                          FirstModuleInput &
-                          FirstViewOutput
-
-    override func makeInput() -> BasePresenter {
-        FirstPresenter(state: state, dependencies: Services)
-    }
 }

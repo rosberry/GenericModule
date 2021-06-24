@@ -1,19 +1,25 @@
 //
-//  Copyright © 2020 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import GenericModule
 import UIKit
 
-protocol FirstViewOutput: ViewOutput {
+protocol FirstViewOutput {
     func secondButtonEventTriggered()
     func thirdButtonEventTriggered()
 }
 
+protocol FirstViewInput {
+
+}
+
 class FirstViewController: UIViewController {
 
-    var output: FirstViewOutput?
+    typealias Output = FirstViewOutput & ViewOutput
+    var output: Output
     var viewModel: FirstViewModel
+    typealias ViewInput = FirstViewInput
 
     // MARK: - Subviews
 
@@ -31,8 +37,9 @@ class FirstViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    required init(viewModel: FirstViewModel) {
+    required init(viewModel: FirstViewModel, output: Output) {
         self.viewModel = viewModel
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -45,7 +52,7 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
-        output?.viewDidLoad()
+        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -58,15 +65,15 @@ class FirstViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func secondButtonPressed() {
-        output?.secondButtonEventTriggered()
+        output.secondButtonEventTriggered()
     }
 
     @objc private func thirdButtonPressed() {
-        output?.thirdButtonEventTriggered()
+        output.thirdButtonEventTriggered()
     }
 }
 
-extension FirstViewController: ViewInput, ForceViewUpdate {
+extension FirstViewController: View, ForceViewUpdate {
 
     func update(with viewModel: FirstViewModel, force: Bool, animated: Bool) {
 
@@ -83,4 +90,8 @@ extension FirstViewController: ViewInput, ForceViewUpdate {
             thirdButton.setTitle(title, for: .normal)
         }
     }
+}
+
+extension FirstViewController: FirstViewInput {
+
 }
