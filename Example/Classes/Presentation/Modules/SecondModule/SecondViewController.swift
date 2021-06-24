@@ -119,6 +119,7 @@ extension SecondViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 100)
+        let inset = collectionView.contentInset.left + collectionView.contentInset.right
+        return CGSize(width: collectionView.bounds.width - inset, height: 100)
     }
 }
