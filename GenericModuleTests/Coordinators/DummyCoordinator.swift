@@ -22,17 +22,16 @@ final class DummyCoordinator: Coordinator<UINavigationController> {
         self.state = state
         window = UIWindow(frame: UIScreen.main.bounds)
         super.init(rootViewController: UINavigationController())
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
     }
 
     func start() {
         let module = DummyModule(state: state, dependencies: [])
         module.output = self
         self.module = module
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
         self.viewController = module.viewController
         self.presenter = module.input as? DummyPresenter
-
         rootViewController.pushViewController(module.viewController, animated: false)
     }
 
