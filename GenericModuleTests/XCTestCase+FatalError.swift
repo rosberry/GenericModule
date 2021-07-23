@@ -14,12 +14,11 @@ extension XCTestCase {
         FatalErrorUtil.replaceFatalError { message, _, _ in
             assertionMessage = message
             expectation.fulfill()
-            unreachable()
         }
 
-        DispatchQueue.global(qos: .userInitiated).async(execute: testcase)
+        DispatchQueue.global(qos: .userInteractive).async(execute: testcase)
 
-        waitForExpectations(timeout: 1) { _ in
+        waitForExpectations(timeout: 5) { _ in
             XCTAssertEqual(assertionMessage, expectedMessage)
             FatalErrorUtil.restoreFatalError()
         }
