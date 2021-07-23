@@ -9,12 +9,12 @@ final class BrokenViewInputPresenter: Presenter<BrokenViewInputController, Broke
 }
 
 extension BrokenViewInputPresenter: BrokenViewInputModuleInput {
-    
+
 }
 
 extension BrokenViewInputPresenter: DummyViewOutput {
     func userActionTriggered() {
-        
+
     }
 
     func moduleActionTriggered() {

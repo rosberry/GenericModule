@@ -9,7 +9,7 @@ import XCTest
 extension XCTestCase {
     func expectFatalError(expectedMessage: String, testcase: @escaping () -> Void) {
         let expectation = self.expectation(description: "expectingFatalError")
-        var assertionMessage: String? = nil
+        var assertionMessage: String?
 
         FatalErrorUtil.replaceFatalError { message, _, _ in
             assertionMessage = message

@@ -20,6 +20,6 @@ extension DependencyPresenter: DummyViewOutput {
 
 extension DependencyPresenter: DummyModuleInput {
     func handleIncomingAction() {
-        
+
     }
 }

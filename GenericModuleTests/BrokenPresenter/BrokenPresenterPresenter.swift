@@ -14,13 +14,13 @@ final class BrokenPresenterPresenter: ModulePresenter {
     var output: Output?
 
     init(state: State, dependencies: Any) {
-        
+
     }
 }
 
 extension BrokenPresenterPresenter: DummyViewOutput {
     func userActionTriggered() {
-        
+
     }
 
     func moduleActionTriggered() {
@@ -30,7 +30,7 @@ extension BrokenPresenterPresenter: DummyViewOutput {
 
 extension BrokenPresenterPresenter: ViewOutput {
     func viewDidLoad() {
-        
+
     }
 
     func viewWillAppear() {

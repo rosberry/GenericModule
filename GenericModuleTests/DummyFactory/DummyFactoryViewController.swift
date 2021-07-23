@@ -107,6 +107,7 @@ extension DummyFactoryViewController: UICollectionViewDataSource {
 }
 
 extension DummyFactoryViewController: UICollectionViewDelegateFlowLayout {
+    //swiftlint:disable:next line_length
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: collectionView.bounds.width, height: 100)
     }

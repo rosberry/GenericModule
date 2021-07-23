@@ -5,7 +5,7 @@
 @testable import GenericModule
 
 protocol BrokenViewInputModuleInput {
-    
+
 }
 
 final class BrokenViewInputModule: Module<BrokenViewInputPresenter> {

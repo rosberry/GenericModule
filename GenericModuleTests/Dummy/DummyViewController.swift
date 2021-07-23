@@ -33,7 +33,7 @@ final class DummyViewController: UIViewController {
         self.output = output
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         Swift.fatalError("init(coder:) has not been implemented")
     }

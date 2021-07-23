@@ -11,6 +11,7 @@ class GenericModuleTests: XCTestCase {
     var coordinator: DummyCoordinator!
 
     override func setUp() {
+        super.setUp()
         state = DummyState(text: "test")
         coordinator = DummyCoordinator(state: state)
     }
@@ -18,15 +19,15 @@ class GenericModuleTests: XCTestCase {
     func testModule() {
         coordinator.start()
         guard let viewController = coordinator.viewController,
-              let presenter = coordinator.presenter,
-              let viewInput = presenter.viewInput as? AnyObject,
-              let viewOutput = viewController.output as? AnyObject,
-              let presenterOutput = presenter.output as? AnyObject,
-              let moduleOutput = coordinator.module?.output as? AnyObject,
-              let moduleInput = coordinator.module?.input as? AnyObject else {
+              let presenter = coordinator.presenter else {
             XCTAssert(false)
             return
         }
+        let viewInput = presenter.viewInput as AnyObject
+        let viewOutput = viewController.output as AnyObject
+        let presenterOutput = presenter.output as AnyObject
+        let moduleOutput = coordinator.module?.output as AnyObject
+        let moduleInput = coordinator.module?.input as AnyObject
         XCTAssert(viewOutput === presenter)
         XCTAssert(presenter.view === viewController)
         XCTAssert(presenterOutput === coordinator)
@@ -42,7 +43,7 @@ class GenericModuleTests: XCTestCase {
         expectation = makeExpectation(state, keyPath: \.didAppear)
         wait(for: [expectation], timeout: 10)
         XCTAssert(state.didAppear)
-        
+
         presenter.viewInput.performUserAction()
         XCTAssert(state.userActionTriggered)
         presenter.viewInput.performModuleAction()
@@ -59,18 +60,19 @@ class GenericModuleTests: XCTestCase {
         XCTAssert(state.didDisappear)
     }
 
+    //swiftlint:disable:next function_body_length
     func testFactoryModule() {
         coordinator.startFactory()
         guard let viewController = coordinator.factoryViewController,
-              let presenter = coordinator.factoryPresenter,
-              let viewInput = presenter.viewInput as? AnyObject,
-              let viewOutput = viewController.output as? AnyObject,
-              let presenterOutput = presenter.output as? AnyObject,
-              let moduleOutput = coordinator.factoryModule?.output as? AnyObject,
-              let moduleInput = coordinator.factoryModule?.input as? AnyObject else {
+              let presenter = coordinator.factoryPresenter else {
             XCTAssert(false)
             return
         }
+        let viewInput = presenter.viewInput as AnyObject
+        let viewOutput = viewController.output as AnyObject
+        let presenterOutput = presenter.output as AnyObject
+        let moduleOutput = coordinator.factoryModule?.output as AnyObject
+        let moduleInput = coordinator.factoryModule?.input as AnyObject
         XCTAssert(viewOutput === presenter)
         XCTAssert(presenter.view === viewController)
         XCTAssert(presenterOutput === coordinator)
@@ -109,12 +111,14 @@ class GenericModuleTests: XCTestCase {
     }
 
     func testBrokenViewOutput() {
+        //swiftlint:disable:next line_length
         expectFatalError(expectedMessage: "`\(BrokenViewOutputPresenter.self)` does not conforms to `\(DummyViewController.self)` output protocol.") {
             self.coordinator.startBrokenViewOutput()
         }
     }
 
     func testBrokenViewInput() {
+        //swiftlint:disable:next line_length
         expectFatalError(expectedMessage: "`\(BrokenViewInputController.self)` does not conforms to `\(BrokenViewInputController.self)` input.") {
             self.coordinator.startBrokenViewInput()
             guard let module = self.coordinator.brokenViewInputModule,
@@ -122,7 +126,7 @@ class GenericModuleTests: XCTestCase {
                 XCTAssert(false)
                 return
             }
-            let _ = moduleInput.viewInput
+            _ = moduleInput.viewInput
         }
     }
 
@@ -133,13 +137,14 @@ class GenericModuleTests: XCTestCase {
                 XCTAssert(false)
                 return
             }
-            let _ = module.input
+            _ = module.input
         }
     }
 
     func testBrokenPresenter() {
+        //swiftlint:disable:next line_length
         expectFatalError(expectedMessage: "`\(BrokenPresenterPresenter.self)` does not conforms to `\(BrokenPresenterModule.BasePresenter.self)`.") {
-            let _ = BrokenPresenterModule(state: .init(), dependencies: [])
+            _ = BrokenPresenterModule(state: .init(), dependencies: [])
         }
     }
 

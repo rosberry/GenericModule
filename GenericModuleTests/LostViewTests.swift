@@ -24,7 +24,7 @@ final class LostViewTests: XCTestCase {
             "Please make sure sure that you don't have strong references " +
             "to \(DummyPresenter.self) or \( DummyModule.BasePresenter.Input.self)."
         expectFatalError(expectedMessage: expectedMessage) {
-            let _ = presenter.viewInput
+            _ = presenter.viewInput
         }
     }
 }

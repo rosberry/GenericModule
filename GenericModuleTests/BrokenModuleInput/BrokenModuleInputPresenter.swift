@@ -10,7 +10,7 @@ final class BrokenModuleInputPresenter: Presenter<DummyViewController, DummyModu
 
 extension BrokenModuleInputPresenter: DummyViewOutput {
     func userActionTriggered() {
-        
+
     }
 
     func moduleActionTriggered() {
