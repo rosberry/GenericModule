@@ -9,8 +9,8 @@ final class TitleTextViewModel: ViewModel {
     let title: String
     let text: String
 
-    required init(state: TitleTextState) {
-        title = state.title
-        text = state.text
+    init(builder: GenericViewModelBuilder<TitleTextState>) {
+        title = builder.state.title
+        text = builder.state.text
     }
 }

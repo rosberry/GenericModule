@@ -4,14 +4,15 @@
 
 open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel {
 
-    public typealias State = Presenter.ViewModel.State
+    public typealias State = Presenter.State
     public typealias Dependencies = Presenter.Dependencies
     public typealias Output = Presenter.Output
     public typealias Input = Presenter.Input
     public typealias ViewController = Presenter.View
+    public typealias ViewModelBuilder = Presenter.ViewModelBuilder
 
     typealias ViewModel = Presenter.ViewModel
-    typealias BasePresenter = GenericModule.Presenter<ViewController, Input, Output, Dependencies>
+    typealias BasePresenter = GenericModule.Presenter<ViewController, ViewModelBuilder, Input, Output, Dependencies>
 
     var presenter: Presenter
     var basePresenter: BasePresenter? {
@@ -33,8 +34,8 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
     }
 
     public init(state: State, dependencies: Dependencies, output: Output? = nil) {
-        let viewModel = ViewModel(state: state)
         let presenter = Presenter(state: state, dependencies: dependencies)
+        let viewModel = ViewModel.init(builder: presenter.makeViewModelBuilder())
         guard let viewOutput = presenter as? ViewController.Output else {
             fatalError("`\(type(of: presenter))` does not conforms to `\(ViewController.self)` output protocol.")
         }

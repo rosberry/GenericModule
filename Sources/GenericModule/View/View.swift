@@ -2,7 +2,7 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-public protocol View: class {
+public protocol View: AnyObject {
     associatedtype Output
     associatedtype ViewModel: GenericModule.ViewModel
     associatedtype ViewInput

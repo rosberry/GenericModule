@@ -4,15 +4,27 @@
 
 import GenericModule
 
+final class FirstViewModelBuilder: ViewModelBuilder {
+
+    var state: FirstState
+    var title: String {
+        state.title
+    }
+
+    init(state: FirstState) {
+        self.state = state
+    }
+}
+
 final class FirstViewModel: ViewModel {
 
     let title: String
     let title2: String
     let title3: String
 
-    required init(state: FirstState) {
-        title2 = state.title2
-        title3 = state.title3
-        title = state.title
+    init(builder: GenericViewModelBuilder<FirstState>) {
+        title = builder.state.title
+        title2 = builder.state.title2
+        title3 = builder.state.title3
     }
 }

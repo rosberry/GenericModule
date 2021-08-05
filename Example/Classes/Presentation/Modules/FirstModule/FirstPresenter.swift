@@ -4,7 +4,7 @@
 
 import GenericModule
 
-final class FirstPresenter: Presenter<FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
+final class FirstPresenter: DefaultPresenter<FirstState, FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
 
 }
 

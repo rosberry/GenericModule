@@ -3,15 +3,18 @@
 //
 
 open class Presenter<View: GenericModule.View,
+                     ViewModelBuilder,
                      Input,
                      Output,
-                     Dependencies>: ModulePresenter, ViewOutput {
+                     Dependencies>: ModulePresenter, ViewOutput where ViewModelBuilder == View.ViewModel.ViewModelBuilder  {
 
     public typealias ViewModel = View.ViewModel
-    public typealias State = ViewModel.State
+    public typealias ViewModelBuilder = ViewModel.ViewModelBuilder
+    public typealias State = ViewModelBuilder.State
 
     public var state: State
     public var output: Output?
+
     let dependencies: Dependencies
 
     weak var view: View?
@@ -47,14 +50,39 @@ open class Presenter<View: GenericModule.View,
 
     }
 
-    public required init(state: ViewModel.State, dependencies: Dependencies) {
+    public func makeViewModelBuilder() -> ViewModelBuilder {
+        fatalError("`makeViewModelBuilder()` should be owerriden")
+    }
+
+    public required init(state: State, dependencies: Dependencies) {
         self.dependencies = dependencies
         self.state = state
     }
 
     open func update(force: Bool = false, animated: Bool) {
-        // swiftlint:disable:next explicit_init
-        let viewModel = ViewModel.init(state: state)
+        let viewModel = ViewModel.init(builder: makeViewModelBuilder())
         view?.update(with: viewModel, force: force, animated: animated)
+    }
+}
+
+open class DefaultPresenter<State, View: GenericModule.View, Input, Output, Dependencies>: Presenter<View, GenericViewModelBuilder<State>, Input, Output, Dependencies> where View.ViewModel.ViewModelBuilder == GenericViewModelBuilder<State> {
+
+    public override func makeViewModelBuilder() -> GenericViewModelBuilder<State> {
+        .init(state: state)
+    }
+}
+
+open class FactoryPresenter<Factory: SectionItemsFactory, View: GenericModule.View, Input, Output, Dependencies>: Presenter<View, FactoryViewModelBuilder<Factory>, Input, Output, Dependencies> where View.ViewModel.ViewModelBuilder == FactoryViewModelBuilder<Factory>, Factory.Dependencies == Dependencies {
+
+    open var factory: Factory
+
+    public override func makeViewModelBuilder() -> FactoryViewModelBuilder<Factory> {
+        .init(state: state, factory: factory)
+    }
+
+    required public init(state: State, dependencies: Dependencies) {
+        // swiftlint:disable:next explicit_init
+        factory = Factory.init(dependencies: dependencies)
+        super.init(state: state, dependencies: dependencies)
     }
 }

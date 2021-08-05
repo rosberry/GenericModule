@@ -4,12 +4,13 @@
 
 import GenericModule
 
-final class SecondViewModel: FactoryViewModel<TestSectionItemsFactory> {
+final class SecondViewModel: ViewModel {
 
     let title: String
+    let listSectionItems: [Int]
 
-    required init(state: SecondState) {
-        title = state.title
-        super.init(state: state)
+    init(builder: FactoryViewModelBuilder<TestSectionItemsFactory>) {
+        title = builder.state.title
+        listSectionItems = builder.makeSectionItems()
     }
 }

@@ -12,11 +12,11 @@ final class MainViewModel: ViewModel {
     let title4: String
     let title: String
 
-    required init(state: MainState) {
-        title1 = state.title1
-        title2 = state.title2
-        title3 = state.title3
-        title4 = state.title4
-        title = state.title
+    init(builder: GenericViewModelBuilder<MainState>) {
+        title1 = builder.state.title1
+        title2 = builder.state.title2
+        title3 = builder.state.title3
+        title4 = builder.state.title4
+        title = builder.state.title
     }
 }

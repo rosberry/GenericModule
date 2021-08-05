@@ -4,7 +4,7 @@
 
 import GenericModule
 
-final class MainPresenter: Presenter<MainViewController, MainModuleInput, MainModuleOutput, Any> {
+final class MainPresenter: DefaultPresenter<MainState, MainViewController, MainModuleInput, MainModuleOutput, Any> {
 
 }
 
