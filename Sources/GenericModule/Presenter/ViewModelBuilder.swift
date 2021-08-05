@@ -2,12 +2,12 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-public protocol ViewModelBuilder {
+public protocol ViewModelDelegate {
     associatedtype State
     var state: State { get }
 }
 
-open class GenericViewModelBuilder<State>: ViewModelBuilder {
+open class GenericViewModelDelegate<State>: ViewModelDelegate {
     public let state: State
 
     public init(state: State) {
@@ -15,7 +15,7 @@ open class GenericViewModelBuilder<State>: ViewModelBuilder {
     }
 }
 
-open class FactoryViewModelBuilder<Factory: SectionItemsFactory>: ViewModelBuilder {
+open class FactoryViewModelDelegate<Factory: SectionItemsFactory>: ViewModelDelegate {
     public typealias State = Factory.State
     public let state: State
     public let factory: Factory

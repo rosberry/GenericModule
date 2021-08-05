@@ -9,8 +9,8 @@ final class SecondViewModel: ViewModel {
     let title: String
     let listSectionItems: [Int]
 
-    init(builder: FactoryViewModelBuilder<TestSectionItemsFactory>) {
-        title = builder.state.title
-        listSectionItems = builder.makeSectionItems()
+    init(delegate: FactoryViewModelDelegate<TestSectionItemsFactory>) {
+        title = delegate.state.title
+        listSectionItems = delegate.makeSectionItems()
     }
 }

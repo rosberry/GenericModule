@@ -2,15 +2,14 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-open class Presenter<View: GenericModule.View,
-                     ViewModelBuilder,
+open class Presenter<State,
+                     View: GenericModule.View,
                      Input,
                      Output,
-                     Dependencies>: ModulePresenter, ViewOutput where ViewModelBuilder == View.ViewModel.ViewModelBuilder  {
+                     Dependencies>: ModulePresenter, ViewOutput {
 
     public typealias ViewModel = View.ViewModel
-    public typealias ViewModelBuilder = ViewModel.ViewModelBuilder
-    public typealias State = ViewModelBuilder.State
+    public typealias ViewModelDelegate = ViewModel.ViewModelDelegate
 
     public var state: State
     public var output: Output?
@@ -50,8 +49,8 @@ open class Presenter<View: GenericModule.View,
 
     }
 
-    public func makeViewModelBuilder() -> ViewModelBuilder {
-        fatalError("`makeViewModelBuilder()` should be owerriden")
+    open func makeViewModelDelegate() -> ViewModelDelegate {
+        fatalError("`makeViewModelDelegate()` should be owerriden")
     }
 
     public required init(state: State, dependencies: Dependencies) {
@@ -60,23 +59,23 @@ open class Presenter<View: GenericModule.View,
     }
 
     open func update(force: Bool = false, animated: Bool) {
-        let viewModel = ViewModel.init(builder: makeViewModelBuilder())
+        let viewModel = ViewModel.init(delegate: makeViewModelDelegate())
         view?.update(with: viewModel, force: force, animated: animated)
     }
 }
 
-open class DefaultPresenter<State, View: GenericModule.View, Input, Output, Dependencies>: Presenter<View, GenericViewModelBuilder<State>, Input, Output, Dependencies> where View.ViewModel.ViewModelBuilder == GenericViewModelBuilder<State> {
+open class DefaultPresenter<State, View: GenericModule.View, Input, Output, Dependencies>: Presenter<State, View, Input, Output, Dependencies> where View.ViewModel.ViewModelDelegate == GenericViewModelDelegate<State> {
 
-    public override func makeViewModelBuilder() -> GenericViewModelBuilder<State> {
+    public override func makeViewModelDelegate() -> GenericViewModelDelegate<State> {
         .init(state: state)
     }
 }
 
-open class FactoryPresenter<Factory: SectionItemsFactory, View: GenericModule.View, Input, Output, Dependencies>: Presenter<View, FactoryViewModelBuilder<Factory>, Input, Output, Dependencies> where View.ViewModel.ViewModelBuilder == FactoryViewModelBuilder<Factory>, Factory.Dependencies == Dependencies {
+open class FactoryPresenter<Factory: SectionItemsFactory, View: GenericModule.View, Input, Output, Dependencies>: Presenter<Factory.State, View, Input, Output, Dependencies> where View.ViewModel.ViewModelDelegate == FactoryViewModelDelegate<Factory>, Factory.Dependencies == Dependencies {
 
     open var factory: Factory
 
-    public override func makeViewModelBuilder() -> FactoryViewModelBuilder<Factory> {
+    public override func makeViewModelDelegate() -> FactoryViewModelDelegate<Factory> {
         .init(state: state, factory: factory)
     }
 

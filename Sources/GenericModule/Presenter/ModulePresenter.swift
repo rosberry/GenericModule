@@ -9,12 +9,11 @@ public protocol ModulePresenter {
     associatedtype Dependencies
     associatedtype Output
     associatedtype Input
-
-    typealias ViewModelBuilder = ViewModel.ViewModelBuilder
+    associatedtype ViewModelDelegate
 
     init(state: State, dependencies: Dependencies)
 
     var output: Output? { get }
 
-    func makeViewModelBuilder() -> ViewModelBuilder
+    func makeViewModelDelegate() -> ViewModelDelegate
 }

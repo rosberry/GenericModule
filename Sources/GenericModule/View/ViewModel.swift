@@ -3,6 +3,6 @@
 //
 
 public protocol ViewModel {
-    associatedtype ViewModelBuilder: GenericModule.ViewModelBuilder
-    init(builder: ViewModelBuilder)
+    associatedtype ViewModelDelegate
+    init(delegate: ViewModelDelegate)
 }

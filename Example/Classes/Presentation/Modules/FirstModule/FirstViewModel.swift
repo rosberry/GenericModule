@@ -4,16 +4,9 @@
 
 import GenericModule
 
-final class FirstViewModelBuilder: ViewModelBuilder {
-
-    var state: FirstState
-    var title: String {
-        state.title
-    }
-
-    init(state: FirstState) {
-        self.state = state
-    }
+protocol FirstViewModelDelegate {
+    var state: FirstState { get }
+    func makeTitle() -> String
 }
 
 final class FirstViewModel: ViewModel {
@@ -22,9 +15,9 @@ final class FirstViewModel: ViewModel {
     let title2: String
     let title3: String
 
-    init(builder: GenericViewModelBuilder<FirstState>) {
-        title = builder.state.title
-        title2 = builder.state.title2
-        title3 = builder.state.title3
+    init(delegate: FirstViewModelDelegate) {
+        title = delegate.makeTitle()
+        title2 = delegate.state.title2
+        title3 = delegate.state.title3
     }
 }

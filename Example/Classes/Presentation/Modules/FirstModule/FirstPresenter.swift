@@ -4,8 +4,16 @@
 
 import GenericModule
 
-final class FirstPresenter: DefaultPresenter<FirstState, FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
+final class FirstPresenter: Presenter<FirstState, FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
+    override func makeViewModelDelegate() -> FirstViewModelDelegate {
+        self
+    }
+}
 
+extension FirstPresenter: FirstViewModelDelegate {
+    func makeTitle() -> String {
+        state.title
+    }
 }
 
 extension FirstPresenter: FirstViewOutput {
