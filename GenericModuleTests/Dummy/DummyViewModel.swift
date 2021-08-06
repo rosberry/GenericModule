@@ -7,7 +7,7 @@
 final class DummyViewModel: ViewModel {
     var text: String
 
-    required init(state: DummyState) {
-        self.text = state.text
+    required init(delegate: GenericViewModelDelegate<DummyState>) {
+        self.text = delegate.state.text
     }
 }

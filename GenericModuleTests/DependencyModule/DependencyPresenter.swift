@@ -4,7 +4,7 @@
 
 @testable import GenericModule
 
-final class DependencyPresenter: Presenter<DummyViewController, DummyModuleInput, DummyModuleOutput, DependencyProtocol> {
+final class DependencyPresenter: Presenter<DummyState, DummyViewController, DummyModuleInput, DummyModuleOutput, DependencyProtocol> {
 
 }
 

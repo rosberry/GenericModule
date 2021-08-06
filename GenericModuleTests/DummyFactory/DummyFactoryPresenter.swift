@@ -4,8 +4,9 @@
 
 @testable import GenericModule
 
-class DummyFactoryPresenter: FactoryPresenter<DummyFactoryViewController,
+class DummyFactoryPresenter: FactoryPresenter<DummyState,
                                               DummyListItemsFactory,
+                                              DummyFactoryViewController,
                                               DummyFactoryModuleInput,
                                               DummyFactoryModuleOutput,
                                               Any> {
@@ -33,6 +34,10 @@ class DummyFactoryPresenter: FactoryPresenter<DummyFactoryViewController,
         super.viewDidDisappear()
         state.didDisappear = true
     }
+}
+
+extension DummyFactoryPresenter: DummyFactoryViewModelDelegate {
+
 }
 
 extension DummyFactoryPresenter: DummyFactoryModuleInput {

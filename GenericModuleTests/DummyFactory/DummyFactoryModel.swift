@@ -4,6 +4,14 @@
 
 @testable import GenericModule
 
-final class DummyFactoryModel: FactoryViewModel<DummyListItemsFactory> {
+protocol DummyFactoryViewModelDelegate {
+    var state: DummyState { get }
+    func makeSectionItems() -> [String]
+}
 
+final class DummyFactoryModel: ViewModel {
+    let listSectionItems: [String]
+    init(delegate: DummyFactoryViewModelDelegate) {
+        self.listSectionItems = delegate.makeSectionItems()
+    }
 }

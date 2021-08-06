@@ -5,6 +5,6 @@
 import XCTest
 @testable import GenericModule
 
-final class BrokenViewOutputPresenter: Presenter<DummyViewController, DummyModuleInput, DummyModuleOutput, Any> {
+final class BrokenViewOutputPresenter: Presenter<DummyState, DummyViewController, DummyModuleInput, DummyModuleOutput, Any> {
 
 }

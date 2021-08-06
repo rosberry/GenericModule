@@ -4,7 +4,7 @@
 
 @testable import GenericModule
 
-final class BrokenViewInputPresenter: Presenter<BrokenViewInputController, BrokenViewInputModuleInput, DummyModuleOutput, Any> {
+final class BrokenViewInputPresenter: Presenter<DummyState, BrokenViewInputController, BrokenViewInputModuleInput, DummyModuleOutput, Any> {
 
 }
 

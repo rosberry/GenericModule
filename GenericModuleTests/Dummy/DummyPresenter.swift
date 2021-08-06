@@ -4,7 +4,7 @@
 
 @testable import GenericModule
 
-final class DummyPresenter: Presenter<DummyViewController, DummyModuleInput, DummyModuleOutput, Any> {
+final class DummyPresenter: Presenter<DummyState, DummyViewController, DummyModuleInput, DummyModuleOutput, Any> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
