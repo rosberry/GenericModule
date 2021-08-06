@@ -5,9 +5,6 @@
 import GenericModule
 
 final class FirstPresenter: Presenter<FirstState, FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
-    override func makeViewModelDelegate() -> FirstViewModelDelegate {
-        self
-    }
 }
 
 extension FirstPresenter: FirstViewModelDelegate {

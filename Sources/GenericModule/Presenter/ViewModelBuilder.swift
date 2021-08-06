@@ -9,18 +9,3 @@ open class GenericViewModelDelegate<State> {
         self.state = state
     }
 }
-
-open class FactoryViewModelDelegate<Factory: SectionItemsFactory> {
-    public typealias State = Factory.State
-    public let state: State
-    public let factory: Factory
-
-    public func makeSectionItems() -> [Factory.SectionItem] {
-        factory.makeSectionItems(state: state)
-    }
-
-    init(state: State, factory: Factory) {
-        self.state = state
-        self.factory = factory
-    }
-}

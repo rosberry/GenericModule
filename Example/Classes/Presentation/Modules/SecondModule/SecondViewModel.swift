@@ -9,7 +9,7 @@ final class SecondViewModel: ViewModel {
     let title: String
     let listSectionItems: [Int]
 
-    init(delegate: FactoryViewModelDelegate<TestSectionItemsFactory>) {
+    required init(delegate: FactoryDelegate) {
         title = delegate.state.title
         listSectionItems = delegate.makeSectionItems()
     }

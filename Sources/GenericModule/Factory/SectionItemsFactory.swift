@@ -2,9 +2,16 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-public protocol SectionItemsFactory {
-    associatedtype SectionItem
+public protocol FactoryViewModelDelegate {
     associatedtype State
+    associatedtype SectionItem
+    var state: State { get }
+    func makeSectionItems() -> [SectionItem]
+}
+
+public protocol SectionItemsFactory: AnyObject {
+    associatedtype SectionItem
+    associatedtype ViewModelDelegate
     associatedtype Dependencies
     associatedtype Output
 
@@ -12,10 +19,10 @@ public protocol SectionItemsFactory {
     var dependencies: Dependencies { get set }
 
     init(dependencies: Dependencies)
-    func makeSectionItems(state: State) -> [SectionItem]
+    func makeSectionItems(delegate: ViewModelDelegate) -> [SectionItem]
 }
 
-open class GenericSectionItemsFactory<State, SectionItem, Dependencies, Output>: SectionItemsFactory {
+open class GenericSectionItemsFactory<ViewModelDelegate, SectionItem, Dependencies, Output>: SectionItemsFactory {
     open var dependencies: Dependencies
     open var output: Output?
 
@@ -23,7 +30,7 @@ open class GenericSectionItemsFactory<State, SectionItem, Dependencies, Output>:
         self.dependencies = dependencies
     }
 
-    open func makeSectionItems(state: State) -> [SectionItem] {
+    open func makeSectionItems(delegate: ViewModelDelegate) -> [SectionItem] {
         []
     }
 }

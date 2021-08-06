@@ -4,8 +4,9 @@
 
 import GenericModule
 
-final class SecondPresenter: FactoryPresenter<TestSectionItemsFactory,
+final class SecondPresenter: FactoryPresenter<SecondState,
+                                              TestSectionItemsFactory,
                                               SecondViewController,
-                                              Any, Any, HasTestService> {
-
+                                              Any, Any, HasTestService>,
+                             FactoryDelegate {
 }

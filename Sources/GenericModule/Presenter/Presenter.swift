@@ -14,7 +14,7 @@ open class Presenter<State,
     public var state: State
     public var output: Output?
 
-    let dependencies: Dependencies
+    public let dependencies: Dependencies
 
     weak var view: View?
     public var viewInput: View.ViewInput {
@@ -50,7 +50,13 @@ open class Presenter<State,
     }
 
     open func makeViewModelDelegate() -> ViewModelDelegate {
-        fatalError("`makeViewModelDelegate()` should be owerriden")
+        if let delegate = self as? ViewModelDelegate {
+            return delegate
+        }
+        if let delegate = GenericViewModelDelegate<State>(state: state) as? ViewModelDelegate {
+            return delegate
+        }
+        fatalError("Please make sure that `makeViewModelDelegate()` method overriden")
     }
 
     public required init(state: State, dependencies: Dependencies) {
@@ -64,24 +70,35 @@ open class Presenter<State,
     }
 }
 
-open class DefaultPresenter<State, View: GenericModule.View, Input, Output, Dependencies>: Presenter<State, View, Input, Output, Dependencies> where View.ViewModel.ViewModelDelegate == GenericViewModelDelegate<State> {
+open class FactoryPresenter<State,
+                            Factory: SectionItemsFactory,
+                            View: GenericModule.View,
+                            Input,
+                            Output,
+                            Dependencies>: Presenter<State,
+                                                     View,
+                                                     Input,
+                                                     Output,
+                                                     Dependencies>
+                            where Factory.Dependencies == Dependencies,
+                                  Factory.ViewModelDelegate == View.ViewModel.ViewModelDelegate {
+    public let factory: Factory
 
-    public override func makeViewModelDelegate() -> GenericViewModelDelegate<State> {
-        .init(state: state)
+    open override func makeViewModelDelegate() -> ViewModelDelegate {
+        if let delegate = self as? ViewModelDelegate {
+            return delegate
+        }
+        return super.makeViewModelDelegate()
     }
-}
 
-open class FactoryPresenter<Factory: SectionItemsFactory, View: GenericModule.View, Input, Output, Dependencies>: Presenter<Factory.State, View, Input, Output, Dependencies> where View.ViewModel.ViewModelDelegate == FactoryViewModelDelegate<Factory>, Factory.Dependencies == Dependencies {
-
-    open var factory: Factory
-
-    public override func makeViewModelDelegate() -> FactoryViewModelDelegate<Factory> {
-        .init(state: state, factory: factory)
-    }
-
-    required public init(state: State, dependencies: Dependencies) {
-        // swiftlint:disable:next explicit_init
-        factory = Factory.init(dependencies: dependencies)
+    public required init(state: State, dependencies: Dependencies) {
+        factory = .init(dependencies: dependencies)
         super.init(state: state, dependencies: dependencies)
+        factory.output = self as? Factory.Output
+    }
+
+    public func makeSectionItems() -> [Factory.SectionItem] {
+        let delegate = makeViewModelDelegate()
+        return factory.makeSectionItems(delegate: delegate)
     }
 }
