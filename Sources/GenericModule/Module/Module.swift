@@ -15,13 +15,19 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
     typealias BasePresenter = GenericModule.Presenter<State, ViewController, Input, Output, Dependencies>
 
     var presenter: Presenter
-    var basePresenter: BasePresenter? {
-        presenter as? BasePresenter
+    var basePresenter: BasePresenter {
+        guard let presenter = self.presenter as? BasePresenter else {
+            fatalError("`\(type(of: self.presenter))` does not conforms to `\(BasePresenter.self)`.")
+        }
+        return presenter
     }
 
     public var viewController: ViewController
-    public var input: Input? {
-        presenter as? Input
+    public var input: Input {
+        guard let input = presenter as? Input else {
+            fatalError("`\(type(of: presenter))` does not conforms to `\(Input.self)`.")
+        }
+        return input
     }
 
     public var output: Output? {
@@ -29,7 +35,7 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
             presenter.output
         }
         set {
-            basePresenter?.output = newValue
+            basePresenter.output = newValue
         }
     }
 
@@ -45,7 +51,7 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
         }
         viewController = ViewController(viewModel: viewModel, output: viewOutput)
         self.presenter = presenter
-        basePresenter?.view = viewController
+        basePresenter.view = viewController
         self.output = output
     }
 }

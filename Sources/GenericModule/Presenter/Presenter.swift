@@ -24,7 +24,7 @@ open class Presenter<State,
                        "to \(type(of: self)) or \(Input.self).")
         }
         guard let viewInput = view as? View.ViewInput else {
-            fatalError("`\(View.self)` does not conforms to \(View.self) input.")
+            fatalError("`\(View.self)` does not conforms to `\(View.self)` input.")
         }
         return viewInput
     }
