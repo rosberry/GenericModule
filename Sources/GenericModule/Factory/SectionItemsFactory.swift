@@ -2,13 +2,6 @@
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
 
-public protocol FactoryViewModelDelegate {
-    associatedtype State
-    associatedtype SectionItem
-    var state: State { get }
-    func makeSectionItems() -> [SectionItem]
-}
-
 public protocol SectionItemsFactory: AnyObject {
     associatedtype SectionItem
     associatedtype ViewModelDelegate

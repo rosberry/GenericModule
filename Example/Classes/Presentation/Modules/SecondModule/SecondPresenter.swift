@@ -8,5 +8,5 @@ final class SecondPresenter: FactoryPresenter<SecondState,
                                               TestSectionItemsFactory,
                                               SecondViewController,
                                               Any, Any, HasTestService>,
-                             FactoryDelegate {
+                             SecondViewModelDelegate {
 }

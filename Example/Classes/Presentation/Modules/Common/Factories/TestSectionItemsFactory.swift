@@ -4,12 +4,7 @@
 
 import GenericModule
 
-protocol FactoryDelegate {
-    var state: SecondState { get }
-    func makeSectionItems() -> [Int]
-}
-
-final class TestSectionItemsFactory: GenericSectionItemsFactory<FactoryDelegate,
+final class TestSectionItemsFactory: GenericSectionItemsFactory<SecondViewModelDelegate,
                                                                 Int,
                                                                 HasTestService,
                                                                 ViewOutput> {
