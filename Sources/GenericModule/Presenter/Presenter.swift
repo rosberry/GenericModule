@@ -65,6 +65,7 @@ open class Presenter<State,
     }
 
     open func update(force: Bool = false, animated: Bool) {
+        // swiftlint:disable:next explicit_init
         let viewModel = ViewModel.init(delegate: makeViewModelDelegate())
         view?.update(with: viewModel, force: force, animated: animated)
     }

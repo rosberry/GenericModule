@@ -4,7 +4,11 @@
 
 import GenericModule
 
-final class FirstPresenter: Presenter<FirstState, FirstViewController, FirstModuleInput, FirstModuleOutput, HasTestService> {
+final class FirstPresenter: Presenter<FirstState,
+                                      FirstViewController,
+                                      FirstModuleInput,
+                                      FirstModuleOutput,
+                                      HasTestService> {
 }
 
 extension FirstPresenter: FirstViewModelDelegate {

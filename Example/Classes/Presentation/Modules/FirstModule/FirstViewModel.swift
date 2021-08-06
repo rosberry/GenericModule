@@ -4,7 +4,7 @@
 
 import GenericModule
 
-protocol FirstViewModelDelegate {
+protocol FirstViewModelDelegate: AnyObject {
     var state: FirstState { get }
     func makeTitle() -> String
 }

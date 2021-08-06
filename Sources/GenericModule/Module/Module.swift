@@ -38,6 +38,7 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
         guard let viewModelDelegate = presenter.makeViewModelDelegate() as? ViewModelDelegate else {
             fatalError("`\(ViewModel.ViewModelDelegate.self)` does not conforms to `\(ViewModelDelegate.self)`")
         }
+        // swiftlint:disable:next explicit_init
         let viewModel = ViewModel.init(delegate: viewModelDelegate)
         guard let viewOutput = presenter as? ViewController.Output else {
             fatalError("`\(type(of: presenter))` does not conforms to `\(ViewController.self)` output protocol.")

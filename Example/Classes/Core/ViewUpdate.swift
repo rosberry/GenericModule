@@ -69,9 +69,11 @@ public extension ForceViewUpdate {
         configurationHandler()
     }
 
-    func makeAnyEquatables<ViewModel, Value: Equatable>(new newViewModel: ViewModel,
-                                                        old oldViewModel: ViewModel,
-                                                        keyPath: KeyPath<ViewModel, Value>) -> (AnyEquatable, AnyEquatable) {
+    func makeAnyEquatables<ViewModel,
+                           Value: Equatable>(new newViewModel: ViewModel,
+                                             old oldViewModel: ViewModel,
+                                             keyPath: KeyPath<ViewModel, Value>)
+                            -> (AnyEquatable, AnyEquatable) {
         (.init(newViewModel[keyPath: keyPath]), .init(oldViewModel[keyPath: keyPath]))
     }
 
@@ -138,7 +140,9 @@ public extension ForceViewUpdate {
     func update<ViewModel, A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable>(
             new newViewModel: ViewModel,
             old oldViewModel: ViewModel,
-            keyPaths: (KeyPath<ViewModel, A>, KeyPath<ViewModel, B>, KeyPath<ViewModel, C>, KeyPath<ViewModel, D>, KeyPath<ViewModel, E>),
+            keyPaths: (KeyPath<ViewModel, A>, KeyPath<ViewModel, B>,
+                       KeyPath<ViewModel, C>, KeyPath<ViewModel, D>,
+                       KeyPath<ViewModel, E>),
             force: Bool,
             configurationHandler: () -> Void) {
         guard force ||
@@ -175,7 +179,14 @@ public extension ForceViewUpdate {
         configurationHandler()
     }
 
-    func update<ViewModel, A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable>(
+    func update<ViewModel,
+                A: Equatable,
+                B: Equatable,
+                C: Equatable,
+                D: Equatable,
+                E: Equatable,
+                F: Equatable,
+                G: Equatable>(
             new newViewModel: ViewModel,
             old oldViewModel: ViewModel,
             keyPaths: (KeyPath<ViewModel, A>,

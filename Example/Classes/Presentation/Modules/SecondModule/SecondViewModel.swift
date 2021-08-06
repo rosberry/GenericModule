@@ -4,7 +4,7 @@
 
 import GenericModule
 
-protocol SecondViewModelDelegate {
+protocol SecondViewModelDelegate: AnyObject {
     var state: SecondState { get }
     func makeSectionItems() -> [Int]
 }
