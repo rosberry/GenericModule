@@ -4,7 +4,7 @@
 
 @testable import GenericModule
 
-protocol DummyFactoryViewModelDelegate {
+protocol DummyFactoryViewModelDelegate: AnyObject {
     var state: DummyState { get }
     func makeSectionItems() -> [String]
 }
