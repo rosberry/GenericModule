@@ -2,7 +2,8 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel {
+open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel,
+                                                    Presenter.ViewModel.ViewModelDelegate == Presenter.ViewModelDelegate {
 
     public typealias State = Presenter.State
     public typealias Dependencies = Presenter.Dependencies
@@ -41,9 +42,7 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
 
     public init(state: State, dependencies: Dependencies, output: Output? = nil) {
         let presenter = Presenter(state: state, dependencies: dependencies)
-        guard let viewModelDelegate = presenter.makeViewModelDelegate() as? ViewModelDelegate else {
-            fatalError("`\(ViewModel.ViewModelDelegate.self)` does not conforms to `\(ViewModelDelegate.self)`")
-        }
+        let viewModelDelegate = presenter.makeViewModelDelegate()
         // swiftlint:disable:next explicit_init
         let viewModel = ViewModel.init(delegate: viewModelDelegate)
         guard let viewOutput = presenter as? ViewController.Output else {

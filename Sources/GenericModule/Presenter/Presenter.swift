@@ -53,7 +53,7 @@ open class Presenter<State,
         if let delegate = self as? ViewModelDelegate {
             return delegate
         }
-        if let delegate = GenericViewModelDelegate<State>(state: state) as? ViewModelDelegate {
+        else if let delegate = GenericViewModelDelegate<State>(state: state) as? ViewModelDelegate {
             return delegate
         }
         fatalError("Please make sure that `makeViewModelDelegate()` method overriden")
@@ -84,13 +84,6 @@ open class FactoryPresenter<State,
                             where Factory.Dependencies == Dependencies,
                                   Factory.ViewModelDelegate == View.ViewModel.ViewModelDelegate {
     public let factory: Factory
-
-    open override func makeViewModelDelegate() -> ViewModelDelegate {
-        if let delegate = self as? ViewModelDelegate {
-            return delegate
-        }
-        return super.makeViewModelDelegate()
-    }
 
     public required init(state: State, dependencies: Dependencies) {
         factory = .init(dependencies: dependencies)
