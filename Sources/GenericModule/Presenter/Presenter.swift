@@ -88,7 +88,10 @@ open class FactoryPresenter<State,
     public required init(state: State, dependencies: Dependencies) {
         factory = .init(dependencies: dependencies)
         super.init(state: state, dependencies: dependencies)
-        factory.output = self as? Factory.Output
+        guard let output = self as? Factory.Output else {
+            fatalError("\(type(of: self)) does not conforms to \(Factory.Output.self)")
+        }
+        factory.output = output
     }
 
     public func makeSectionItems() -> [Factory.SectionItem] {
