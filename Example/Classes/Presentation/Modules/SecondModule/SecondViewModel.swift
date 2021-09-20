@@ -4,12 +4,18 @@
 
 import GenericModule
 
-final class SecondViewModel: FactoryViewModel<TestSectionItemsFactory> {
+protocol SecondViewModelDelegate: AnyObject {
+    var state: SecondState { get }
+    func makeSectionItems() -> [Int]
+}
+
+final class SecondViewModel: ViewModel {
 
     let title: String
+    let listSectionItems: [Int]
 
-    required init(state: SecondState) {
-        title = state.title
-        super.init(state: state)
+    required init(delegate: SecondViewModelDelegate) {
+        title = delegate.state.title
+        listSectionItems = delegate.makeSectionItems()
     }
 }

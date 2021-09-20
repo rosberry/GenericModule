@@ -5,6 +5,8 @@
 @testable import GenericModule
 
 final class BrokenPresenterPresenter: ModulePresenter {
+    typealias State = DummyState
+    typealias ViewModelDelegate = GenericViewModelDelegate<State>
     typealias View = DummyViewController
     typealias ViewModel = DummyViewModel
     typealias Dependencies = Any
@@ -13,8 +15,14 @@ final class BrokenPresenterPresenter: ModulePresenter {
 
     var output: Output?
 
-    init(state: State, dependencies: Any) {
+    let state: State
 
+    init(state: State, dependencies: Any) {
+        self.state = state
+    }
+
+    func makeViewModelDelegate() -> GenericViewModelDelegate<State> {
+        .init(state: state)
     }
 }
 

@@ -2,17 +2,19 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-open class Presenter<View: GenericModule.View,
+open class Presenter<State,
+                     View: GenericModule.View,
                      Input,
                      Output,
                      Dependencies>: ModulePresenter, ViewOutput {
 
     public typealias ViewModel = View.ViewModel
-    public typealias State = ViewModel.State
+    public typealias ViewModelDelegate = ViewModel.ViewModelDelegate
 
     public var state: State
     public var output: Output?
-    let dependencies: Dependencies
+
+    public let dependencies: Dependencies
 
     weak var view: View?
     public var viewInput: View.ViewInput {
@@ -47,14 +49,53 @@ open class Presenter<View: GenericModule.View,
 
     }
 
-    public required init(state: ViewModel.State, dependencies: Dependencies) {
+    open func makeViewModelDelegate() -> ViewModelDelegate {
+        if let delegate = self as? ViewModelDelegate {
+            return delegate
+        }
+        else if let delegate = GenericViewModelDelegate<State>(state: state) as? ViewModelDelegate {
+            return delegate
+        }
+        fatalError("Please make sure that `makeViewModelDelegate()` method overriden")
+    }
+
+    public required init(state: State, dependencies: Dependencies) {
         self.dependencies = dependencies
         self.state = state
     }
 
     open func update(force: Bool = false, animated: Bool) {
         // swiftlint:disable:next explicit_init
-        let viewModel = ViewModel.init(state: state)
+        let viewModel = ViewModel.init(delegate: makeViewModelDelegate())
         view?.update(with: viewModel, force: force, animated: animated)
+    }
+}
+
+open class FactoryPresenter<State,
+                            Factory: SectionItemsFactory,
+                            View: GenericModule.View,
+                            Input,
+                            Output,
+                            Dependencies>: Presenter<State,
+                                                     View,
+                                                     Input,
+                                                     Output,
+                                                     Dependencies>
+                            where Factory.Dependencies == Dependencies,
+                                  Factory.ViewModelDelegate == View.ViewModel.ViewModelDelegate {
+    public let factory: Factory
+
+    public required init(state: State, dependencies: Dependencies) {
+        factory = .init(dependencies: dependencies)
+        super.init(state: state, dependencies: dependencies)
+        guard let output = self as? Factory.Output else {
+            fatalError("\(type(of: self)) does not conforms to \(Factory.Output.self)")
+        }
+        factory.output = output
+    }
+
+    public func makeSectionItems() -> [Factory.SectionItem] {
+        let delegate = makeViewModelDelegate()
+        return factory.makeSectionItems(delegate: delegate)
     }
 }

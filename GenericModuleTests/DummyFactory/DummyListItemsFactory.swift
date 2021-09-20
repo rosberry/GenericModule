@@ -4,9 +4,9 @@
 
 @testable import GenericModule
 
-final class DummyListItemsFactory: GenericSectionItemsFactory<DummyState, String, Any, DummyFactoryViewOutput> {
+final class DummyListItemsFactory: GenericSectionItemsFactory<DummyFactoryViewModelDelegate, String, Any, DummyFactoryViewOutput> {
 
-    override func makeSectionItems(state: DummyState) -> [String] {
-        super.makeSectionItems(state: state) + state.items
+    override func makeSectionItems(delegate: ViewModelDelegate) -> [String] {
+        super.makeSectionItems(delegate: delegate) + delegate.state.items
     }
 }

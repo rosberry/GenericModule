@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01145C822657A1F800E98FB2 /* FactoryModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */; };
+		011C52EB26B79C940049D6A8 /* ViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */; };
 		011F911C26579B63004A5F91 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911B26579B63004A5F91 /* Presenter.swift */; };
 		011F912026579B80004A5F91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911F26579B80004A5F91 /* View.swift */; };
 		011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F912426579BD8004A5F91 /* ModulePresenter.swift */; };
@@ -49,7 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryModulePresenter.swift; sourceTree = "<group>"; };
+		011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBuilder.swift; sourceTree = "<group>"; };
 		011F911B26579B63004A5F91 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		011F911F26579B80004A5F91 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		011F912426579BD8004A5F91 /* ModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePresenter.swift; sourceTree = "<group>"; };
@@ -118,8 +118,7 @@
 			children = (
 				011F911B26579B63004A5F91 /* Presenter.swift */,
 				011F912426579BD8004A5F91 /* ModulePresenter.swift */,
-				011F912A26579C01004A5F91 /* FactoryPresenter.swift */,
-				01145C812657A1F800E98FB2 /* FactoryModulePresenter.swift */,
+				011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -484,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				011C52EB26B79C940049D6A8 /* ViewModelBuilder.swift in Sources */,
 				011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */,
 				OBJ_26 /* Coordinator.swift in Sources */,
 				011F911C26579B63004A5F91 /* Presenter.swift in Sources */,
@@ -492,7 +492,6 @@
 				01145C822657A1F800E98FB2 /* FactoryModulePresenter.swift in Sources */,
 				011F912026579B80004A5F91 /* View.swift in Sources */,
 				OBJ_30 /* SectionItemsFactory.swift in Sources */,
-				011F912B26579C01004A5F91 /* FactoryPresenter.swift in Sources */,
 				OBJ_31 /* ViewOutput.swift in Sources */,
 				OBJ_32 /* ViewModel.swift in Sources */,
 			);

@@ -15,7 +15,9 @@ protocol ThirdViewInput {
 
 final class ThirdViewController: TitleTextViewController<ThirdViewInput, ThirdViewOutput> {
 
-    private lazy var gestureRecognizer: UISwipeGestureRecognizer = .init(target: self, action: #selector(swipeActionRecognized))
+    private lazy var gestureRecognizer: UISwipeGestureRecognizer = {
+        .init(target: self, action: #selector(swipeActionRecognized))
+    }()
 
     // MARK: - Lifecycle
 

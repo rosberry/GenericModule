@@ -4,15 +4,20 @@
 
 import GenericModule
 
+protocol FirstViewModelDelegate: AnyObject {
+    var state: FirstState { get }
+    func makeTitle() -> String
+}
+
 final class FirstViewModel: ViewModel {
 
     let title: String
     let title2: String
     let title3: String
 
-    required init(state: FirstState) {
-        title2 = state.title2
-        title3 = state.title3
-        title = state.title
+    init(delegate: FirstViewModelDelegate) {
+        title = delegate.makeTitle()
+        title2 = delegate.state.title2
+        title3 = delegate.state.title3
     }
 }

@@ -4,9 +4,12 @@
 
 import GenericModule
 
-final class TestSectionItemsFactory: GenericSectionItemsFactory<SecondState, Int, HasTestService, ViewOutput> {
+final class TestSectionItemsFactory: GenericSectionItemsFactory<SecondViewModelDelegate,
+                                                                Int,
+                                                                HasTestService,
+                                                                ViewOutput> {
 
-    override func makeSectionItems(state: SecondState) -> [Int] {
-        dependencies.testService.array(with: state.itemsCount)
+    override func makeSectionItems(delegate: ViewModelDelegate) -> [Int] {
+        dependencies.testService.array(with: delegate.state.itemsCount)
     }
 }

@@ -2,16 +2,18 @@
 //  Copyright © 2021 Rosberry. All rights reserved.
 //
 
-open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel {
+open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == Presenter.ViewModel,
+                                                    Presenter.ViewModel.ViewModelDelegate == Presenter.ViewModelDelegate {
 
-    public typealias State = Presenter.ViewModel.State
+    public typealias State = Presenter.State
     public typealias Dependencies = Presenter.Dependencies
     public typealias Output = Presenter.Output
     public typealias Input = Presenter.Input
     public typealias ViewController = Presenter.View
+    public typealias ViewModelDelegate = Presenter.ViewModel.ViewModelDelegate
 
     typealias ViewModel = Presenter.ViewModel
-    typealias BasePresenter = GenericModule.Presenter<ViewController, Input, Output, Dependencies>
+    typealias BasePresenter = GenericModule.Presenter<State, ViewController, Input, Output, Dependencies>
 
     var presenter: Presenter
     var basePresenter: BasePresenter {
@@ -39,8 +41,10 @@ open class Module<Presenter: ModulePresenter> where Presenter.View.ViewModel == 
     }
 
     public init(state: State, dependencies: Dependencies, output: Output? = nil) {
-        let viewModel = ViewModel(state: state)
         let presenter = Presenter(state: state, dependencies: dependencies)
+        let viewModelDelegate = presenter.makeViewModelDelegate()
+        // swiftlint:disable:next explicit_init
+        let viewModel = ViewModel.init(delegate: viewModelDelegate)
         guard let viewOutput = presenter as? ViewController.Output else {
             fatalError("`\(type(of: presenter))` does not conforms to `\(ViewController.self)` output protocol.")
         }

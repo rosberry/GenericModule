@@ -6,7 +6,7 @@ import GenericModule
 
 typealias FourthViewController = TitleTextViewController<Any, TitleTextViewOutput>
 
-final class FourthPresenter: Presenter<FourthViewController, Any, Any, Any> {
+final class FourthPresenter: Presenter<TitleTextState, FourthViewController, Any, Any, Any> {
 }
 
 extension FourthPresenter: TitleTextViewOutput {

@@ -4,7 +4,7 @@
 
 import GenericModule
 
-final class ThirdPresenter: Presenter<ThirdViewController, ThirdModuleInput, ThirdModuleOutput, Any> {
+final class ThirdPresenter: Presenter<TitleTextState, ThirdViewController, ThirdModuleInput, ThirdModuleOutput, Any> {
 }
 
 extension ThirdPresenter: ThirdModuleInput {
