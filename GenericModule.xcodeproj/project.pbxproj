@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011C52EB26B79C940049D6A8 /* ViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */; };
+		011C52EB26B79C940049D6A8 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C52EA26B79C940049D6A8 /* ViewModelDelegate.swift */; };
 		011F911C26579B63004A5F91 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911B26579B63004A5F91 /* Presenter.swift */; };
 		011F912026579B80004A5F91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F911F26579B80004A5F91 /* View.swift */; };
 		011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F912426579BD8004A5F91 /* ModulePresenter.swift */; };
-		011F912B26579C01004A5F91 /* FactoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F912A26579C01004A5F91 /* FactoryPresenter.swift */; };
 		013527F3267853DB00CCB464 /* BrokenViewOutputModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013527F2267853DB00CCB464 /* BrokenViewOutputModule.swift */; };
 		013527FB2678540A00CCB464 /* BrokenViewOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013527FA2678540A00CCB464 /* BrokenViewOutputPresenter.swift */; };
 		01352808267855DE00CCB464 /* XCTestCase+FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01352807267855DE00CCB464 /* XCTestCase+FatalError.swift */; };
@@ -49,11 +48,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBuilder.swift; sourceTree = "<group>"; };
+		011C52EA26B79C940049D6A8 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		011F911B26579B63004A5F91 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		011F911F26579B80004A5F91 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		011F912426579BD8004A5F91 /* ModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePresenter.swift; sourceTree = "<group>"; };
-		011F912A26579C01004A5F91 /* FactoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryPresenter.swift; sourceTree = "<group>"; };
 		013527F2267853DB00CCB464 /* BrokenViewOutputModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenViewOutputModule.swift; sourceTree = "<group>"; };
 		013527FA2678540A00CCB464 /* BrokenViewOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenViewOutputPresenter.swift; sourceTree = "<group>"; };
 		01352807267855DE00CCB464 /* XCTestCase+FatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FatalError.swift"; sourceTree = "<group>"; };
@@ -118,7 +116,7 @@
 			children = (
 				011F911B26579B63004A5F91 /* Presenter.swift */,
 				011F912426579BD8004A5F91 /* ModulePresenter.swift */,
-				011C52EA26B79C940049D6A8 /* ViewModelBuilder.swift */,
+				011C52EA26B79C940049D6A8 /* ViewModelDelegate.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -483,13 +481,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				011C52EB26B79C940049D6A8 /* ViewModelBuilder.swift in Sources */,
+				011C52EB26B79C940049D6A8 /* ViewModelDelegate.swift in Sources */,
 				011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */,
 				OBJ_26 /* Coordinator.swift in Sources */,
 				011F911C26579B63004A5F91 /* Presenter.swift in Sources */,
 				OBJ_28 /* Module.swift in Sources */,
 				0135280E26785AB900CCB464 /* TestableFatalError.swift in Sources */,
-				01145C822657A1F800E98FB2 /* FactoryModulePresenter.swift in Sources */,
 				011F912026579B80004A5F91 /* View.swift in Sources */,
 				OBJ_30 /* SectionItemsFactory.swift in Sources */,
 				OBJ_31 /* ViewOutput.swift in Sources */,

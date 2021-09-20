@@ -16,21 +16,23 @@ and compose them altogether!
 ```swift
 // MyState.swift
 
-class MyState {
+final class MyState {
     var someVariable = "some value"
 }
 
 // MyViewModel.swift
 
-class MyViewModel: ViewModel<MyState> {
+final class MyViewModel: ViewModel {
     
     var someVariable: Any
 
-    required init(state: MyState) {
-        self.someVariable = state.someVariable
+    required init(delegate: MyViewModelDelegate) {
+        // initialize all required variables here 
     }
 }
 ```
+Please note, that required `ViewModel` initializer takes associated type `ViewModelDelegate` that can be used to initialize stored properties. You can pass here any protocol or use `GenericViewModelDelegate<State>`. Last one provides the access to module state.
+
 Variables of state and view model cold be not casted one to other, so you can make some specific stuff in view model initializer.
 
 - Then, declare a protocols to send messages between architecture layers:
@@ -42,62 +44,72 @@ protocol MyModuleInput: ModuleInput<FirstState> {
 }
 
 protocol MyModuleOutput {
-    func myModuleSendOutputMessage(_ moduleInput: FirstModuleInput)
+    func myModuleSendOutputMessage(_ moduleInput: MyModuleInput)
 }
 
 // MyViewController.swift
 
 protocol MyViewOutput: ViewOutput {
-    func firstButtonEventTriggered()
+    func myButtonEventTriggered()
 }
 ```
 
 - Declare `ViewController` that implements `ViewInput` protocol:
 ```swift
 // MyViewController.swift
-class MyViewController: UIViewController {
-
-    var output: MyViewOutput?
+final class MyViewController: UIViewController {
+    typealias Output = MyViewOutput & ViewOutput
+    typealias ViewInput = MyViewInput
+    var output: Output
     var viewModel: MyViewModel
-
-    ...
-
 }
 
-extension MyViewController: ViewInput {
+extension MyViewController: View, MyViewInput {
     
-    func update(with viewModel: MainViewModel, force: Bool, animated: Bool) {
+    func update(with viewModel: MyViewModel, force: Bool, animated: Bool) {
         // TODO: Update view if needed
     }
 }
 ```
 You do not need assign `output` and `viewModel`  to some value - `GenericModule` will make it automatically.
 
+- Declare `Presenter` and implement or required protocols:
+```swift
+// MyPresenter.swift
+final class MyPresenter: Presenter<MyState, MyViewController, MyModuleInput, MyModuleOutput, MyModuleDependencies> {
+}
+
+extension MyPresenter: MyModuleInput {
+    func doSomeSpecificStuff() {
+        // Handle module input event
+    }
+}
+
+extension MainPresenter: MainViewOutput {
+    func myButtonEventTriggered() {
+        // Handle view event
+    }
+}
+
+extension MainPresenter: MyModuleDependencies {
+    // Implement `ViewModelDelegate` here 
+}
+```
+Note that you should not implement `ViewModelDelegate` if `ViewModel` takes `GenericViewModelDelegate`. Also, if you don't want to implement `ViewModelDelegate` in `Presenter` then you can override `makeViewModelDelegate()` method and return custom intance:
+
+```swift
+// MyPresenter.swift
+...
+override func makeViewModelDelegate() -> MyViewModelDelegate {
+    // Return here custom view model delegate instance 
+}
+...
+```
+
 - Declare `Module` that compose altogether:
 ```swift
 // MyModule.swift
-class MyModule: Module<MyState, MyViewModel, MyViewController> {
-    typealias Dependencies = MyModuleDepencencies
-    typealias Presenter = ModulePresenter<MyModuleOutput, Dependencies> & MyViewOutput
-
-    override func makeInput() -> BasePresenter {
-        // TODO: Return concrete presenter
-    }
-}
-```
-Note that related types `Dependecies` and `Presenter` declared right inside module.
-
-- Declare `Presenter` and return it's instance from module `makeInput()` method:
-```swift
-// MyPresenter.swift
-final class MyPresenter: MyModule.Presenter {
-
-    // TODO: Implement `MyModuleInput` and `MyViewOutput` methods here
-}
-
-// MyModule.swift
-override func makeInput() -> BasePresenter {
-    MyPresenter(state: state, dependencies: MyModuleDepencencies())
+class MyModule: Module<MyPresenter> {
 }
 ```
 - All you need to do now - instantiate module bundle:
@@ -105,7 +117,7 @@ override func makeInput() -> BasePresenter {
 // MyCoordinator.swift
 
 func startMyModule {
-    let module = MainModule(state: .init(), output: self)
+    let module = MyModule(state: .init(), dependencies: MyModuleDependencies, output: self)
     let viewController = module.viewController
     //TODO: Make something with `viewController`
 }
