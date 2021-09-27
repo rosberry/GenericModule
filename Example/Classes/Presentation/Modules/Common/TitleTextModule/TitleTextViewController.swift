@@ -9,11 +9,7 @@ protocol TitleTextViewOutput {
     func closeEventTriggered()
 }
 
-class TitleTextViewController<Input, Output>: UIViewController {
-
-    var viewModel: TitleTextViewModel
-    var output: Output
-    typealias ViewInput = Input
+class TitleTextViewController<Input, Output>: ViewController<TitleTextViewModel, Input, Output> {
 
     // MARK: - Subviews
 
@@ -25,16 +21,6 @@ class TitleTextViewController<Input, Output>: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
-    required init(viewModel: TitleTextViewModel, output: Output) {
-        self.viewModel = viewModel
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,19 +36,13 @@ class TitleTextViewController<Input, Output>: UIViewController {
 
         label.frame = view.bounds
     }
-}
 
-extension TitleTextViewController: View, ForceViewUpdate {
-
-    func update(with viewModel: TitleTextViewModel, force: Bool, animated: Bool) {
-        let oldViewModel = self.viewModel
-        self.viewModel = viewModel
-
-        update(new: viewModel, old: oldViewModel, keyPath: \.title, force: force) { title in
+    override func update(with viewUpdate: Update<TitleTextViewModel>, animated: Bool) {
+        viewUpdate(\.title) { title in
             navigationItem.title = title
         }
 
-        update(new: viewModel, old: oldViewModel, keyPath: \.text, force: force) { text in
+        viewUpdate(\.text) { text in
             label.text = text
         }
     }

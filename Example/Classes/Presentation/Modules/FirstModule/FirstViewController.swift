@@ -14,12 +14,7 @@ protocol FirstViewInput {
 
 }
 
-class FirstViewController: UIViewController {
-
-    typealias Output = FirstViewOutput & ViewOutput
-    var output: Output
-    var viewModel: FirstViewModel
-    typealias ViewInput = FirstViewInput
+class FirstViewController: ViewController<FirstViewModel, FirstViewInput, FirstViewOutput> {
 
     // MARK: - Subviews
 
@@ -37,22 +32,11 @@ class FirstViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    required init(viewModel: FirstViewModel, output: Output) {
-        self.viewModel = viewModel
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(secondButton)
         view.addSubview(thirdButton)
-        output.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -71,22 +55,15 @@ class FirstViewController: UIViewController {
     @objc private func thirdButtonPressed() {
         output.thirdButtonEventTriggered()
     }
-}
 
-extension FirstViewController: View, ForceViewUpdate {
-
-    func update(with viewModel: FirstViewModel, force: Bool, animated: Bool) {
-
-        let oldViewModel = self.viewModel
-        self.viewModel = viewModel
-
-        update(new: viewModel, old: oldViewModel, keyPath: \.title, force: force) { title in
+    override func update(with viewUpdate: Update<FirstViewModel>, animated: Bool) {
+        viewUpdate(\.title) { title in
             navigationItem.title = title
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title2, force: force) { title in
+        viewUpdate(\.title2) { title in
             secondButton.setTitle(title, for: .normal)
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title3, force: force) { title in
+        viewUpdate(\.title3) { title in
             thirdButton.setTitle(title, for: .normal)
         }
     }
