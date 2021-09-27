@@ -1,8 +1,5 @@
 //
-//  UpdateTests.swift
-//  GenericModuleTests
-//
-//  Created by Nick Tyunin on 27.09.2021.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import XCTest
@@ -39,7 +36,7 @@ final class UpdateTests: XCTestCase {
         let oldViewModel = ViewModel()
         let newViewModel = ViewModel()
         let update = Update(newModel: newViewModel, oldModel: oldViewModel, force: false)
-        update(\.first) { value in
+        update(\.first) { _ in
             XCTAssert(false, "Update should not be perforformed with force == false")
         }
     }
