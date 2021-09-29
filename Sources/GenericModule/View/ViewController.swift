@@ -7,16 +7,17 @@ import UIKit
 open class ViewController<ViewModel: GenericModule.ViewModel, ViewInput, Output>: UIViewController, View {
     public var output: Output
     public var viewModel: ViewModel
-
-    private var genericModuleViewOutput: ViewOutput? {
-        output as? ViewOutput
-    }
+    private var viewOutput: ViewOutput
 
     // MARK: - Lifecycle
 
     public required init(viewModel: ViewModel, output: Output) {
         self.viewModel = viewModel
         self.output = output
+        guard let viewOutput = output as? ViewOutput else {
+            fatalError("`\(type(of: output))` does not conforms to `ViewOutput` protocol")
+        }
+        self.viewOutput = viewOutput
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -26,27 +27,27 @@ open class ViewController<ViewModel: GenericModule.ViewModel, ViewInput, Output>
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        genericModuleViewOutput?.viewDidLoad()
+        viewOutput.viewDidLoad()
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        genericModuleViewOutput?.viewWillAppear()
+        viewOutput.viewWillAppear()
     }
 
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        genericModuleViewOutput?.viewDidAppear()
+        viewOutput.viewDidAppear()
     }
 
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        genericModuleViewOutput?.viewWillDisappear()
+        viewOutput.viewWillDisappear()
     }
 
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        genericModuleViewOutput?.viewDidDisappear()
+        viewOutput.viewDidDisappear()
     }
 
     open func update(with viewModel: ViewModel, force: Bool, animated: Bool) {

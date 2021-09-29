@@ -110,6 +110,13 @@ class GenericModuleTests: XCTestCase {
         XCTAssert(state.didDisappear)
     }
 
+    func testNonConformableViewOutput() {
+        //swiftlint:disable:next line_length
+        expectFatalError(expectedMessage: "`\(DummyViewOutput.self)` does not conforms to `ViewOutput` protocol") {
+            self.coordinator.startNonConformableViewOutput()
+        }
+    }
+
     func testBrokenViewOutput() {
         //swiftlint:disable:next line_length
         expectFatalError(expectedMessage: "`\(BrokenViewOutputPresenter.self)` does not conforms to `\(DummyViewController.self)` output protocol.") {
