@@ -21,8 +21,6 @@
 		011F911A26579906004A5F91 /* FirstModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9C7258B22900061788E /* FirstModule.swift */; };
 		0180E995258B21A20061788E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0180E994258B21A20061788E /* Assets.xcassets */; };
 		0180E998258B21A20061788E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0180E996258B21A20061788E /* LaunchScreen.storyboard */; };
-		0180E9DA258B22900061788E /* ViewUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9AF258B22900061788E /* ViewUpdate.swift */; };
-		0180E9DB258B22900061788E /* AnyEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B0258B22900061788E /* AnyEquatable.swift */; };
 		0180E9DC258B22900061788E /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B4258B22900061788E /* TestService.swift */; };
 		0180E9DD258B22900061788E /* TestServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B5258B22900061788E /* TestServiceImpl.swift */; };
 		0180E9DE258B22900061788E /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180E9B6258B22900061788E /* ServiceFactory.swift */; };
@@ -65,8 +63,6 @@
 		0180E994258B21A20061788E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0180E997258B21A20061788E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0180E999258B21A20061788E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0180E9AF258B22900061788E /* ViewUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUpdate.swift; sourceTree = "<group>"; };
-		0180E9B0258B22900061788E /* AnyEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEquatable.swift; sourceTree = "<group>"; };
 		0180E9B4258B22900061788E /* TestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
 		0180E9B5258B22900061788E /* TestServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServiceImpl.swift; sourceTree = "<group>"; };
 		0180E9B6258B22900061788E /* ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
@@ -161,8 +157,6 @@
 		0180E9AE258B22900061788E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0180E9AF258B22900061788E /* ViewUpdate.swift */,
-				0180E9B0258B22900061788E /* AnyEquatable.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -416,12 +410,10 @@
 				01D0D3942657ABDE00C84896 /* ThirdPresenter.swift in Sources */,
 				0180E9DC258B22900061788E /* TestService.swift in Sources */,
 				01145C7626579FDA00E98FB2 /* SecondViewController.swift in Sources */,
-				0180E9DA258B22900061788E /* ViewUpdate.swift in Sources */,
 				011F911A26579906004A5F91 /* FirstModule.swift in Sources */,
 				0180E9F2258B22900061788E /* MainViewController.swift in Sources */,
 				0180E9F4258B22900061788E /* MainState.swift in Sources */,
 				011F911926579906004A5F91 /* FirstViewModel.swift in Sources */,
-				0180E9DB258B22900061788E /* AnyEquatable.swift in Sources */,
 				0180E9F3258B22900061788E /* MainPresenter.swift in Sources */,
 				0180E9DD258B22900061788E /* TestServiceImpl.swift in Sources */,
 				01145C7B2657A07900E98FB2 /* SecondPresenter.swift in Sources */,

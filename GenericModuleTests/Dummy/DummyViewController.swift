@@ -15,12 +15,7 @@ protocol DummyViewInput {
     func performModuleAction()
 }
 
-final class DummyViewController: UIViewController {
-
-    typealias Output = DummyViewOutput & ViewOutput
-    typealias ViewInput = DummyViewInput
-    var output: Output
-    var viewModel: DummyViewModel
+final class DummyViewController: ViewController<DummyViewModel, DummyViewInput, DummyViewOutput> {
 
     // MARK: - Subviews
 
@@ -28,40 +23,9 @@ final class DummyViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: DummyViewModel, output: Output) {
-        self.viewModel = viewModel
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        Swift.fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(label)
-        output.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        output.viewWillAppear()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        output.viewDidAppear()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        output.viewWillDisappear()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        output.viewDidDisappear()
     }
 
     override func viewDidLayoutSubviews() {
@@ -69,13 +33,12 @@ final class DummyViewController: UIViewController {
 
         label.frame = view.bounds
     }
-}
 
-extension DummyViewController: View {
-
-    func update(with viewModel: DummyViewModel, force: Bool, animated: Bool) {
-        self.viewModel = viewModel
-        label.text = viewModel.text
+    override func update(with viewUpdate: Update<DummyViewModel>, animated: Bool) {
+        super.update(with: viewUpdate, animated: animated)
+        viewUpdate(\.text) { text in
+            label.text = text
+        }
     }
 }
 

@@ -16,12 +16,7 @@ protocol MainViewInput {
 
 }
 
-final class MainViewController: UIViewController {
-
-    typealias Output = MainViewOutput & ViewOutput
-    var output: Output
-    var viewModel: MainViewModel
-    typealias ViewInput = MainViewInput
+final class MainViewController: ViewController<MainViewModel, MainViewInput, MainViewOutput> {
 
     // MARK: - Subviews
 
@@ -51,24 +46,14 @@ final class MainViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: MainViewModel, output: Output) {
-        self.viewModel = viewModel
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(firstButton)
-        view.addSubview(secondButton)
-        view.addSubview(thirdButton)
-        view.addSubview(fourthButton)
-        output.viewDidLoad()
+        super.viewDidLoad {
+            view.backgroundColor = .white
+            view.addSubview(firstButton)
+            view.addSubview(secondButton)
+            view.addSubview(thirdButton)
+            view.addSubview(fourthButton)
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -97,27 +82,21 @@ final class MainViewController: UIViewController {
     @objc private func fourthButtonPressed() {
         output.fourthButtonEventTriggered()
     }
-}
 
-extension MainViewController: GenericModule.View, ForceViewUpdate {
-
-    func update(with viewModel: MainViewModel, force: Bool, animated: Bool) {
-        let oldViewModel = self.viewModel
-        self.viewModel = viewModel
-
-        update(new: viewModel, old: oldViewModel, keyPath: \.title, force: force) { title in
+    override func update(with viewUpdate: Update<MainViewModel>, animated: Bool) {
+        viewUpdate(\.title) { title in
             navigationItem.title = title
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title1, force: force) { title in
+        viewUpdate(\.title1) { title in
             firstButton.setTitle(title, for: .normal)
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title2, force: force) { title in
+        viewUpdate(\.title2) { title in
             secondButton.setTitle(title, for: .normal)
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title3, force: force) { title in
+        viewUpdate(\.title3) { title in
             thirdButton.setTitle(title, for: .normal)
         }
-        update(new: viewModel, old: oldViewModel, keyPath: \.title4, force: force) { title in
+        viewUpdate(\.title4) { title in
             fourthButton.setTitle(title, for: .normal)
         }
     }

@@ -7,3 +7,7 @@
 final class BrokenViewOutputModule: Module<BrokenViewOutputPresenter> {
 
 }
+
+final class NonConformableViewOutputModule: Module<NonConformableViewOutputPresenter> {
+
+}

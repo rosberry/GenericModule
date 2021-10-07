@@ -18,6 +18,9 @@
 		0135281726785CFD00CCB464 /* BrokenViewInputModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135281626785CFD00CCB464 /* BrokenViewInputModule.swift */; };
 		0135281F26785D0D00CCB464 /* BrokenViewInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135281E26785D0D00CCB464 /* BrokenViewInputPresenter.swift */; };
 		0135282426785D2B00CCB464 /* BrokenViewInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135282326785D2B00CCB464 /* BrokenViewInputController.swift */; };
+		013F55F7270171D50057B354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F55F6270171D50057B354 /* ViewController.swift */; };
+		013F5601270177370057B354 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F5600270177370057B354 /* Update.swift */; };
+		013F5605270182FD0057B354 /* UpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F5604270182FD0057B354 /* UpdateTests.swift */; };
 		015DD53E2673650B00CEFD9A /* DummyFactoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DD53D2673650B00CEFD9A /* DummyFactoryModel.swift */; };
 		01BF1948267338F2002C311C /* DummyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF1947267338F2002C311C /* DummyState.swift */; };
 		01BF195426733F7E002C311C /* DummyListItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF195326733F7E002C311C /* DummyListItemsFactory.swift */; };
@@ -47,6 +50,16 @@
 		OBJ_39 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		013F5602270180FF0057B354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "GenericModule::GenericModule";
+			remoteInfo = GenericModule;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		011C52EA26B79C940049D6A8 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		011F911B26579B63004A5F91 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -59,6 +72,9 @@
 		0135281626785CFD00CCB464 /* BrokenViewInputModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenViewInputModule.swift; sourceTree = "<group>"; };
 		0135281E26785D0D00CCB464 /* BrokenViewInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenViewInputPresenter.swift; sourceTree = "<group>"; };
 		0135282326785D2B00CCB464 /* BrokenViewInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenViewInputController.swift; sourceTree = "<group>"; };
+		013F55F6270171D50057B354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		013F5600270177370057B354 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
+		013F5604270182FD0057B354 /* UpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTests.swift; sourceTree = "<group>"; };
 		015DD53D2673650B00CEFD9A /* DummyFactoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFactoryModel.swift; sourceTree = "<group>"; };
 		01BF1947267338F2002C311C /* DummyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyState.swift; sourceTree = "<group>"; };
 		01BF195326733F7E002C311C /* DummyListItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyListItemsFactory.swift; sourceTree = "<group>"; };
@@ -135,6 +151,8 @@
 				OBJ_14 /* ViewOutput.swift */,
 				OBJ_15 /* ViewModel.swift */,
 				011F911F26579B80004A5F91 /* View.swift */,
+				013F55F6270171D50057B354 /* ViewController.swift */,
+				013F5600270177370057B354 /* Update.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +264,7 @@
 				01F52E8226732F550024B299 /* Info.plist */,
 				01352807267855DE00CCB464 /* XCTestCase+FatalError.swift */,
 				01EB929D2678B9DA00900385 /* LostViewTests.swift */,
+				013F5604270182FD0057B354 /* UpdateTests.swift */,
 			);
 			path = GenericModuleTests;
 			sourceTree = "<group>";
@@ -320,6 +339,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				013F5603270180FF0057B354 /* PBXTargetDependency */,
 			);
 			name = GenericModuleTests;
 			productName = GenericModuleTests;
@@ -449,6 +469,7 @@
 			files = (
 				01EB92912678B69900900385 /* BrokenModuleInputPresenter.swift in Sources */,
 				0135281726785CFD00CCB464 /* BrokenViewInputModule.swift in Sources */,
+				013F5605270182FD0057B354 /* UpdateTests.swift in Sources */,
 				01EB929E2678B9DA00900385 /* LostViewTests.swift in Sources */,
 				01EB92B22678BF2C00900385 /* DependencyPresenter.swift in Sources */,
 				01EB92992678B6FC00900385 /* BrokenModuleInputModule.swift in Sources */,
@@ -485,7 +506,9 @@
 				011F912526579BD8004A5F91 /* ModulePresenter.swift in Sources */,
 				OBJ_26 /* Coordinator.swift in Sources */,
 				011F911C26579B63004A5F91 /* Presenter.swift in Sources */,
+				013F55F7270171D50057B354 /* ViewController.swift in Sources */,
 				OBJ_28 /* Module.swift in Sources */,
+				013F5601270177370057B354 /* Update.swift in Sources */,
 				0135280E26785AB900CCB464 /* TestableFatalError.swift in Sources */,
 				011F912026579B80004A5F91 /* View.swift in Sources */,
 				OBJ_30 /* SectionItemsFactory.swift in Sources */,
@@ -503,6 +526,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		013F5603270180FF0057B354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "GenericModule::GenericModule" /* GenericModule */;
+			targetProxy = 013F5602270180FF0057B354 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0190E79C2657B40D00D81602 /* Analyze */ = {

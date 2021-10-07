@@ -47,6 +47,13 @@ final class DummyCoordinator: Coordinator<UINavigationController> {
         rootViewController.pushViewController(module.viewController, animated: false)
     }
 
+    func startNonConformableViewOutput() {
+        let module = NonConformableViewOutputModule(state: state, dependencies: [])
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+        rootViewController.pushViewController(module.viewController, animated: false)
+    }
+
     func startBrokenViewOutput() {
         let module = BrokenViewOutputModule(state: state, dependencies: [])
         window.rootViewController = rootViewController

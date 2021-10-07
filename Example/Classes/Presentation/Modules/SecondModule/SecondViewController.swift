@@ -5,7 +5,7 @@
 import GenericModule
 import UIKit
 
-final class SecondViewController: UIViewController {
+final class SecondViewController: ViewController<SecondViewModel, Any, Any> {
 
     class Cell: UICollectionViewCell {
         lazy var label: UILabel = {
@@ -30,11 +30,6 @@ final class SecondViewController: UIViewController {
         }
     }
 
-    var output: ViewOutput
-    var viewModel: SecondViewModel
-
-    typealias ViewInput = Any
-
     private let reuseId = "cell"
 
     // MARK: - Subviews
@@ -55,21 +50,11 @@ final class SecondViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(viewModel: SecondViewModel, output: ViewOutput) {
-        self.viewModel = viewModel
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(collectionView)
-        view.backgroundColor = .white
-        output.viewDidLoad()
+        super.viewDidLoad {
+            view.addSubview(collectionView)
+            view.backgroundColor = .white
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -77,15 +62,9 @@ final class SecondViewController: UIViewController {
 
         collectionView.frame = view.bounds
     }
-}
 
-extension SecondViewController: View, ForceViewUpdate {
-
-    func update(with viewModel: SecondViewModel, force: Bool, animated: Bool) {
-        let oldViewModel = self.viewModel
-        self.viewModel = viewModel
-
-        update(new: viewModel, old: oldViewModel, keyPath: \.title, force: force) { title in
+    override func update(with viewUpdate: Update<SecondViewModel>, animated: Bool) {
+        viewUpdate(\.title) { title in
             navigationItem.title = title
         }
 
