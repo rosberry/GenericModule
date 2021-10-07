@@ -22,12 +22,11 @@ class TitleTextViewController<Input, Output>: ViewController<TitleTextViewModel,
 
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(label)
-        view.backgroundColor = .white
-        if let output = output as? ViewOutput {
-            output.viewDidLoad()
+    override func viewDidLoad(configurationHandler: () -> Void) {
+        super.viewDidLoad {
+            view.addSubview(label)
+            view.backgroundColor = .white
+            configurationHandler()
         }
     }
 

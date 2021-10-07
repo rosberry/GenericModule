@@ -26,27 +26,57 @@ open class ViewController<ViewModel: GenericModule.ViewModel, ViewInput, Output>
     }
 
     open override func viewDidLoad() {
+        viewDidLoad {
+        }
+    }
+
+    open func viewDidLoad(configurationHandler: () -> Void) {
         super.viewDidLoad()
+        configurationHandler()
         viewOutput.viewDidLoad()
     }
 
     open override func viewWillAppear(_ animated: Bool) {
+        viewWillAppear(animated) {
+        }
+    }
+
+    open func viewWillAppear(_ animated: Bool, configurationHandler: () -> Void) {
         super.viewWillAppear(animated)
+        configurationHandler()
         viewOutput.viewWillAppear()
     }
 
     open override func viewDidAppear(_ animated: Bool) {
+        viewDidAppear(animated) {
+        }
+    }
+
+    open func viewDidAppear(_ animated: Bool, configurationHandler: () -> Void) {
         super.viewDidAppear(animated)
+        configurationHandler()
         viewOutput.viewDidAppear()
     }
 
     open override func viewWillDisappear(_ animated: Bool) {
+        viewWillDisappear(animated) {
+        }
+    }
+
+    open func viewWillDisappear(_ animated: Bool, configurationHandler: () -> Void) {
         super.viewWillDisappear(animated)
+        configurationHandler()
         viewOutput.viewWillDisappear()
     }
 
     open override func viewDidDisappear(_ animated: Bool) {
+        viewDidDisappear(animated) {
+        }
+    }
+
+    open func viewDidDisappear(_ animated: Bool, configurationHandler: () -> Void) {
         super.viewDidDisappear(animated)
+        configurationHandler()
         viewOutput.viewDidDisappear()
     }
 

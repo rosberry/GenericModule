@@ -33,10 +33,11 @@ class FirstViewController: ViewController<FirstViewModel, FirstViewInput, FirstV
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(secondButton)
-        view.addSubview(thirdButton)
+        super.viewDidLoad {
+            view.backgroundColor = .white
+            view.addSubview(secondButton)
+            view.addSubview(thirdButton)
+        }
     }
 
     override func viewDidLayoutSubviews() {

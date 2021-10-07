@@ -51,9 +51,10 @@ final class SecondViewController: ViewController<SecondViewModel, Any, Any> {
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(collectionView)
-        view.backgroundColor = .white
+        super.viewDidLoad {
+            view.addSubview(collectionView)
+            view.backgroundColor = .white
+        }
     }
 
     override func viewDidLayoutSubviews() {

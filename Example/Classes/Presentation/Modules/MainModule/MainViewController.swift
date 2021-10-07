@@ -47,12 +47,13 @@ final class MainViewController: ViewController<MainViewModel, MainViewInput, Mai
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(firstButton)
-        view.addSubview(secondButton)
-        view.addSubview(thirdButton)
-        view.addSubview(fourthButton)
+        super.viewDidLoad {
+            view.backgroundColor = .white
+            view.addSubview(firstButton)
+            view.addSubview(secondButton)
+            view.addSubview(thirdButton)
+            view.addSubview(fourthButton)
+        }
     }
 
     override func viewDidLayoutSubviews() {

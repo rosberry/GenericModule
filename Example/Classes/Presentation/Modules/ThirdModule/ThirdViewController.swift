@@ -22,11 +22,12 @@ final class ThirdViewController: TitleTextViewController<ThirdViewInput, ThirdVi
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        gestureRecognizer.direction = .down
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        label.textColor = .white
-        view.addGestureRecognizer(gestureRecognizer)
+        viewDidLoad {
+            gestureRecognizer.direction = .down
+            view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            label.textColor = .white
+            view.addGestureRecognizer(gestureRecognizer)
+        }
     }
 
     // MARK: - Actions
