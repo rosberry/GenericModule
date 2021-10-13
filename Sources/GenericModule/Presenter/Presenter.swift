@@ -16,7 +16,7 @@ open class Presenter<State,
 
     public let dependencies: Dependencies
 
-    weak var view: View?
+    public weak var view: View?
     public var viewInput: View.ViewInput {
         guard let view = self.view else {
             fatalError("Presenter view input is nil. " +
