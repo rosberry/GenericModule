@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 Rosberry. All rights reserved.
 //
+
 import Foundation
 
 public class Update<Model> {
@@ -15,8 +16,8 @@ public class Update<Model> {
     }
 
     public func callAsFunction<A: Equatable, B: Equatable>(_ first: KeyPath<Model, A>,
-                                                           _ second: KeyPath<Model, B>,
-                                                           configurationBlock: () -> Void) {
+                                                    _ second: KeyPath<Model, B>,
+                                                    configurationBlock: () -> Void) {
         guard !force else {
             return configurationBlock()
         }
@@ -28,9 +29,9 @@ public class Update<Model> {
     }
 
     public func callAsFunction<A: Equatable, B: Equatable, C: Equatable>(_ first: KeyPath<Model, A>,
-                                                                         _ second: KeyPath<Model, B>,
-                                                                         _ third: KeyPath<Model, C>,
-                                                                         _ configurationBlock: () -> Void) {
+                                                                  _ second: KeyPath<Model, B>,
+                                                                  _ third: KeyPath<Model, C>,
+                                                                  _ configurationBlock: () -> Void) {
         guard !force else {
             return configurationBlock()
         }
@@ -44,10 +45,10 @@ public class Update<Model> {
 
     // swiftlint:disable:next function_parameter_count
     public func callAsFunction<A: Equatable, B: Equatable, C: Equatable, D: Equatable>(_ first: KeyPath<Model, A>,
-                                                                                       _ second: KeyPath<Model, B>,
-                                                                                       _ third: KeyPath<Model, C>,
-                                                                                       _ fourth: KeyPath<Model, D>,
-                                                                                       configurationBlock: () -> Void) {
+                                                                                _ second: KeyPath<Model, B>,
+                                                                                _ third: KeyPath<Model, C>,
+                                                                                _ fourth: KeyPath<Model, D>,
+                                                                                configurationBlock: () -> Void) {
         guard !force else {
             return configurationBlock()
         }
