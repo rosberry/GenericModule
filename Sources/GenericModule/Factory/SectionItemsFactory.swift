@@ -15,9 +15,19 @@ public protocol SectionItemsFactory: AnyObject {
     func makeSectionItems(delegate: ViewModelDelegate) -> [SectionItem]
 }
 
-open class GenericSectionItemsFactory<ViewModelDelegate, SectionItem, Dependencies, Output: AnyObject>: SectionItemsFactory {
+open class GenericSectionItemsFactory<ViewModelDelegate, SectionItem, Dependencies, Output>: SectionItemsFactory {
+
+    private weak var _output: AnyObject?
+
     open var dependencies: Dependencies
-    open weak var output: Output?
+    open var output: Output? {
+        get {
+            _output as? Output
+        }
+        set {
+            _output = newValue as? AnyObject
+        }
+    }
 
     required public init(dependencies: Dependencies) {
         self.dependencies = dependencies
